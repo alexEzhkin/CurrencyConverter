@@ -13,6 +13,7 @@
 		CAF7A82D29CC8772002FBBAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF7A82B29CC8772002FBBAD /* Main.storyboard */; };
 		CAF7A82F29CC8772002FBBAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF7A82E29CC8772002FBBAD /* Assets.xcassets */; };
 		CAF7A83229CC8772002FBBAD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF7A83029CC8772002FBBAD /* LaunchScreen.storyboard */; };
+		CAF7A83B29CC9D4D002FBBAD /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = CAF7A83A29CC9D4D002FBBAD /* Stevia */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF7A83B29CC9D4D002FBBAD /* Stevia in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = "Currency Converter";
+			packageProductDependencies = (
+				CAF7A83A29CC9D4D002FBBAD /* Stevia */,
+			);
 			productName = "Currency Converter";
 			productReference = CAF7A82229CC8772002FBBAD /* Currency Converter.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = CAF7A81929CC8772002FBBAD;
+			packageReferences = (
+				CAF7A83929CC9D4D002FBBAD /* XCRemoteSwiftPackageReference "Stevia" */,
+			);
 			productRefGroup = CAF7A82329CC8772002FBBAD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -358,6 +366,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CAF7A83929CC9D4D002FBBAD /* XCRemoteSwiftPackageReference "Stevia" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/freshOS/Stevia";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CAF7A83A29CC9D4D002FBBAD /* Stevia */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CAF7A83929CC9D4D002FBBAD /* XCRemoteSwiftPackageReference "Stevia" */;
+			productName = Stevia;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CAF7A81A29CC8772002FBBAD /* Project object */;
 }
