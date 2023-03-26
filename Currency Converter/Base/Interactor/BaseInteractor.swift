@@ -8,5 +8,9 @@
 import Foundation
 
 class BaseInteractor {
-
+    weak var presenter: BasePresenter?
+    
+    init(presenter: BasePresenter) {
+        self.presenter = presenter
+    }
 }

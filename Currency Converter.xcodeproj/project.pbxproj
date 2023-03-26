@@ -150,8 +150,8 @@
 		CAF7A85029CDBA80002FBBAD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CAF7A84C29CDB883002FBBAD /* BaseViewController.swift */,
 				CAF7A85E29CDE1BF002FBBAD /* BaseView.swift */,
+				CAF7A84C29CDB883002FBBAD /* BaseViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

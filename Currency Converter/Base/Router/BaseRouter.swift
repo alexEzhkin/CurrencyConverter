@@ -8,5 +8,17 @@
 import UIKit
 
 class BaseRouter {
+    fileprivate(set) weak var view: UIViewController?
     
+    init(view: UIViewController) {
+        self.view = view
+    }
+    
+    func dismissSCreen() {
+        view?.dismiss(animated: true)
+    }
+    
+    func popCurrentScreen() {
+        view?.navigationController?.popViewController(animated: true)
+    }
 }
