@@ -7,13 +7,11 @@
 
 import UIKit
 
-class CurrencyConverterViewController: UIViewController {
-
+class CurrencyConverterViewController: BaseViewController<CurrencyConverterView> {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
 

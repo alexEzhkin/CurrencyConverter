@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let viewController = CurrencyConverterViewController()
+        let viewController = CurrencyConverterViewController(customView: CurrencyConverterView.init())
         window?.rootViewController = viewController
         window?.makeKeyAndVisible()
     }

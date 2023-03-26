@@ -7,17 +7,13 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
-    let interactor: BaseInteractor
-    let presenter: BasePresenter
-    let customView: BaseView
+class BaseViewController<V: BaseView>: UIViewController {
+    var presenter: BasePresenter<V>?
+    let customView: V
 
-    init(interactor: BaseInteractor, presenter: BasePresenter, customView: BaseView) {
-        self.interactor = interactor
-        self.presenter = presenter
+    init(customView: V) {
         self.customView = customView
         super.init(nibName: nil, bundle: nil)
-        presenter.viewController = self
     }
 
     required init?(coder: NSCoder) {
@@ -30,26 +26,26 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter.viewDidLoad()
+        presenter?.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.viewWillAppear()
+        presenter?.viewWillAppear()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        presenter.viewDidAppear()
+        presenter?.viewDidAppear()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        presenter.viewWillDisappear()
+        presenter?.viewWillDisappear()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        presenter.viewDidDisappear()
+        presenter?.viewDidDisappear()
     }
 }

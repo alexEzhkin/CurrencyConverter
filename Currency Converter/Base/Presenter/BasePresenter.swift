@@ -7,13 +7,13 @@
 
 import UIKit
 
-class BasePresenter {
+class BasePresenter<V: BaseView> {
     
-    weak var viewController: BaseViewController?
+    weak var view: V?
+    let router: BaseRouter
     
-    fileprivate let router: BaseRouter
-    
-    init(router: BaseRouter) {
+    init(view: V, router: BaseRouter) {
+        self.view = view
         self.router = router
     }
     
