@@ -20,5 +20,21 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
+        configureNavigationBar()
+    }
+    
+    func configureNavigationBar() {
+        title = "Currency converter"
+        let appearance = UINavigationBarAppearance()
+        let textAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white
+        ]
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundColor = UIColor(named: "navigationBarColor")
+        appearance.titleTextAttributes = textAttributes
+        navigationItem.standardAppearance = appearance
+        navigationItem.compactAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactScrollEdgeAppearance = appearance
     }
 }

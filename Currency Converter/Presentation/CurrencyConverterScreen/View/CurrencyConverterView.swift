@@ -20,6 +20,6 @@ class CurrencyConverterView: BaseView {
     }
     
     func setUpView() {
-        
+        backgroundColor = .systemBackground
     }
 }

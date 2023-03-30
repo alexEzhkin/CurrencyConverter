@@ -23,7 +23,9 @@ class CurrencyConverterRouter: BaseRouter {
         presenter.router = router
         router.viewController = viewController
         
-        return viewController
+        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        return navigationController
     }
     
     override func presentModule(_ module: UIViewController, animated: Bool) {
