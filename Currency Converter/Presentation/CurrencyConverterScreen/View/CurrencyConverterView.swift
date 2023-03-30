@@ -10,6 +10,8 @@ import Stevia
 
 class CurrencyConverterView: BaseView {
     
+    let myBalanceLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setUpView()
@@ -19,7 +21,20 @@ class CurrencyConverterView: BaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     func setUpView() {
         backgroundColor = .systemBackground
+        
+        myBalanceLabel.text = "MY BALANCES"
+        subviews {
+            myBalanceLabel
+        }
+        layout {
+            |-20-myBalanceLabel.height(15)-|
+        }
+        myBalanceLabel.Top == safeAreaLayoutGuide.Top + 30
     }
 }

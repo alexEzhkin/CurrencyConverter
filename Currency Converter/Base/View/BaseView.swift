@@ -9,6 +9,7 @@ import UIKit
 import Stevia
 
 protocol BaseViewProtocol: AnyObject {
+    func viewDidLoad()
     func setupView()
 }
 
@@ -23,6 +24,7 @@ class BaseView: UIView, BaseViewProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func viewDidLoad() {}
     func setupView() {}
 }
 
