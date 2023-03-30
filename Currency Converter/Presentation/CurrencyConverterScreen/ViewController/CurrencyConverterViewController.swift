@@ -9,9 +9,16 @@ import UIKit
 
 class CurrencyConverterViewController: BaseViewController<CurrencyConverterView> {
     
+    private var currencyPresenter: CurrencyConverterPresenter? {
+        return presenter as? CurrencyConverterPresenter
+    }
+    
+    private var currencyConverterInteractror: CurrencyConverterInteractor? {
+        return interactor as? CurrencyConverterInteractor
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        presenter?.viewDidLoad()
     }
 }
-

@@ -7,10 +7,11 @@
 
 import Foundation
 
-class BaseInteractor {
-    weak var presenter: BasePresenter<BaseView>?
+protocol BaseInteractorProtocol {
+    var presenter: BasePresenter? { get set }
+}
+
+class BaseInteractor: BaseInteractorProtocol {
     
-    init(presenter: BasePresenter<BaseView>) {
-        self.presenter = presenter
-    }
+    var presenter: BasePresenter?
 }

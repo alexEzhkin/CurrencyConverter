@@ -24,6 +24,7 @@
 		CAF7A86529D0BC8F002FBBAD /* CurrencyConverterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A86429D0BC8F002FBBAD /* CurrencyConverterView.swift */; };
 		CAF7A86A29D0C20F002FBBAD /* CurrencyConverterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A86929D0C20F002FBBAD /* CurrencyConverterInteractor.swift */; };
 		CAF7A86C29D0C21E002FBBAD /* CurrencyConverterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A86B29D0C21E002FBBAD /* CurrencyConverterPresenter.swift */; };
+		CAF7A86E29D1C57D002FBBAD /* CurrencyConverterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A86D29D1C57C002FBBAD /* CurrencyConverterRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		CAF7A86429D0BC8F002FBBAD /* CurrencyConverterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterView.swift; sourceTree = "<group>"; };
 		CAF7A86929D0C20F002FBBAD /* CurrencyConverterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterInteractor.swift; sourceTree = "<group>"; };
 		CAF7A86B29D0C21E002FBBAD /* CurrencyConverterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterPresenter.swift; sourceTree = "<group>"; };
+		CAF7A86D29D1C57C002FBBAD /* CurrencyConverterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 		CAF7A84929CDB624002FBBAD /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				CAF7A86D29D1C57C002FBBAD /* CurrencyConverterRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF7A86E29D1C57D002FBBAD /* CurrencyConverterRouter.swift in Sources */,
 				CAF7A84D29CDB883002FBBAD /* BaseViewController.swift in Sources */,
 				CAF7A86529D0BC8F002FBBAD /* CurrencyConverterView.swift in Sources */,
 				CAF7A86C29D0C21E002FBBAD /* CurrencyConverterPresenter.swift in Sources */,

@@ -7,18 +7,13 @@
 
 import UIKit
 
-class BaseRouter {
-    fileprivate(set) weak var view: UIViewController?
+protocol BaseRouterProtocol {
+    func createModule()
+}
+
+class BaseRouter: BaseRouterProtocol {
     
-    init(view: UIViewController) {
-        self.view = view
-    }
-    
-    func dismissSCreen() {
-        view?.dismiss(animated: true)
-    }
-    
-    func popCurrentScreen() {
-        view?.navigationController?.popViewController(animated: true)
-    }
+    func createModule() {}
+    func presentModule(_ module: UIViewController, animated: Bool) {}
+    func pushModule(_ module: UIViewController, animated: Bool) {}
 }

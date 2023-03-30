@@ -9,4 +9,7 @@ import Foundation
 
 class CurrencyConverterInteractor: BaseInteractor {
     
+    private var currencyConverterPresenter: CurrencyConverterPresenter? {
+        return presenter as? CurrencyConverterPresenter
+    }
 }
