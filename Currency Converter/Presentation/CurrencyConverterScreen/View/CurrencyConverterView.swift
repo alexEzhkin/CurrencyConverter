@@ -11,6 +11,7 @@ import Stevia
 class CurrencyConverterView: BaseView {
     
     let myBalanceLabel = UILabel()
+    let balanceScrollView = BalancesScrollView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,10 +32,13 @@ class CurrencyConverterView: BaseView {
         myBalanceLabel.text = "MY BALANCES"
         subviews {
             myBalanceLabel
+            balanceScrollView
         }
         layout {
             |-20-myBalanceLabel.height(15)-|
+            |-20-balanceScrollView.height(40)-|
         }
         myBalanceLabel.Top == safeAreaLayoutGuide.Top + 30
+        balanceScrollView.Top == myBalanceLabel.Bottom + 40
     }
 }

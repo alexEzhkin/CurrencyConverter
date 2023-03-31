@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CAAAFD2629D6FBF800A5DE21 /* BalancesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2529D6FBF800A5DE21 /* BalancesScrollView.swift */; };
 		CAF7A82629CC8772002FBBAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A82529CC8772002FBBAD /* AppDelegate.swift */; };
 		CAF7A82829CC8772002FBBAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A82729CC8772002FBBAD /* SceneDelegate.swift */; };
 		CAF7A82A29CC8772002FBBAD /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A82929CC8772002FBBAD /* CurrencyConverterViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CAAAFD2529D6FBF800A5DE21 /* BalancesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancesScrollView.swift; sourceTree = "<group>"; };
 		CAF7A82229CC8772002FBBAD /* Currency Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF7A82529CC8772002FBBAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAF7A82729CC8772002FBBAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 		CAF7A86329D0BC7B002FBBAD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CAAAFD2529D6FBF800A5DE21 /* BalancesScrollView.swift */,
 				CAF7A86429D0BC8F002FBBAD /* CurrencyConverterView.swift */,
 			);
 			path = View;
@@ -294,6 +297,7 @@
 				CAF7A82A29CC8772002FBBAD /* CurrencyConverterViewController.swift in Sources */,
 				CAF7A82629CC8772002FBBAD /* AppDelegate.swift in Sources */,
 				CAF7A85F29CDE1BF002FBBAD /* BaseView.swift in Sources */,
+				CAAAFD2629D6FBF800A5DE21 /* BalancesScrollView.swift in Sources */,
 				CAF7A82829CC8772002FBBAD /* SceneDelegate.swift in Sources */,
 				CAF7A85529CDBB8D002FBBAD /* BaseInteractor.swift in Sources */,
 			);
