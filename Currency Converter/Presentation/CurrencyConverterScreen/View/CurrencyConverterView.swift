@@ -13,6 +13,7 @@ class CurrencyConverterView: BaseView {
     let myBalanceLabel = UILabel()
     let balanceScrollView = BalancesScrollView()
     let currencyExchangeLabel = UILabel()
+    let currencySellView = CurrencyExchangeSellView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,11 +37,16 @@ class CurrencyConverterView: BaseView {
             myBalanceLabel
             balanceScrollView
             currencyExchangeLabel
+            currencySellView
         }
         layout {
             |-20-myBalanceLabel.height(15)-|
+            25
             |-20-balanceScrollView.height(40)-|
+            25
             |-20-currencyExchangeLabel.height(15)-|
+            15
+            |-20-currencySellView.height(15)-|
         }
         myBalanceLabel.Top == safeAreaLayoutGuide.Top + 30
     }

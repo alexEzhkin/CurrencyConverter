@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CAAAFD2629D6FBF800A5DE21 /* BalancesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2529D6FBF800A5DE21 /* BalancesScrollView.swift */; };
+		CAAAFD2829D7293800A5DE21 /* CurrencyExchangeSellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2729D7293800A5DE21 /* CurrencyExchangeSellView.swift */; };
 		CAF7A82629CC8772002FBBAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A82529CC8772002FBBAD /* AppDelegate.swift */; };
 		CAF7A82829CC8772002FBBAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A82729CC8772002FBBAD /* SceneDelegate.swift */; };
 		CAF7A82A29CC8772002FBBAD /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A82929CC8772002FBBAD /* CurrencyConverterViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		CAAAFD2529D6FBF800A5DE21 /* BalancesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancesScrollView.swift; sourceTree = "<group>"; };
+		CAAAFD2729D7293800A5DE21 /* CurrencyExchangeSellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeSellView.swift; sourceTree = "<group>"; };
 		CAF7A82229CC8772002FBBAD /* Currency Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF7A82529CC8772002FBBAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAF7A82729CC8772002FBBAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				CAAAFD2529D6FBF800A5DE21 /* BalancesScrollView.swift */,
+				CAAAFD2729D7293800A5DE21 /* CurrencyExchangeSellView.swift */,
 				CAF7A86429D0BC8F002FBBAD /* CurrencyConverterView.swift */,
 			);
 			path = View;
@@ -293,6 +296,7 @@
 				CAF7A86C29D0C21E002FBBAD /* CurrencyConverterPresenter.swift in Sources */,
 				CAF7A85229CDBB73002FBBAD /* BasePresenter.swift in Sources */,
 				CAF7A85729CDBB98002FBBAD /* BaseRouter.swift in Sources */,
+				CAAAFD2829D7293800A5DE21 /* CurrencyExchangeSellView.swift in Sources */,
 				CAF7A86A29D0C20F002FBBAD /* CurrencyConverterInteractor.swift in Sources */,
 				CAF7A82A29CC8772002FBBAD /* CurrencyConverterViewController.swift in Sources */,
 				CAF7A82629CC8772002FBBAD /* AppDelegate.swift in Sources */,
