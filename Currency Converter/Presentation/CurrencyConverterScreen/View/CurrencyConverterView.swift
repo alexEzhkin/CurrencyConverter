@@ -49,7 +49,7 @@ class CurrencyConverterView: BaseView {
             |-20-currencyExchangeLabel.height(15)-|
             25
             |-20-currencySellView.height(60)-|
-            0
+            10
             |-20-currencyReceiveView.height(60)-|
         }
         myBalanceLabel.Top == safeAreaLayoutGuide.Top + 30

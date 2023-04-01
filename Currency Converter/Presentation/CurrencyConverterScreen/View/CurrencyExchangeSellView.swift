@@ -14,6 +14,7 @@ class CurrencyExchangeSellView: BaseView {
     private let sellCurrencyTextField: UITextField
     private let sellCurrencyPicker: UIPickerView
     private let accessoryImage: UIImageView
+    private let separatLine: UIView
     
     init() {
         self.sellImageIcon = UIImageView(frame: .zero)
@@ -21,6 +22,7 @@ class CurrencyExchangeSellView: BaseView {
         self.sellCurrencyTextField = UITextField(frame: .zero)
         self.sellCurrencyPicker = UIPickerView(frame: .zero)
         self.accessoryImage = UIImageView(frame: .zero)
+        self.separatLine = UIView(frame: .zero)
         super.init(frame: .zero)
         setup()
     }
@@ -39,12 +41,15 @@ class CurrencyExchangeSellView: BaseView {
         sellCurrencyTextField.placeholder = "0"
         sellCurrencyTextField.textAlignment = .right
         
+        separatLine.backgroundColor = .opaqueSeparator
+        
         subviews {
             sellImageIcon
             sellLabel
             sellCurrencyTextField
             sellCurrencyPicker
             accessoryImage
+            separatLine
         }
         
         align(horizontally: [self, sellImageIcon, sellLabel, sellCurrencyTextField, sellCurrencyPicker, accessoryImage])
@@ -59,5 +64,9 @@ class CurrencyExchangeSellView: BaseView {
         sellCurrencyPicker.Right == accessoryImage.Left
         accessoryImage.height(20).width(20)
         accessoryImage.Right == Right
+        separatLine.height(0.5)
+        separatLine.Left == sellLabel.Left
+        separatLine.Right == Right
+        separatLine.Bottom == Bottom
     }
 }

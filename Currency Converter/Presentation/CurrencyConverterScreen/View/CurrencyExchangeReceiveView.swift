@@ -14,6 +14,7 @@ class CurrencyExchangeReceiveView: BaseView {
     private let receiveCurrencyLabel: UILabel
     private let receiveCurrencyPicker: UIPickerView
     private let accessoryImage: UIImageView
+    private let separatLine: UIView
     
     init() {
         self.receiveImageIcon = UIImageView(frame: .zero)
@@ -21,6 +22,7 @@ class CurrencyExchangeReceiveView: BaseView {
         self.receiveCurrencyLabel = UILabel(frame: .zero)
         self.receiveCurrencyPicker = UIPickerView(frame: .zero)
         self.accessoryImage = UIImageView(frame: .zero)
+        self.separatLine = UIView(frame: .zero)
         super.init(frame: .zero)
         setup()
     }
@@ -36,12 +38,15 @@ class CurrencyExchangeReceiveView: BaseView {
         accessoryImage.image = UIImage(systemName: "chevron.down")
         accessoryImage.tintColor = .black
         
+        separatLine.backgroundColor = .opaqueSeparator
+        
         subviews {
             receiveImageIcon
             receiveLabel
             receiveCurrencyLabel
             receiveCurrencyPicker
             accessoryImage
+            separatLine
         }
         
         align(horizontally: [self, receiveImageIcon, receiveLabel, receiveCurrencyLabel, receiveCurrencyPicker, accessoryImage])
@@ -56,5 +61,9 @@ class CurrencyExchangeReceiveView: BaseView {
         receiveCurrencyPicker.Right == accessoryImage.Left
         accessoryImage.height(20).width(20)
         accessoryImage.Right == Right
+        separatLine.height(0.5)
+        separatLine.Left == receiveLabel.Left
+        separatLine.Right == Right
+        separatLine.Bottom == Bottom
     }
 }
