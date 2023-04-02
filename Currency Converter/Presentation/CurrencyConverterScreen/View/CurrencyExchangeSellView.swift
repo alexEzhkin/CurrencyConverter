@@ -40,6 +40,7 @@ class CurrencyExchangeSellView: BaseView {
         
         sellCurrencyTextField.placeholder = "0"
         sellCurrencyTextField.textAlignment = .right
+        sellCurrencyTextField.keyboardType = .decimalPad
         
         separatLine.backgroundColor = .opaqueSeparator
         
@@ -68,5 +69,13 @@ class CurrencyExchangeSellView: BaseView {
         separatLine.Left == sellLabel.Left
         separatLine.Right == Right
         separatLine.Bottom == Bottom
+    }
+    
+    override func becomeFirstResponder() -> Bool {
+        sellCurrencyTextField.becomeFirstResponder()
+    }
+    
+    override func resignFirstResponder() -> Bool {
+        sellCurrencyTextField.resignFirstResponder()
     }
 }
