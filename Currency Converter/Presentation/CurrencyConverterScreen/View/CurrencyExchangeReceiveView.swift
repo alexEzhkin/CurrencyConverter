@@ -89,7 +89,7 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
         pickerView.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor).isActive = true
         pickerView.centerYAnchor.constraint(equalTo: vc.view.centerYAnchor).isActive = true
         
-        let alert = UIAlertController(title: "Select Sell Currency", message: "", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Select Receieve Currency", message: "", preferredStyle: .actionSheet)
         
         alert.popoverPresentationController?.sourceView = receiveCurrencyButton
         alert.popoverPresentationController?.sourceRect = receiveCurrencyButton.bounds
