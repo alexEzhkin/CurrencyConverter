@@ -17,6 +17,7 @@
 		CAE772EF29DD74AB0007500E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772EE29DD74AB0007500E /* EndPoint.swift */; };
 		CAE772F129DD77D00007500E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772F029DD77D00007500E /* NetworkService.swift */; };
 		CAE772F329DD78700007500E /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772F229DD78700007500E /* HTTPMethod.swift */; };
+		CAE772F529DD7A610007500E /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772F429DD7A610007500E /* NetworkError.swift */; };
 		CAF7A82629CC8772002FBBAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A82529CC8772002FBBAD /* AppDelegate.swift */; };
 		CAF7A82829CC8772002FBBAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A82729CC8772002FBBAD /* SceneDelegate.swift */; };
 		CAF7A82A29CC8772002FBBAD /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A82929CC8772002FBBAD /* CurrencyConverterViewController.swift */; };
@@ -48,6 +49,7 @@
 		CAE772EE29DD74AB0007500E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		CAE772F029DD77D00007500E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		CAE772F229DD78700007500E /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		CAE772F429DD7A610007500E /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		CAF7A82229CC8772002FBBAD /* Currency Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF7A82529CC8772002FBBAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAF7A82729CC8772002FBBAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			children = (
 				CAE772EE29DD74AB0007500E /* EndPoint.swift */,
 				CAE772F229DD78700007500E /* HTTPMethod.swift */,
+				CAE772F429DD7A610007500E /* NetworkError.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				CAF7A85729CDBB98002FBBAD /* BaseRouter.swift in Sources */,
 				CAAAFD2829D7293800A5DE21 /* CurrencyExchangeSellView.swift in Sources */,
 				CAF7A86A29D0C20F002FBBAD /* CurrencyConverterInteractor.swift in Sources */,
+				CAE772F529DD7A610007500E /* NetworkError.swift in Sources */,
 				CAAAFD3229DB182500A5DE21 /* UIView + Extension.swift in Sources */,
 				CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */,
 				CAE772F129DD77D00007500E /* NetworkService.swift in Sources */,

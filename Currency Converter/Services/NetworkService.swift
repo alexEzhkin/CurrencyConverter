@@ -25,4 +25,32 @@ final class NetworkService {
         }
         return request
     }
+    
+    func getRequest<T: Decodable>(request: URLRequest, completion: @escaping (Result<T, NetworkError>) -> Void) {
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+                    completion(.failure(.invalidResponse))
+                    return
+                }
+                
+                guard error == nil else {
+                    completion(.failure(.undentified))
+                    return
+                }
+                
+                guard let data = data else {
+                    completion(.failure(.invalidData))
+                    return
+                }
+                
+                do {
+                    let result = try JSONDecoder().decode(T.self, from: data)
+                    completion(.success(result))
+                } catch {
+                    completion(.failure(.jsonSerilizationError))
+                }
+            }
+        }.resume()
+    }
 }
