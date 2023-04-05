@@ -30,7 +30,7 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
             NSAttributedString.Key.foregroundColor: UIColor.white
         ]
         appearance.configureWithDefaultBackground()
-        appearance.backgroundColor = UIColor(named: "navigationBarColor")
+        appearance.backgroundColor = .customBlueColor
         appearance.titleTextAttributes = textAttributes
         navigationItem.standardAppearance = appearance
         navigationItem.compactAppearance = appearance

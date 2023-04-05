@@ -12,6 +12,8 @@
 		CAAAFD2A29D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2929D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift */; };
 		CAAAFD2F29DB132700A5DE21 /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2E29DB132700A5DE21 /* Currencies.swift */; };
 		CAAAFD3229DB182500A5DE21 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD3129DB182500A5DE21 /* UIView + Extension.swift */; };
+		CAE772E829DC74E80007500E /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE772E729DC74E80007500E /* ColorAssets.xcassets */; };
+		CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772E929DC75670007500E /* UIColor + Extension.swift */; };
 		CAF7A82629CC8772002FBBAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A82529CC8772002FBBAD /* AppDelegate.swift */; };
 		CAF7A82829CC8772002FBBAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A82729CC8772002FBBAD /* SceneDelegate.swift */; };
 		CAF7A82A29CC8772002FBBAD /* CurrencyConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF7A82929CC8772002FBBAD /* CurrencyConverterViewController.swift */; };
@@ -38,6 +40,8 @@
 		CAAAFD2929D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeReceiveView.swift; sourceTree = "<group>"; };
 		CAAAFD2E29DB132700A5DE21 /* Currencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currencies.swift; sourceTree = "<group>"; };
 		CAAAFD3129DB182500A5DE21 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		CAE772E729DC74E80007500E /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
+		CAE772E929DC75670007500E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		CAF7A82229CC8772002FBBAD /* Currency Converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency Converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF7A82529CC8772002FBBAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAF7A82729CC8772002FBBAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				CAAAFD3129DB182500A5DE21 /* UIView + Extension.swift */,
+				CAE772E929DC75670007500E /* UIColor + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 				CAF7A82529CC8772002FBBAD /* AppDelegate.swift */,
 				CAF7A82729CC8772002FBBAD /* SceneDelegate.swift */,
 				CAF7A82E29CC8772002FBBAD /* Assets.xcassets */,
+				CAE772E729DC74E80007500E /* ColorAssets.xcassets */,
 				CAF7A83029CC8772002FBBAD /* LaunchScreen.storyboard */,
 				CAF7A83329CC8772002FBBAD /* Info.plist */,
 			);
@@ -304,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF7A83229CC8772002FBBAD /* LaunchScreen.storyboard in Resources */,
+				CAE772E829DC74E80007500E /* ColorAssets.xcassets in Resources */,
 				CAF7A82F29CC8772002FBBAD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +331,7 @@
 				CAAAFD2829D7293800A5DE21 /* CurrencyExchangeSellView.swift in Sources */,
 				CAF7A86A29D0C20F002FBBAD /* CurrencyConverterInteractor.swift in Sources */,
 				CAAAFD3229DB182500A5DE21 /* UIView + Extension.swift in Sources */,
+				CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */,
 				CAF7A82A29CC8772002FBBAD /* CurrencyConverterViewController.swift in Sources */,
 				CAF7A82629CC8772002FBBAD /* AppDelegate.swift in Sources */,
 				CAF7A85F29CDE1BF002FBBAD /* BaseView.swift in Sources */,

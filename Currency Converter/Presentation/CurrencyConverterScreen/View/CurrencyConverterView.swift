@@ -40,7 +40,7 @@ class CurrencyConverterView: BaseView {
         currencyExchangeLabel.text = "CURRENCY EXCHANGE"
         submitButton.setTitle("SUBMIT", for: .normal)
         submitButton.layer.cornerRadius = 25
-        submitButton.backgroundColor = UIColor(named: "navigationBarColor")
+        submitButton.backgroundColor = .customBlueColor
         subviews {
             myBalanceLabel
             balanceScrollView
