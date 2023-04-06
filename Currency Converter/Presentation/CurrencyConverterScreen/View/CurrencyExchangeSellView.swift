@@ -8,7 +8,12 @@
 import UIKit
 import Stevia
 
-class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource {
+protocol ExchangeAmountProtocol: AnyObject {
+    var exchangeValue: String? { get set }
+}
+
+class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+    weak var delegate: ExchangeAmountProtocol?
     
     private let currencies = Currencies.allCases
     private let screenWidth = UIScreen.main.bounds.width - 10
@@ -48,6 +53,7 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
         sellCurrencyTextField.placeholder = "0"
         sellCurrencyTextField.textAlignment = .right
         sellCurrencyTextField.keyboardType = .decimalPad
+        sellCurrencyTextField.delegate = self
         
         sellCurrencyButton.setTitle(currencies[selectedRow].segmentTitle, for: .normal)
         sellCurrencyButton.setTitleColor(.black, for: .normal)
@@ -88,6 +94,12 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
     
     override func resignFirstResponder() -> Bool {
         sellCurrencyTextField.resignFirstResponder()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+        delegate?.exchangeValue = newText
+        return true
     }
     
     @IBAction func popUpPicker(_ sender: Any) {

@@ -34,6 +34,8 @@ class CurrencyConverterView: BaseView {
     }
     
     func setUpView() {
+        currencySellView.delegate = currencyReceiveView
+        
         backgroundColor = .systemBackground
         
         myBalanceLabel.text = "MY BALANCES"

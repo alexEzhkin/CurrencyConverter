@@ -8,7 +8,21 @@
 import UIKit
 import Stevia
 
-class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource {
+class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource, ExchangeAmountProtocol {
+    var exchangeValue: String? {
+        didSet {
+            guard let exchangeValue = exchangeValue else {
+                receiveCurrencyLabel.text = exchangeValue
+                return
+            }
+            guard exchangeValue != "0" else {
+                receiveCurrencyLabel.text = .none
+                return
+            }
+            receiveCurrencyLabel.text = !exchangeValue.isEmpty ? "+ " + exchangeValue : exchangeValue
+        }
+    }
+        
     private let currencies = Currencies.allCases
     private let screenWidth = UIScreen.main.bounds.width - 10
     private let screenHeight = UIScreen.main.bounds.height / 2
@@ -48,6 +62,9 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
         receiveCurrencyButton.setTitleColor(.black, for: .normal)
         receiveCurrencyButton.addTarget(self, action: #selector(popUpPicker), for: .touchUpInside)
         
+        receiveCurrencyLabel.textAlignment = .right
+        receiveCurrencyLabel.textColor = .systemGreen
+        
         separatLine.backgroundColor = .opaqueSeparator
         
         subviews {
@@ -66,7 +83,7 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
         receiveLabel.height(50)
         receiveCurrencyLabel.height(50)
         receiveCurrencyLabel.Left == receiveLabel.Right + 10
-        receiveCurrencyLabel.Left == receiveCurrencyLabel.Right + 20
+        receiveCurrencyLabel.Right == receiveCurrencyButton.Left - 20
         receiveCurrencyButton.height(50).width(40)
         receiveCurrencyButton.Right == accessoryImage.Left
         accessoryImage.height(20).width(20)
