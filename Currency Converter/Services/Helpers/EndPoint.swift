@@ -32,7 +32,7 @@ enum EndPoint: RawRepresentable, API {
     
     var route: String {
         switch self {
-        case .exchange(let fromAmount, let fromCurrency, let toCurrency): return "/currency/commercial/exchange/{\(fromAmount)}-{\(fromCurrency)}/{\(toCurrency)}/latest"
+        case .exchange(let fromAmount, let fromCurrency, let toCurrency): return "/currency/commercial/exchange/\(fromAmount)-\(fromCurrency)/\(toCurrency)/latest"
         }
     }
     

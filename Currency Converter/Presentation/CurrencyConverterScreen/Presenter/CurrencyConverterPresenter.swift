@@ -11,6 +11,10 @@ class CurrencyConverterPresenter: BasePresenter {
     
     weak var viewController: CurrencyConverterViewController?
     
+    private var currencyConverterInteractor: CurrencyConverterInteractor? {
+        return interactor as? CurrencyConverterInteractor
+    }
+    
     init(viewController: CurrencyConverterViewController) {
         self.viewController = viewController
     }
@@ -22,5 +26,9 @@ class CurrencyConverterPresenter: BasePresenter {
     }
     
     override func viewWillDisappear() {
+    }
+    
+    func getExchangeRate() {
+        currencyConverterInteractor?.fetchExchangeRate()
     }
 }

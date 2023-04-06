@@ -12,8 +12,13 @@ protocol ExchangeAmountProtocol: AnyObject {
     var exchangeValue: String? { get set }
 }
 
+protocol CurrencyExchangeSellToViewControllerProtocol: AnyObject {
+    func updateRates()
+}
+
 class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     weak var delegate: ExchangeAmountProtocol?
+    weak var view: CurrencyExchangeSellToViewControllerProtocol?
     
     private let currencies = Currencies.allCases
     private let screenWidth = UIScreen.main.bounds.width - 10
@@ -99,6 +104,7 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
         delegate?.exchangeValue = newText
+        view?.updateRates()
         return true
     }
     

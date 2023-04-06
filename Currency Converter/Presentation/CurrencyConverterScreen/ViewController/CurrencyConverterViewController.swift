@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrencyConverterViewController: BaseViewController<CurrencyConverterView> {
+class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>, CurrencyExchangeSellToViewControllerProtocol {
     
     private var currencyPresenter: CurrencyConverterPresenter? {
         return presenter as? CurrencyConverterPresenter
@@ -20,7 +20,12 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
+        customView.currencySellView.view = self
         configureNavigationBar()
+    }
+    
+    func updateRates() {
+        currencyPresenter?.getExchangeRate()
     }
     
     func configureNavigationBar() {
