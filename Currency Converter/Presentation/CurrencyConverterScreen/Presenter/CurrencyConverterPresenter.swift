@@ -28,7 +28,11 @@ class CurrencyConverterPresenter: BasePresenter {
     override func viewWillDisappear() {
     }
     
-    func getExchangeRate() {
-        currencyConverterInteractor?.fetchExchangeRate()
+    func getExchangeRate(amount: Double, fromCurrency: String, toCurrency: String) {
+        currencyConverterInteractor?.fetchExchangeRate(amount: amount, fromCurrency: fromCurrency, toCurrency: toCurrency)
+    }
+    
+    func setExchangeRate(amount: String) {
+        viewController?.updateReceiveLabel(with: amount)
     }
 }

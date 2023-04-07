@@ -13,13 +13,13 @@ class CurrencyConverterInteractor: BaseInteractor {
         return presenter as? CurrencyConverterPresenter
     }
     
-    func fetchExchangeRate() {
-        guard let request = NetworkService.shared.createRequest(urlForRequest: EndPoint.exchange(fromAmount: 356.40, fromCurrency: "USD", toCurrency: "EUR").url, method: .get, parameters: nil) else { return }
+    func fetchExchangeRate(amount: Double, fromCurrency: String, toCurrency: String) {
+        guard let request = NetworkService.shared.createRequest(urlForRequest: EndPoint.exchange(fromAmount: amount, fromCurrency: fromCurrency, toCurrency: toCurrency).url, method: .get, parameters: nil) else { return }
         
         NetworkService.shared.getRequest(request: request, completion: { [weak self] (result: Result<CurrencyExchangeModel, NetworkError>) in
             switch result {
             case .success(let resultExchange):
-                print(resultExchange)
+                self?.currencyConverterPresenter?.setExchangeRate(amount: resultExchange.amount)
             case .failure(let failure):
                 print(failure.localizedDescription)
             }

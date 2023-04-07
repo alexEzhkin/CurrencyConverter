@@ -13,7 +13,7 @@ protocol ExchangeAmountProtocol: AnyObject {
 }
 
 protocol CurrencyExchangeSellToViewControllerProtocol: AnyObject {
-    func updateRates()
+    func updateRates(amount: Double, fromCurrency: String, toCurrency: String)
 }
 
 class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
@@ -104,7 +104,11 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
         delegate?.exchangeValue = newText
-        view?.updateRates()
+        if let sellAmount = Double(newText) {
+            view?.updateRates(amount: Double(sellAmount), fromCurrency: "USD", toCurrency: "EUR")
+        } else {
+            print("mistake")
+        }
         return true
     }
     

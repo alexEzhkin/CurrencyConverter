@@ -8,10 +8,14 @@
 import Foundation
 
 protocol BaseInteractorProtocol {
-    var presenter: BasePresenter? { get set }
+    var presenter: BasePresenter { get set }
 }
 
 class BaseInteractor: BaseInteractorProtocol {
     
-    var presenter: BasePresenter?
+    var presenter: BasePresenter
+    
+    init(presenter: BasePresenter) {
+        self.presenter = presenter
+    }
 }

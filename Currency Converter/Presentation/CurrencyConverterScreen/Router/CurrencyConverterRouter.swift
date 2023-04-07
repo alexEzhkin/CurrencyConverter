@@ -15,7 +15,7 @@ class CurrencyConverterRouter: BaseRouter {
     static func createModule() -> UIViewController {
         let viewController = CurrencyConverterViewController()
         let presenter = CurrencyConverterPresenter(viewController: viewController)
-        let interactor = CurrencyConverterInteractor()
+        let interactor = CurrencyConverterInteractor(presenter: presenter)
         let router = CurrencyConverterRouter()
         
         viewController.presenter = presenter
