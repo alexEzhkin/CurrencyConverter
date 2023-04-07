@@ -23,6 +23,7 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
     private let currencies = Currencies.allCases
     private let screenWidth = UIScreen.main.bounds.width - 10
     private let screenHeight = UIScreen.main.bounds.height / 2
+    private let roundedPlace = 2
     
     private lazy var selectedRow = currencies.first?.segmentIndex ?? 0
     
@@ -101,13 +102,28 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
         sellCurrencyTextField.resignFirstResponder()
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
-        delegate?.exchangeValue = newText
-        if let sellAmount = Double(newText) {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        textField.text = textField.text?.replacingOccurrences(of: ",", with: ".")
+        
+        if let text = textField.text, let sellAmount = Double(text) {
             view?.updateRates(amount: Double(sellAmount), fromCurrency: "USD", toCurrency: "EUR")
-        } else {
-            print("mistake")
+        }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "" {
+            return true
+        }
+        if (textField.text?.contains("."))! && string == "." {
+            return false
+        }
+        if (textField.text?.contains("."))! {
+            let decimalPlace = textField.text?.components(separatedBy: ".").last
+            if (decimalPlace?.count)! < roundedPlace {
+                return true
+            } else {
+                return false
+            }
         }
         return true
     }
