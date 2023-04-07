@@ -9,6 +9,8 @@ import UIKit
 import Stevia
 
 class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource, ExchangeAmountProtocol {
+    weak var view: CurrencyExchangeSellToViewControllerProtocol?
+    
     var exchangeValue: String? {
         didSet {
             guard let exchangeValue = exchangeValue else {
@@ -122,6 +124,7 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
         
         alert.addAction(UIAlertAction(title: "Select", style: .default, handler: { (UIAlertAction) in
             self.currency = self.currencies[pickerView.selectedRow(inComponent: 0)]
+            self.view?.updateRates()
         }))
         
         guard let viewController = self.parentViewController else {

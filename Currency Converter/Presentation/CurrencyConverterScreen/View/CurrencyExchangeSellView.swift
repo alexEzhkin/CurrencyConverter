@@ -13,12 +13,14 @@ protocol ExchangeAmountProtocol: AnyObject {
 }
 
 protocol CurrencyExchangeSellToViewControllerProtocol: AnyObject {
-    func updateRates(amount: Double)
+    func updateRates()
 }
 
 class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     weak var delegate: ExchangeAmountProtocol?
     weak var view: CurrencyExchangeSellToViewControllerProtocol?
+    
+    var sellAmount: Double = 0.0
     
     var currency: Currencies {
         didSet {
@@ -110,8 +112,9 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
     func textFieldDidChangeSelection(_ textField: UITextField) {
         textField.text = textField.text?.replacingOccurrences(of: ",", with: ".")
         
-        if let text = textField.text, let sellAmount = Double(text) {
-            view?.updateRates(amount: sellAmount)
+        if let text = textField.text, let value = Double(text) {
+            self.sellAmount = value
+            view?.updateRates()
         }
     }
     
@@ -156,6 +159,7 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
         
         alert.addAction(UIAlertAction(title: "Select", style: .default, handler: { (UIAlertAction) in
             self.currency = self.currencies[pickerView.selectedRow(inComponent: 0)]
+            self.view?.updateRates()
         }))
         
         guard let viewController = self.parentViewController else {
