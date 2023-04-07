@@ -24,8 +24,10 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
         configureNavigationBar()
     }
     
-    func updateRates(amount: Double, fromCurrency: String, toCurrency: String) {
-        currencyPresenter?.getExchangeRate(amount: amount, fromCurrency: fromCurrency, toCurrency: toCurrency)
+    func updateRates(amount: Double) {
+        let inputCurrency = customView.currencySellView.currency.segmentTitle
+        let outputCurrency = customView.currencyReceiveView.currency.segmentTitle
+        currencyPresenter?.getExchangeRate(amount: amount, fromCurrency: inputCurrency, toCurrency: outputCurrency)
     }
     
     func updateReceiveLabel(with amount: String) {

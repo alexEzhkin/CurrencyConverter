@@ -22,13 +22,17 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
             receiveCurrencyLabel.text = !exchangeValue.isEmpty ? "+ " + exchangeValue : exchangeValue
         }
     }
-        
+    
+    var currency: Currencies {
+        didSet {
+            receiveCurrencyButton.setTitle(currency.segmentTitle, for: .normal)
+        }
+    }
+   
     private let currencies = Currencies.allCases
     private let screenWidth = UIScreen.main.bounds.width - 10
     private let screenHeight = UIScreen.main.bounds.height / 2
-    
-    private lazy var selectedRow = currencies.first?.segmentIndex ?? 0
-    
+        
     private let receiveImageIcon: UIImageView
     private let receiveLabel: UILabel
     private let receiveCurrencyLabel: UILabel
@@ -37,6 +41,7 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
     private let separatLine: UIView
     
     init() {
+        self.currency = currencies.first ?? .EUR
         self.receiveImageIcon = UIImageView(frame: .zero)
         self.receiveLabel = UILabel(frame: .zero)
         self.receiveCurrencyLabel = UILabel(frame: .zero)
@@ -58,7 +63,7 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
         accessoryImage.image = UIImage(systemName: "chevron.down")
         accessoryImage.tintColor = .black
         
-        receiveCurrencyButton.setTitle(currencies[selectedRow].segmentTitle, for: .normal)
+        receiveCurrencyButton.setTitle(currency.segmentTitle, for: .normal)
         receiveCurrencyButton.setTitleColor(.black, for: .normal)
         receiveCurrencyButton.addTarget(self, action: #selector(popUpPicker), for: .touchUpInside)
         
@@ -100,7 +105,7 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
         let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: screenWidth, height:screenHeight))
         pickerView.dataSource = self
         pickerView.delegate = self
-        pickerView.selectRow(selectedRow, inComponent: 0, animated: false)
+        pickerView.selectRow(currency.segmentIndex, inComponent: 0, animated: false)
         
         vc.view.addSubview(pickerView)
         pickerView.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor).isActive = true
@@ -116,10 +121,7 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
         }))
         
         alert.addAction(UIAlertAction(title: "Select", style: .default, handler: { (UIAlertAction) in
-            self.selectedRow = pickerView.selectedRow(inComponent: 0)
-            let selected = self.selectedRow
-            let name = self.currencies[selected].segmentTitle
-            self.receiveCurrencyButton.setTitle(name, for: .normal)
+            self.currency = self.currencies[pickerView.selectedRow(inComponent: 0)]
         }))
         
         guard let viewController = self.parentViewController else {

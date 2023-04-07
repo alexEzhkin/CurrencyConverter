@@ -13,20 +13,24 @@ protocol ExchangeAmountProtocol: AnyObject {
 }
 
 protocol CurrencyExchangeSellToViewControllerProtocol: AnyObject {
-    func updateRates(amount: Double, fromCurrency: String, toCurrency: String)
+    func updateRates(amount: Double)
 }
 
 class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     weak var delegate: ExchangeAmountProtocol?
     weak var view: CurrencyExchangeSellToViewControllerProtocol?
     
+    var currency: Currencies {
+        didSet {
+            sellCurrencyButton.setTitle(currency.segmentTitle, for: .normal)
+        }
+    }
+    
     private let currencies = Currencies.allCases
     private let screenWidth = UIScreen.main.bounds.width - 10
     private let screenHeight = UIScreen.main.bounds.height / 2
     private let roundedPlace = 2
-    
-    private lazy var selectedRow = currencies.first?.segmentIndex ?? 0
-    
+        
     private let sellImageIcon: UIImageView
     private let sellLabel: UILabel
     private let sellCurrencyTextField: UITextField
@@ -35,6 +39,7 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
     private let separatLine: UIView
     
     init() {
+        self.currency = currencies.first ?? .EUR
         self.sellImageIcon = UIImageView(frame: .zero)
         self.sellLabel = UILabel(frame: .zero)
         self.sellCurrencyTextField = UITextField(frame: .zero)
@@ -61,7 +66,7 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
         sellCurrencyTextField.keyboardType = .decimalPad
         sellCurrencyTextField.delegate = self
         
-        sellCurrencyButton.setTitle(currencies[selectedRow].segmentTitle, for: .normal)
+        sellCurrencyButton.setTitle(currency.segmentTitle, for: .normal)
         sellCurrencyButton.setTitleColor(.black, for: .normal)
         sellCurrencyButton.addTarget(self, action: #selector(popUpPicker), for: .touchUpInside)
         
@@ -106,7 +111,7 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
         textField.text = textField.text?.replacingOccurrences(of: ",", with: ".")
         
         if let text = textField.text, let sellAmount = Double(text) {
-            view?.updateRates(amount: Double(sellAmount), fromCurrency: "USD", toCurrency: "EUR")
+            view?.updateRates(amount: sellAmount)
         }
     }
     
@@ -134,7 +139,7 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
         let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: screenWidth, height:screenHeight))
         pickerView.dataSource = self
         pickerView.delegate = self
-        pickerView.selectRow(selectedRow, inComponent: 0, animated: false)
+        pickerView.selectRow(currency.segmentIndex, inComponent: 0, animated: false)
         
         vc.view.addSubview(pickerView)
         pickerView.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor).isActive = true
@@ -150,10 +155,7 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
         }))
         
         alert.addAction(UIAlertAction(title: "Select", style: .default, handler: { (UIAlertAction) in
-            self.selectedRow = pickerView.selectedRow(inComponent: 0)
-            let selected = self.selectedRow
-            let name = self.currencies[selected].segmentTitle
-            self.sellCurrencyButton.setTitle(name, for: .normal)
+            self.currency = self.currencies[pickerView.selectedRow(inComponent: 0)]
         }))
         
         guard let viewController = self.parentViewController else {
