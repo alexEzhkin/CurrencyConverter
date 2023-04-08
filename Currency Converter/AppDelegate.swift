@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,7 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let realm = try! Realm()
+        if realm.objects(CurrencyRealmObject.self).count == 0 {
+            // If the database does not exist, create a new Currency object with default values and write it to the database
+            let currency = CurrencyRealmObject()
+            currency.eur = 1000.00
+            currency.usd = 0.00
+            currency.jpy = 0.00
+            
+            try! realm.write {
+                realm.add(currency)
+            }
+        }
         return true
     }
 
