@@ -13,7 +13,11 @@ class CurrencyRealmObject: Object {
     @objc dynamic var usd: Double = 0.00
     @objc dynamic var jpy: Double = 0.00
     
-    func toArray() -> [Double] {
-        return [eur, usd, jpy]
+    func toDictionary() -> [String: Double] {
+        return [
+            Currencies.EUR.segmentTitle: eur,
+            Currencies.USD.segmentTitle: usd,
+            Currencies.JPY.segmentTitle: jpy
+        ]
     }
 }

@@ -7,10 +7,12 @@
 
 import UIKit
 import Stevia
+import RealmSwift
 
 class BalancesScrollView: BaseView {
+        
+    private var balances = ["": 0.00]
     
-    public var balances: [String] = ["EUR 1000.00", "USD 0.00", "JPY 0.00"]
     private let scrollView = UIScrollView()
 
     override init(frame: CGRect) {
@@ -41,6 +43,8 @@ class BalancesScrollView: BaseView {
     }
 
     func setBalances() {
+        let currencyFromRealm = try! Realm().objects(CurrencyRealmObject.self).first!
+        balances = currencyFromRealm.toDictionary()
         
         guard balances.count > 0 else {
             return
@@ -91,9 +95,9 @@ class BalancesScrollView: BaseView {
     }
 
     func setUpBalanceLabels() -> [UILabel] {
-        balances.map { balance in
+        balances.sorted(by: { $0.value > $1.value}).map { balance in
             let label = UILabel()
-            label.text = balance.description
+            label.text = String(balance.value) + " " + balance.key
             return label
         }
     }
