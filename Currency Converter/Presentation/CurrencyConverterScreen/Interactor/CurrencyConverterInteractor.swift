@@ -9,9 +9,7 @@ import Foundation
 
 class CurrencyConverterInteractor: BaseInteractor {
     
-    private var currencyConverterPresenter: CurrencyConverterPresenter? {
-        return presenter as? CurrencyConverterPresenter
-    }
+    var presenter: CurrencyConverterPresenter!
     
     func fetchExchangeRate(amount: Double, fromCurrency: String, toCurrency: String) {
         guard let request = NetworkService.shared.createRequest(urlForRequest: EndPoint.exchange(fromAmount: amount, fromCurrency: fromCurrency, toCurrency: toCurrency).url, method: .get, parameters: nil) else { return }
@@ -19,7 +17,7 @@ class CurrencyConverterInteractor: BaseInteractor {
         NetworkService.shared.getRequest(request: request, completion: { [weak self] (result: Result<CurrencyExchangeModel, NetworkError>) in
             switch result {
             case .success(let resultExchange):
-                self?.currencyConverterPresenter?.setExchangeRate(amount: resultExchange.amount)
+                self?.presenter.setExchangeRate(amount: resultExchange.amount)
             case .failure(let failure):
                 print(failure.localizedDescription)
             }

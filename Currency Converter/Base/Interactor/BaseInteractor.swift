@@ -7,15 +7,6 @@
 
 import Foundation
 
-protocol BaseInteractorProtocol {
-    var presenter: BasePresenter { get set }
-}
+class BaseInteractor {
 
-class BaseInteractor: BaseInteractorProtocol {
-    
-    var presenter: BasePresenter
-    
-    init(presenter: BasePresenter) {
-        self.presenter = presenter
-    }
 }

@@ -8,9 +8,6 @@
 import UIKit
 
 class BaseViewController<View: BaseView>: UIViewController {
-    
-    var interactor: BaseInteractor?
-    var presenter: BasePresenter?
     let customView: View
     
     init() {

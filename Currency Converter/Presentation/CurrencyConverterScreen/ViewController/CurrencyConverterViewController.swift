@@ -9,17 +9,22 @@ import UIKit
 
 class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>, CurrencyExchangeSellToViewControllerProtocol {
     
-    private var currencyPresenter: CurrencyConverterPresenter? {
-        return presenter as? CurrencyConverterPresenter
+    private let interactor: CurrencyConverterInteractor
+    
+    init(interactor: CurrencyConverterInteractor, presenter: CurrencyConverterPresenter) {
+        self.interactor = interactor
+        super.init()
+        presenter.viewController = self
+        interactor.presenter = presenter
     }
     
-    private var currencyConverterInteractror: CurrencyConverterInteractor? {
-        return interactor as? CurrencyConverterInteractor
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.viewDidLoad()
         customView.currencySellView.view = self
         customView.currencyReceiveView.view = self
         configureNavigationBar()
@@ -29,7 +34,7 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
         let amount = customView.currencySellView.sellAmount
         let inputCurrency = customView.currencySellView.currency.segmentTitle
         let outputCurrency = customView.currencyReceiveView.currency.segmentTitle
-        currencyPresenter?.getExchangeRate(amount: amount, fromCurrency: inputCurrency, toCurrency: outputCurrency)
+        interactor.fetchExchangeRate(amount: amount, fromCurrency: inputCurrency, toCurrency: outputCurrency)
     }
     
     func updateReceiveLabel(with amount: String) {

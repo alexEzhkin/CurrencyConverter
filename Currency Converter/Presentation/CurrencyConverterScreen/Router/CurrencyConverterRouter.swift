@@ -13,14 +13,11 @@ class CurrencyConverterRouter: BaseRouter {
     weak var viewController: UIViewController?
     
     static func createModule() -> UIViewController {
-        let viewController = CurrencyConverterViewController()
-        let presenter = CurrencyConverterPresenter(viewController: viewController)
-        let interactor = CurrencyConverterInteractor(presenter: presenter)
+        let presenter = CurrencyConverterPresenter()
+        let interactor = CurrencyConverterInteractor()
+        let viewController = CurrencyConverterViewController(interactor: interactor, presenter: presenter)
         let router = CurrencyConverterRouter()
         
-        viewController.presenter = presenter
-        presenter.interactor = interactor
-        presenter.router = router
         router.viewController = viewController
         
         let navigationController = UINavigationController(rootViewController: viewController)

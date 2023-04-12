@@ -7,8 +7,6 @@
 import UIKit
 
 protocol BasePresenterProtocol {
-    var interactor: BaseInteractor? { get set }
-    var router: BaseRouter? { get set }
     
     func viewDidLoad()
     func viewWillAppear()
@@ -18,9 +16,6 @@ protocol BasePresenterProtocol {
 }
 
 class BasePresenter: BasePresenterProtocol {
-    
-    var interactor: BaseInteractor?
-    var router: BaseRouter?
     
     func viewDidLoad() {}
     func viewWillAppear() {}
