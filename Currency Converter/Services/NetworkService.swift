@@ -8,10 +8,6 @@
 import Foundation
 
 final class NetworkService {
-    
-    static let shared = NetworkService()
-    private init() {}
-    
     func createRequest(urlForRequest: String, method: HTTPMethod, parameters: [String: Any]?) -> URLRequest? {
         guard let url = URL(string: urlForRequest) else { return nil }
         
