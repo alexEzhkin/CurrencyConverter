@@ -9,7 +9,7 @@ import UIKit
 import Stevia
 
 class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource, ExchangeAmountProtocol {
-    weak var view: CurrencyExchangeSellToViewControllerProtocol?
+    weak var view: CurrencyViewInterface?
     
     var exchangeValue: String? {
         didSet {

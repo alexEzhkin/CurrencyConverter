@@ -10,38 +10,46 @@ import Stevia
 import RealmSwift
 
 class BalancesScrollView: BaseView {
-        
+    
     private var balances = ["": 0.00]
     
-    private let scrollView = UIScrollView()
-
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(BalanceCell.self, forCellWithReuseIdentifier: BalanceCell.reuseIdentifier)
+        return collectionView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setUpView()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        scrollView.subviews.first?.isHidden = false
+        collectionView.subviews.first?.isHidden = false
     }
-
+    
     func setUpView() {
         subviews {
-            scrollView
+            collectionView
         }
-
-        scrollView.Top == Top
-        scrollView.Bottom == Bottom
-        scrollView.Left == Left
-        scrollView.Right == Right
-
+        
+        collectionView.Top == Top
+        collectionView.Bottom == Bottom
+        collectionView.Left == Left
+        collectionView.Right == Right
+        
         setBalances()
     }
-
+    
     func setBalances() {
         let currencyFromRealm = try! Realm().objects(CurrencyRealmObject.self).first!
         balances = currencyFromRealm.toDictionary()
@@ -49,56 +57,42 @@ class BalancesScrollView: BaseView {
         guard balances.count > 0 else {
             return
         }
-
-        let balanceView = setUpBalanceView()
-        let balanceLabels = setUpBalanceLabels()
-
-        var lastLabel: UILabel! = .none
-        balanceLabels.enumerated().forEach { index, balanceLabel in
-            balanceView.subviews {
-                balanceLabel
-            }
-            balanceLabel.Top == balanceView.Top
-            balanceLabel.Bottom == balanceView.Bottom
-
-            if index == 0 {
-                balanceLabel.Left == balanceView.Left
-            } else {
-                balanceLabel.Left == lastLabel.Right + 20
-            }
-            lastLabel = balanceLabel
-        }
         
-        lastLabel.Right == balanceView.Right
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.reloadData()
         
         setNeedsLayout()
         layoutIfNeeded()
     }
+}
 
-
-    func setUpBalanceView() -> UIView {
-        let balanceView = UILabel()
-
-        scrollView.subviews {
-            balanceView
-        }
-        
-        balanceView.fillContainer()
-        balanceView.Left == scrollView.contentLayoutGuide.Left
-        balanceView.Left == scrollView.contentLayoutGuide.Left
-        balanceView.Top == scrollView.contentLayoutGuide.Top
-        balanceView.Bottom == scrollView.contentLayoutGuide.Bottom
-        balanceView.Top == scrollView.frameLayoutGuide.Top
-        balanceView.Bottom == scrollView.frameLayoutGuide.Bottom
-
-        return balanceView
+extension BalancesScrollView: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return balances.count
     }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BalanceCell.reuseIdentifier, for: indexPath) as! BalanceCell
+        let balance = Array(balances)[indexPath.item]
+        cell.configure(with: balance.key, value: balance.value)
+        return cell
+    }
+}
 
-    func setUpBalanceLabels() -> [UILabel] {
-        balances.sorted(by: { $0.value > $1.value}).map { balance in
-            let label = UILabel()
-            label.text = String(balance.value) + " " + balance.key
-            return label
-        }
+extension BalancesScrollView: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let balance = Array(balances)[indexPath.item]
+        let cell = BalanceCell(frame: .zero)
+        cell.configure(with: balance.key, value: balance.value)
+        cell.layoutIfNeeded()
+        let size = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        return CGSize(width: size.width + 20, height: 30)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

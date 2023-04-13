@@ -12,13 +12,14 @@ protocol ExchangeAmountProtocol: AnyObject {
     var exchangeValue: String? { get set }
 }
 
-protocol CurrencyExchangeSellToViewControllerProtocol: AnyObject {
+protocol CurrencyViewInterface: AnyObject {
     func updateRates()
+    func updateBalance()
 }
 
 class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     weak var delegate: ExchangeAmountProtocol?
-    weak var view: CurrencyExchangeSellToViewControllerProtocol?
+    weak var view: CurrencyViewInterface?
     
     var sellAmount: Double = 0.0
     

@@ -10,6 +10,8 @@ import Stevia
 
 class CurrencyConverterView: BaseView {
     
+    weak var view: CurrencyViewInterface?
+    
     let myBalanceLabel = UILabel()
     let balanceScrollView = BalancesScrollView()
     let currencyExchangeLabel = UILabel()
@@ -43,6 +45,8 @@ class CurrencyConverterView: BaseView {
         submitButton.setTitle("SUBMIT", for: .normal)
         submitButton.layer.cornerRadius = 25
         submitButton.backgroundColor = .customBlueColor
+        submitButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
         subviews {
             myBalanceLabel
             balanceScrollView
@@ -91,5 +95,9 @@ class CurrencyConverterView: BaseView {
         UIView.animate(withDuration: 0.3) {
             self.layoutIfNeeded()
         }
+    }
+    
+    @objc func buttonTapped() {
+        view?.updateBalance()
     }
 }

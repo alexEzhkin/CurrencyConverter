@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>, CurrencyExchangeSellToViewControllerProtocol {
+class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>, CurrencyViewInterface {
     
     private let interactor: CurrencyConverterInteractor
     
@@ -22,9 +22,10 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        customView.view = self
         customView.currencySellView.view = self
         customView.currencyReceiveView.view = self
         configureNavigationBar()
@@ -54,5 +55,17 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
         navigationItem.compactAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactScrollEdgeAppearance = appearance
+    }
+    
+    func updateBalance() {
+        let sellCurrency = customView.currencySellView.currency.segmentTitle
+        let sellAmount = customView.currencySellView.sellAmount
+        let receiveCurrency = customView.currencyReceiveView.currency.segmentTitle
+        let receiveAmount = Double(customView.currencyReceiveView.exchangeValue!)!
+        interactor.calculateBalance(sellCurrency: sellCurrency, sellValue: sellAmount, receiveCurrency: receiveCurrency, receiveValue: receiveAmount)
+    }
+    
+    func updateBalanceView() {
+        customView.balanceScrollView.setBalances()
     }
 }

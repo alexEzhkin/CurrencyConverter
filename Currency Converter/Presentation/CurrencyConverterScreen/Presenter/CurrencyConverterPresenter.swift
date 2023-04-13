@@ -23,4 +23,8 @@ class CurrencyConverterPresenter: BasePresenter {
     func setExchangeRate(amount: String) {
         viewController?.updateReceiveLabel(with: amount)
     }
+    
+    func setBalanceView() {
+        viewController?.updateBalanceView()
+    }
 }
