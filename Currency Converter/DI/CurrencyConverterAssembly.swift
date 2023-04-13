@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import SwinjectAutoregistration
 
 class CurrencyConverterAssembly: Assembly {
     func assemble(container: Swinject.Container) {
@@ -23,14 +24,9 @@ class CurrencyConverterAssembly: Assembly {
             return CurrencyConverterRouter()
         }.inObjectScope(.container)
         
-        container.register(CurrencyConverterViewController.self) { r in
-            let presenter = r.resolve(CurrencyConverterPresenter.self)!
-            let interactor = r.resolve(CurrencyConverterInteractor.self)!
-            let router = r.resolve(CurrencyConverterRouter.self)!
-            let viewController = CurrencyConverterViewController(interactor: interactor, presenter: presenter)
-            
-            return viewController
-        }.inObjectScope(.weak)
+        container.autoregister(
+            CurrencyConverterViewController.self, initializer: CurrencyConverterViewController.init
+        ).inObjectScope(.transient)
     }
 }
 

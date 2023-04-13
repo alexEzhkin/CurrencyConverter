@@ -11,7 +11,9 @@ import Swinject
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let assembler = Assembler([CurrencyConverterAssembly()])
+    let assembler = Assembler([
+        CurrencyConverterAssembly()
+    ])
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         

@@ -13,6 +13,7 @@
 		CAAAFD2F29DB132700A5DE21 /* Currencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2E29DB132700A5DE21 /* Currencies.swift */; };
 		CAAAFD3229DB182500A5DE21 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD3129DB182500A5DE21 /* UIView + Extension.swift */; };
 		CACB656C29E6D851007F71CD /* CurrencyConverterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB656B29E6D851007F71CD /* CurrencyConverterAssembly.swift */; };
+		CACB657929E7F30A007F71CD /* SwinjectAutoregistration in Frameworks */ = {isa = PBXBuildFile; productRef = CACB657829E7F30A007F71CD /* SwinjectAutoregistration */; };
 		CAE772E829DC74E80007500E /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE772E729DC74E80007500E /* ColorAssets.xcassets */; };
 		CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772E929DC75670007500E /* UIColor + Extension.swift */; };
 		CAE772EF29DD74AB0007500E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772EE29DD74AB0007500E /* EndPoint.swift */; };
@@ -81,6 +82,7 @@
 			files = (
 				CAF7A84329CCA1AC002FBBAD /* RealmSwift in Frameworks */,
 				CAF7A84129CCA1AC002FBBAD /* Realm in Frameworks */,
+				CACB657929E7F30A007F71CD /* SwinjectAutoregistration in Frameworks */,
 				CAF7A83B29CC9D4D002FBBAD /* Stevia in Frameworks */,
 				CAF7A83E29CC9F38002FBBAD /* Swinject in Frameworks */,
 			);
@@ -306,6 +308,7 @@
 				CAF7A83D29CC9F38002FBBAD /* Swinject */,
 				CAF7A84029CCA1AC002FBBAD /* Realm */,
 				CAF7A84229CCA1AC002FBBAD /* RealmSwift */,
+				CACB657829E7F30A007F71CD /* SwinjectAutoregistration */,
 			);
 			productName = "Currency Converter";
 			productReference = CAF7A82229CC8772002FBBAD /* Currency Converter.app */;
@@ -339,6 +342,7 @@
 				CAF7A83929CC9D4D002FBBAD /* XCRemoteSwiftPackageReference "Stevia" */,
 				CAF7A83C29CC9F38002FBBAD /* XCRemoteSwiftPackageReference "Swinject" */,
 				CAF7A83F29CCA1AC002FBBAD /* XCRemoteSwiftPackageReference "realm-swift" */,
+				CACB657729E7F30A007F71CD /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */,
 			);
 			productRefGroup = CAF7A82329CC8772002FBBAD /* Products */;
 			projectDirPath = "";
@@ -601,6 +605,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CACB657729E7F30A007F71CD /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/SwinjectAutoregistration";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		CAF7A83929CC9D4D002FBBAD /* XCRemoteSwiftPackageReference "Stevia" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/freshOS/Stevia";
@@ -628,6 +640,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CACB657829E7F30A007F71CD /* SwinjectAutoregistration */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CACB657729E7F30A007F71CD /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */;
+			productName = SwinjectAutoregistration;
+		};
 		CAF7A83A29CC9D4D002FBBAD /* Stevia */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CAF7A83929CC9D4D002FBBAD /* XCRemoteSwiftPackageReference "Stevia" */;
