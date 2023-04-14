@@ -97,7 +97,12 @@ class CurrencyConverterView: BaseView {
         }
     }
     
-    @objc func buttonTapped() {
-        view?.updateBalance()
+    @objc func buttonTapped(sender: UIButton) {
+        sender.showAnimation {
+            if self.currencySellView.currency == self.currencyReceiveView.currency {
+                return
+            }
+            self.view?.updateBalance()
+        }
     }
 }

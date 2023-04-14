@@ -35,19 +35,19 @@ class CurrencyConverterInteractor: BaseInteractor {
         let currencyObject = realm.objects(CurrencyRealmObject.self).first!
         try! realm.write {
             if sellCurrency == "EUR" {
-                currencyObject.eur -= sellValue
+                currencyObject.eur = (currencyObject.eur - sellValue).roundTo(places: 2)
             } else if sellCurrency == "USD" {
-                currencyObject.usd -= sellValue
+                currencyObject.usd = (currencyObject.usd - sellValue).roundTo(places: 2)
             } else if sellCurrency == "JPY" {
-                currencyObject.jpy -= sellValue
+                currencyObject.jpy = (currencyObject.jpy - sellValue).roundTo(places: 2)
             }
 
             if receiveCurrency == "EUR" {
-                currencyObject.eur += receiveValue
+                currencyObject.eur = (currencyObject.eur + receiveValue).roundTo(places: 2)
             } else if receiveCurrency == "USD" {
-                currencyObject.usd += receiveValue
+                currencyObject.usd = (currencyObject.usd + receiveValue).roundTo(places: 2)
             } else if receiveCurrency == "JPY" {
-                currencyObject.jpy += receiveValue
+                currencyObject.jpy = (currencyObject.jpy + receiveValue).roundTo(places: 2)
             }
         }
         presenter.setBalanceView()

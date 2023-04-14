@@ -15,6 +15,7 @@
 		CACB656C29E6D851007F71CD /* CurrencyConverterAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB656B29E6D851007F71CD /* CurrencyConverterAssembly.swift */; };
 		CACB657929E7F30A007F71CD /* SwinjectAutoregistration in Frameworks */ = {isa = PBXBuildFile; productRef = CACB657829E7F30A007F71CD /* SwinjectAutoregistration */; };
 		CACB657B29E84F1C007F71CD /* BalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB657A29E84F1C007F71CD /* BalanceCell.swift */; };
+		CACB657D29E94F24007F71CD /* Double + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB657C29E94F24007F71CD /* Double + Extension.swift */; };
 		CAE772E829DC74E80007500E /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE772E729DC74E80007500E /* ColorAssets.xcassets */; };
 		CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772E929DC75670007500E /* UIColor + Extension.swift */; };
 		CAE772EF29DD74AB0007500E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772EE29DD74AB0007500E /* EndPoint.swift */; };
@@ -51,6 +52,7 @@
 		CAAAFD3129DB182500A5DE21 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		CACB656B29E6D851007F71CD /* CurrencyConverterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterAssembly.swift; sourceTree = "<group>"; };
 		CACB657A29E84F1C007F71CD /* BalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCell.swift; sourceTree = "<group>"; };
+		CACB657C29E94F24007F71CD /* Double + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extension.swift"; sourceTree = "<group>"; };
 		CAE772E729DC74E80007500E /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		CAE772E929DC75670007500E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		CAE772EE29DD74AB0007500E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				CAAAFD3129DB182500A5DE21 /* UIView + Extension.swift */,
 				CAE772E929DC75670007500E /* UIColor + Extension.swift */,
+				CACB657C29E94F24007F71CD /* Double + Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -281,11 +284,11 @@
 		CAF7A86329D0BC7B002FBBAD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CACB657A29E84F1C007F71CD /* BalanceCell.swift */,
 				CAAAFD2529D6FBF800A5DE21 /* BalancesScrollView.swift */,
 				CAAAFD2729D7293800A5DE21 /* CurrencyExchangeSellView.swift */,
 				CAAAFD2929D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift */,
 				CAF7A86429D0BC8F002FBBAD /* CurrencyConverterView.swift */,
-				CACB657A29E84F1C007F71CD /* BalanceCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				CAF7A85F29CDE1BF002FBBAD /* BaseView.swift in Sources */,
 				CAAAFD2629D6FBF800A5DE21 /* BalancesScrollView.swift in Sources */,
 				CAF7A82829CC8772002FBBAD /* SceneDelegate.swift in Sources */,
+				CACB657D29E94F24007F71CD /* Double + Extension.swift in Sources */,
 				CAF7A85529CDBB8D002FBBAD /* BaseInteractor.swift in Sources */,
 				CAAAFD2F29DB132700A5DE21 /* Currencies.swift in Sources */,
 				CAAAFD2A29D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift in Sources */,

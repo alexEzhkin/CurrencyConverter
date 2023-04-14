@@ -11,7 +11,7 @@ import RealmSwift
 
 class BalancesScrollView: BaseView {
     
-    private var balances = ["": 0.00]
+    private var balances: [(key: String, value: Double)] = []
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -52,7 +52,7 @@ class BalancesScrollView: BaseView {
     
     func setBalances() {
         let currencyFromRealm = try! Realm().objects(CurrencyRealmObject.self).first!
-        balances = currencyFromRealm.toDictionary()
+        balances = currencyFromRealm.toDictionary().sorted(by: { $0.value > $1.value })
         
         guard balances.count > 0 else {
             return
