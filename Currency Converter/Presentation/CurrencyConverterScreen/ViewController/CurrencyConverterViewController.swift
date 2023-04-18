@@ -62,10 +62,29 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
         let sellAmount = customView.currencySellView.sellAmount
         let receiveCurrency = customView.currencyReceiveView.currency.segmentTitle
         let receiveAmount = Double(customView.currencyReceiveView.exchangeValue!)!
-        interactor.calculateBalance(sellCurrency: sellCurrency, sellValue: sellAmount, receiveCurrency: receiveCurrency, receiveValue: receiveAmount)
+        var transaction = Transaction(inputAmount: sellAmount, inputCurrency: sellCurrency, outputAmount: receiveAmount, outputCurrency: receiveCurrency, commission: 0.0)
+        
+        interactor.performTransaction(&transaction)
     }
     
     func updateBalanceView() {
         customView.balanceScrollView.setBalances()
+    }
+    
+    func showConversionErrorAlert(_ transaction: Transaction) {
+        let messageAlert = UIAlertController(title: "Conversion Error",
+                                             message: "Sorry, but you don't have enough funs to convert from \(transaction.inputCurrency) to \(transaction.outputCurrency)",
+                                             preferredStyle: .alert)
+        let action = UIAlertAction(title: "Done", style: .default)
+        messageAlert.addAction(action)
+        present(messageAlert, animated: true)
+    }
+    
+    func showCommissionFeeAlert(_ transaction: Transaction) {
+        let messageAlert = UIAlertController(title: "Currency Converted",
+                                             message: "You have converted \(transaction.inputAmount) \(transaction.inputCurrency) to \(transaction.outputAmount) \(transaction.outputCurrency). Commission Fee - \(transaction.commission.roundTo(places: 2)) \(transaction.inputCurrency)", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Done", style: .default)
+        messageAlert.addAction(action)
+        present(messageAlert, animated: true)
     }
 }

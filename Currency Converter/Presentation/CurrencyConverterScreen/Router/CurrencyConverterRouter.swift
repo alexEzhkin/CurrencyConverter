@@ -12,19 +12,6 @@ class CurrencyConverterRouter: BaseRouter {
     
     weak var viewController: UIViewController?
     
-//    static func createModule() -> UIViewController {
-//        let presenter = CurrencyConverterPresenter()
-//        let interactor = CurrencyConverterInteractor()
-//        let viewController = CurrencyConverterViewController(interactor: interactor, presenter: presenter)
-//        let router = CurrencyConverterRouter()
-//        
-//        router.viewController = viewController
-//        
-//        let navigationController = UINavigationController(rootViewController: viewController)
-//        
-//        return navigationController
-//    }
-    
     override func presentModule(_ module: UIViewController, animated: Bool) {
         viewController?.present(module, animated: animated, completion: nil)
     }

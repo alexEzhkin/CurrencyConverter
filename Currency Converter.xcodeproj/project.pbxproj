@@ -16,6 +16,10 @@
 		CACB657929E7F30A007F71CD /* SwinjectAutoregistration in Frameworks */ = {isa = PBXBuildFile; productRef = CACB657829E7F30A007F71CD /* SwinjectAutoregistration */; };
 		CACB657B29E84F1C007F71CD /* BalanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB657A29E84F1C007F71CD /* BalanceCell.swift */; };
 		CACB657D29E94F24007F71CD /* Double + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB657C29E94F24007F71CD /* Double + Extension.swift */; };
+		CACB657F29E97A48007F71CD /* FeeLimitObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB657E29E97A48007F71CD /* FeeLimitObject.swift */; };
+		CACB658129E97BCB007F71CD /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658029E97BCB007F71CD /* TransactionService.swift */; };
+		CACB658329EEA3F9007F71CD /* FeeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658229EEA3F9007F71CD /* FeeService.swift */; };
+		CACB658529EEA45E007F71CD /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658429EEA45E007F71CD /* Transaction.swift */; };
 		CAE772E829DC74E80007500E /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE772E729DC74E80007500E /* ColorAssets.xcassets */; };
 		CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772E929DC75670007500E /* UIColor + Extension.swift */; };
 		CAE772EF29DD74AB0007500E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772EE29DD74AB0007500E /* EndPoint.swift */; };
@@ -53,6 +57,10 @@
 		CACB656B29E6D851007F71CD /* CurrencyConverterAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterAssembly.swift; sourceTree = "<group>"; };
 		CACB657A29E84F1C007F71CD /* BalanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCell.swift; sourceTree = "<group>"; };
 		CACB657C29E94F24007F71CD /* Double + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extension.swift"; sourceTree = "<group>"; };
+		CACB657E29E97A48007F71CD /* FeeLimitObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeLimitObject.swift; sourceTree = "<group>"; };
+		CACB658029E97BCB007F71CD /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
+		CACB658229EEA3F9007F71CD /* FeeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeService.swift; sourceTree = "<group>"; };
+		CACB658429EEA45E007F71CD /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		CAE772E729DC74E80007500E /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		CAE772E929DC75670007500E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		CAE772EE29DD74AB0007500E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -126,6 +134,8 @@
 			children = (
 				CAE772EC29DD74840007500E /* Helpers */,
 				CAE772F029DD77D00007500E /* NetworkService.swift */,
+				CACB658029E97BCB007F71CD /* TransactionService.swift */,
+				CACB658229EEA3F9007F71CD /* FeeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -215,7 +225,9 @@
 			isa = PBXGroup;
 			children = (
 				CAE772F629DED3300007500E /* CurrencyExchangeModel.swift */,
+				CACB658429EEA45E007F71CD /* Transaction.swift */,
 				CAE772F829E1A8A20007500E /* CurrencyRealmObject.swift */,
+				CACB657E29E97A48007F71CD /* FeeLimitObject.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -389,12 +401,16 @@
 				CAAAFD2829D7293800A5DE21 /* CurrencyExchangeSellView.swift in Sources */,
 				CAF7A86A29D0C20F002FBBAD /* CurrencyConverterInteractor.swift in Sources */,
 				CAE772F529DD7A610007500E /* NetworkError.swift in Sources */,
+				CACB657F29E97A48007F71CD /* FeeLimitObject.swift in Sources */,
 				CAAAFD3229DB182500A5DE21 /* UIView + Extension.swift in Sources */,
+				CACB658329EEA3F9007F71CD /* FeeService.swift in Sources */,
 				CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */,
 				CAE772F129DD77D00007500E /* NetworkService.swift in Sources */,
 				CAE772F729DED3300007500E /* CurrencyExchangeModel.swift in Sources */,
 				CAF7A82A29CC8772002FBBAD /* CurrencyConverterViewController.swift in Sources */,
 				CAE772EF29DD74AB0007500E /* EndPoint.swift in Sources */,
+				CACB658129E97BCB007F71CD /* TransactionService.swift in Sources */,
+				CACB658529EEA45E007F71CD /* Transaction.swift in Sources */,
 				CAF7A82629CC8772002FBBAD /* AppDelegate.swift in Sources */,
 				CAF7A85F29CDE1BF002FBBAD /* BaseView.swift in Sources */,
 				CAAAFD2629D6FBF800A5DE21 /* BalancesScrollView.swift in Sources */,

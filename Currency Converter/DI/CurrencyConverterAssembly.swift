@@ -12,8 +12,16 @@ import SwinjectAutoregistration
 class CurrencyConverterAssembly: Assembly {
     func assemble(container: Swinject.Container) {
         
-        container.register(NetworkService.self) { _ in
+        container.register(NetworkService.self) { r in
             return NetworkService()
+        }
+                
+        container.register(FeeServiceProtocol.self) { r in
+            return FeeService()
+        }
+        
+        container.register(TransactionServiceProtocol.self) { r in
+            return TransactionService()
         }
         
         container.register(CurrencyConverterPresenter.self) { r in
