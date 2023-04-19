@@ -14,12 +14,14 @@ class CurrencyConverterInteractor: BaseInteractor {
     private let networkService: NetworkService
     private let transactionService: TransactionServiceProtocol
     private let feeService: FeeServiceProtocol
+    private let balanceDataService: BalanceDataStoreProtocol
     private let realm = try! Realm()
     
-    init(networkService: NetworkService, transactionService: TransactionServiceProtocol, feeService: FeeServiceProtocol) {
+    init(networkService: NetworkService, transactionService: TransactionServiceProtocol, feeService: FeeServiceProtocol, balanceDataService: BalanceDataStoreProtocol) {
         self.networkService = networkService
         self.transactionService = transactionService
         self.feeService = feeService
+        self.balanceDataService = balanceDataService
     }
     
     func fetchExchangeRate(amount: Double, fromCurrency: String, toCurrency: String) {
@@ -36,31 +38,15 @@ class CurrencyConverterInteractor: BaseInteractor {
     }
     
     func makeTransaction(_ transaction: Transaction, isTransactionFree: Bool) {
-        let currencyObject = realm.objects(CurrencyRealmObject.self).first!
-        let currentSellValue = currencyObject.value(forKey: transaction.inputCurrency.lowercased()) as? Double
-        let sellAmount = transaction.inputAmount + transaction.commission
+        let allBalances = balanceDataService.getAllBalances()
+        let currentSellBalance = allBalances[transaction.inputCurrency.lowercased()] as? Double ?? 0.0
+        let sellAmountWithCommission = transaction.inputAmount + transaction.commission
         
-        guard currentSellValue! >= sellAmount else {
+        guard currentSellBalance >= sellAmountWithCommission else {
             return showErrorAlert(transaction)
         }
         
-        try! realm.write {
-            if transaction.inputCurrency == "EUR" {
-                currencyObject.eur = (currencyObject.eur - sellAmount).roundTo(places: 2)
-            } else if transaction.inputCurrency == "USD" {
-                currencyObject.usd = (currencyObject.usd - sellAmount).roundTo(places: 2)
-            } else if transaction.inputCurrency == "JPY" {
-                currencyObject.jpy = (currencyObject.jpy - sellAmount).roundTo(places: 2)
-            }
-            
-            if transaction.outputCurrency == "EUR" {
-                currencyObject.eur = (currencyObject.eur + transaction.outputAmount).roundTo(places: 2)
-            } else if transaction.outputCurrency == "USD" {
-                currencyObject.usd = (currencyObject.usd + transaction.outputAmount).roundTo(places: 2)
-            } else if transaction.outputCurrency == "JPY" {
-                currencyObject.jpy = (currencyObject.jpy + transaction.outputAmount).roundTo(places: 2)
-            }
-        }
+        balanceDataService.updateBalance(transaction)
         
         if isTransactionFree == false {
             showCommissionFeeAlert(transaction)

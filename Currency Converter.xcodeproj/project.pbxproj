@@ -20,6 +20,7 @@
 		CACB658129E97BCB007F71CD /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658029E97BCB007F71CD /* TransactionService.swift */; };
 		CACB658329EEA3F9007F71CD /* FeeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658229EEA3F9007F71CD /* FeeService.swift */; };
 		CACB658529EEA45E007F71CD /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658429EEA45E007F71CD /* Transaction.swift */; };
+		CACB658829EEDC16007F71CD /* BalanceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658729EEDC16007F71CD /* BalanceDataStore.swift */; };
 		CAE772E829DC74E80007500E /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE772E729DC74E80007500E /* ColorAssets.xcassets */; };
 		CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772E929DC75670007500E /* UIColor + Extension.swift */; };
 		CAE772EF29DD74AB0007500E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772EE29DD74AB0007500E /* EndPoint.swift */; };
@@ -61,6 +62,7 @@
 		CACB658029E97BCB007F71CD /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
 		CACB658229EEA3F9007F71CD /* FeeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeService.swift; sourceTree = "<group>"; };
 		CACB658429EEA45E007F71CD /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		CACB658729EEDC16007F71CD /* BalanceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDataStore.swift; sourceTree = "<group>"; };
 		CAE772E729DC74E80007500E /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		CAE772E929DC75670007500E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		CAE772EE29DD74AB0007500E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -129,9 +131,18 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
+		CACB658629EEDC02007F71CD /* BalanceDataStore */ = {
+			isa = PBXGroup;
+			children = (
+				CACB658729EEDC16007F71CD /* BalanceDataStore.swift */,
+			);
+			path = BalanceDataStore;
+			sourceTree = "<group>";
+		};
 		CAE772EB29DD741C0007500E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CACB658629EEDC02007F71CD /* BalanceDataStore */,
 				CAE772EC29DD74840007500E /* Helpers */,
 				CAE772F029DD77D00007500E /* NetworkService.swift */,
 				CACB658029E97BCB007F71CD /* TransactionService.swift */,
@@ -419,6 +430,7 @@
 				CAF7A85529CDBB8D002FBBAD /* BaseInteractor.swift in Sources */,
 				CAAAFD2F29DB132700A5DE21 /* Currencies.swift in Sources */,
 				CAAAFD2A29D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift in Sources */,
+				CACB658829EEDC16007F71CD /* BalanceDataStore.swift in Sources */,
 				CAE772F929E1A8A20007500E /* CurrencyRealmObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,6 +24,10 @@ class CurrencyConverterAssembly: Assembly {
             return TransactionService()
         }
         
+        container.register(BalanceDataStoreProtocol.self) { r in
+            return BalanceDataStore()
+        }
+        
         container.register(CurrencyConverterPresenter.self) { r in
             return CurrencyConverterPresenter()
         }.inObjectScope(.container)
