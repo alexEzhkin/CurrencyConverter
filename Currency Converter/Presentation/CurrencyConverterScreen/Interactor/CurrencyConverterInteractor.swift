@@ -6,24 +6,16 @@
 //
 
 import Foundation
-import RealmSwift
 
 class CurrencyConverterInteractor: BaseInteractor {
     
     var presenter: CurrencyConverterPresenter!
     private let networkService: NetworkService
-    private let transactionService: TransactionServiceProtocol
-    private let feeService: FeeServiceProtocol
-    private let balanceDataService: BalanceDataStoreProtocol
-    private let feeLimitDataService: FeeLimitDataStoreProtocol
-    private let realm = try! Realm()
+    private let converterService: ConverterService
     
-    init(networkService: NetworkService, transactionService: TransactionServiceProtocol, feeService: FeeServiceProtocol, balanceDataService: BalanceDataStoreProtocol, feeLimitDataService: FeeLimitDataStoreProtocol) {
+    init(networkService: NetworkService, converterService: ConverterService) {
         self.networkService = networkService
-        self.transactionService = transactionService
-        self.feeService = feeService
-        self.balanceDataService = balanceDataService
-        self.feeLimitDataService = feeLimitDataService
+        self.converterService = converterService
     }
     
     func fetchExchangeRate(amount: Double, fromCurrency: String, toCurrency: String) {
@@ -40,7 +32,7 @@ class CurrencyConverterInteractor: BaseInteractor {
     }
     
     func makeTransaction(_ transaction: Transaction, isTransactionFree: Bool) {
-        let allBalances = balanceDataService.getAllBalances()
+        let allBalances = converterService.getAllBalances()
         let currentSellBalance = allBalances[transaction.inputCurrency.lowercased()] as? Double ?? 0.0
         let sellAmountWithCommission = transaction.inputAmount + transaction.commission
         
@@ -48,13 +40,13 @@ class CurrencyConverterInteractor: BaseInteractor {
             return showErrorAlert(transaction)
         }
         
-        balanceDataService.updateBalance(transaction)
+        converterService.updateBalance(transaction)
         
         if isTransactionFree == false {
             showCommissionFeeAlert(transaction)
         }
         
-        feeLimitDataService.incrementTransactionCount()
+        converterService.incrementTransactionCount()
         presenter.setBalanceView()
     }
     
@@ -67,11 +59,11 @@ class CurrencyConverterInteractor: BaseInteractor {
     }
     
     func performTransaction(_ transaction: inout Transaction) {
-        let currenctConversionsNumber = feeLimitDataService.getTransactionCount()
-        let isTransactionFree = feeService.checkFreeConversion(currenctConversionsNumber)
+        let currenctConversionsNumber = converterService.getTransactionCount()
+        let isTransactionFree = converterService.checkFreeConversion(currenctConversionsNumber)
         
         if isTransactionFree == false {
-            let commissionFee = transactionService.calculateCommissionAmount(transaction, isTransactionFree: isTransactionFree)
+            let commissionFee = converterService.calculateCommissionAmount(transaction, isTransactionFree: isTransactionFree)
             transaction.commission = commissionFee
         }
         makeTransaction(transaction, isTransactionFree: isTransactionFree)
