@@ -28,6 +28,10 @@ class CurrencyConverterAssembly: Assembly {
             return BalanceDataStore()
         }
         
+        container.register(FeeLimitDataStoreProtocol.self) { r in
+            return FeeLimitDataStore()
+        }
+        
         container.register(CurrencyConverterPresenter.self) { r in
             return CurrencyConverterPresenter()
         }.inObjectScope(.container)

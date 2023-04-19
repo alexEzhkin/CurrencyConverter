@@ -6,29 +6,19 @@
 //
 
 import Foundation
-import RealmSwift
 
 protocol FeeServiceProtocol {
-    func checkFreeConversion() -> Bool
-    func incrementTransactionCount()
+    func checkFreeConversion(_ currenctConversionsNumber: Int) -> Bool
 }
 
 class FeeService: FeeServiceProtocol {
     private let freeTransactionLimit: Int = 5
-    private let feeLimitFromRealm = try! Realm().objects(FeeLimitObject.self).first!
     
-    func checkFreeConversion() -> Bool {
-        let transactionCount = feeLimitFromRealm.freeTransactionLimit
-
-        if transactionCount <= freeTransactionLimit {
+    func checkFreeConversion(_ currenctConversionsNumber: Int) -> Bool {
+        
+        if currenctConversionsNumber <= freeTransactionLimit {
             return true
         }
         return false
-    }
-    
-    func incrementTransactionCount() {
-        try! Realm().write({
-            feeLimitFromRealm.freeTransactionLimit += 1
-        })
     }
 }

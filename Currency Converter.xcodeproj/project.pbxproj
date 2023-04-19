@@ -21,6 +21,7 @@
 		CACB658329EEA3F9007F71CD /* FeeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658229EEA3F9007F71CD /* FeeService.swift */; };
 		CACB658529EEA45E007F71CD /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658429EEA45E007F71CD /* Transaction.swift */; };
 		CACB658829EEDC16007F71CD /* BalanceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658729EEDC16007F71CD /* BalanceDataStore.swift */; };
+		CACB658E29EFFFB4007F71CD /* FeeLimitDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658D29EFFFB4007F71CD /* FeeLimitDataStore.swift */; };
 		CAE772E829DC74E80007500E /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE772E729DC74E80007500E /* ColorAssets.xcassets */; };
 		CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772E929DC75670007500E /* UIColor + Extension.swift */; };
 		CAE772EF29DD74AB0007500E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772EE29DD74AB0007500E /* EndPoint.swift */; };
@@ -63,6 +64,7 @@
 		CACB658229EEA3F9007F71CD /* FeeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeService.swift; sourceTree = "<group>"; };
 		CACB658429EEA45E007F71CD /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		CACB658729EEDC16007F71CD /* BalanceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDataStore.swift; sourceTree = "<group>"; };
+		CACB658D29EFFFB4007F71CD /* FeeLimitDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeLimitDataStore.swift; sourceTree = "<group>"; };
 		CAE772E729DC74E80007500E /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		CAE772E929DC75670007500E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		CAE772EE29DD74AB0007500E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -139,10 +141,19 @@
 			path = BalanceDataStore;
 			sourceTree = "<group>";
 		};
+		CACB658C29EFFF6D007F71CD /* FeeLimitDataStore */ = {
+			isa = PBXGroup;
+			children = (
+				CACB658D29EFFFB4007F71CD /* FeeLimitDataStore.swift */,
+			);
+			path = FeeLimitDataStore;
+			sourceTree = "<group>";
+		};
 		CAE772EB29DD741C0007500E /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				CACB658629EEDC02007F71CD /* BalanceDataStore */,
+				CACB658C29EFFF6D007F71CD /* FeeLimitDataStore */,
 				CAE772EC29DD74840007500E /* Helpers */,
 				CAE772F029DD77D00007500E /* NetworkService.swift */,
 				CACB658029E97BCB007F71CD /* TransactionService.swift */,
@@ -412,6 +423,7 @@
 				CAAAFD2829D7293800A5DE21 /* CurrencyExchangeSellView.swift in Sources */,
 				CAF7A86A29D0C20F002FBBAD /* CurrencyConverterInteractor.swift in Sources */,
 				CAE772F529DD7A610007500E /* NetworkError.swift in Sources */,
+				CACB658E29EFFFB4007F71CD /* FeeLimitDataStore.swift in Sources */,
 				CACB657F29E97A48007F71CD /* FeeLimitObject.swift in Sources */,
 				CAAAFD3229DB182500A5DE21 /* UIView + Extension.swift in Sources */,
 				CACB658329EEA3F9007F71CD /* FeeService.swift in Sources */,
