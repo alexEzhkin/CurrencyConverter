@@ -24,6 +24,7 @@
 		CACB658E29EFFFB4007F71CD /* FeeLimitDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658D29EFFFB4007F71CD /* FeeLimitDataStore.swift */; };
 		CACB659029F022B0007F71CD /* ConverterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658F29F022B0007F71CD /* ConverterService.swift */; };
 		CACB65AA29F16021007F71CD /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CACB65A929F16021007F71CD /* RxSwift */; };
+		CACB65AE29F162E1007F71CD /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB65AD29F162E1007F71CD /* EventManager.swift */; };
 		CAE772E829DC74E80007500E /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE772E729DC74E80007500E /* ColorAssets.xcassets */; };
 		CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772E929DC75670007500E /* UIColor + Extension.swift */; };
 		CAE772EF29DD74AB0007500E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772EE29DD74AB0007500E /* EndPoint.swift */; };
@@ -68,6 +69,7 @@
 		CACB658729EEDC16007F71CD /* BalanceDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceDataStore.swift; sourceTree = "<group>"; };
 		CACB658D29EFFFB4007F71CD /* FeeLimitDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeLimitDataStore.swift; sourceTree = "<group>"; };
 		CACB658F29F022B0007F71CD /* ConverterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterService.swift; sourceTree = "<group>"; };
+		CACB65AD29F162E1007F71CD /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		CAE772E729DC74E80007500E /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		CAE772E929DC75670007500E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		CAE772EE29DD74AB0007500E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				CACB658029E97BCB007F71CD /* TransactionService.swift */,
 				CACB658229EEA3F9007F71CD /* FeeService.swift */,
 				CACB658F29F022B0007F71CD /* ConverterService.swift */,
+				CACB65AD29F162E1007F71CD /* EventManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CACB65AE29F162E1007F71CD /* EventManager.swift in Sources */,
 				CAF7A86E29D1C57D002FBBAD /* CurrencyConverterRouter.swift in Sources */,
 				CAF7A84D29CDB883002FBBAD /* BaseViewController.swift in Sources */,
 				CAE772F329DD78700007500E /* HTTPMethod.swift in Sources */,

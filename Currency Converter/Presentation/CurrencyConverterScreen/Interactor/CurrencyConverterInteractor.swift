@@ -37,25 +37,17 @@ class CurrencyConverterInteractor: BaseInteractor {
         let sellAmountWithCommission = transaction.inputAmount + transaction.commission
         
         guard currentSellBalance >= sellAmountWithCommission else {
-            return showErrorAlert(transaction)
+            return EventManager.shared.notifyFailure(transaction: transaction)
         }
         
         converterService.updateBalance(transaction)
         
         if isTransactionFree == false {
-            showCommissionFeeAlert(transaction)
+            EventManager.shared.notifySuccess(transaction: transaction)
         }
         
         converterService.incrementTransactionCount()
         presenter.setBalanceView()
-    }
-    
-    func showErrorAlert(_ transaction: Transaction){
-        presenter.viewController?.showConversionErrorAlert(transaction)
-    }
-    
-    func showCommissionFeeAlert(_ transaction: Transaction) {
-        presenter.viewController?.showCommissionFeeAlert(transaction)
     }
     
     func performTransaction(_ transaction: inout Transaction) {

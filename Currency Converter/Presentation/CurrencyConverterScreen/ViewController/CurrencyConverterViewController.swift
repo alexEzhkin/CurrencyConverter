@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>, CurrencyViewInterface {
     
     private let interactor: CurrencyConverterInteractor
+    private let disposeBag = DisposeBag()
     
     init(interactor: CurrencyConverterInteractor, presenter: CurrencyConverterPresenter) {
         self.interactor = interactor
@@ -28,7 +30,23 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
         customView.view = self
         customView.currencySellView.view = self
         customView.currencyReceiveView.view = self
+        
+        doBindings()
         configureNavigationBar()
+    }
+    
+    func doBindings() {
+        EventManager.shared.observeSuccess()
+            .subscribe(onNext: { [weak self] transaction in
+                self?.showCommissionFeeAlert(transaction)
+            })
+            .disposed(by: disposeBag)
+        
+        EventManager.shared.observeFailure()
+            .subscribe(onNext: { [weak self] transaction in
+                self?.showConversionErrorAlert(transaction)
+            })
+            .disposed(by: disposeBag)
     }
     
     func updateRates() {
