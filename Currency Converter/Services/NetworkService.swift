@@ -6,47 +6,55 @@
 //
 
 import Foundation
+import PromiseKit
 
 final class NetworkService {
-    func createRequest(urlForRequest: String, method: HTTPMethod, parameters: [String: Any]?) -> URLRequest? {
-        guard let url = URL(string: urlForRequest) else { return nil }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = method.rawValue
-        
-        if let params = parameters {
-            if let httpBody = try? JSONSerialization.data(withJSONObject: params, options: []) {
-                request.httpBody = httpBody
+    func createRequest(urlForRequest: String, method: HTTPMethod, parameters: [String: Any]?) -> Promise<URLRequest> {
+        return Promise { seal in
+            guard let url = URL(string: urlForRequest) else {
+                seal.reject(NetworkError.invalidURL)
+                return
             }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = method.rawValue
+            
+            if let params = parameters {
+                if let httpBody = try? JSONSerialization.data(withJSONObject: params, options: []) {
+                    request.httpBody = httpBody
+                }
+            }
+            seal.fulfill(request)
         }
-        return request
     }
     
-    func getRequest<T: Decodable>(request: URLRequest, completion: @escaping (Result<T, NetworkError>) -> Void) {
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            DispatchQueue.main.async {
-                guard (response as? HTTPURLResponse)?.statusCode == 200 else {
-                    completion(.failure(.invalidResponse))
-                    return
+    func getRequest<T: Decodable>(request: URLRequest) -> Promise<T> {
+        return Promise { seal in
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                DispatchQueue.main.async {
+                    guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+                        seal.reject(NetworkError.invalidResponse)
+                        return
+                    }
+                    
+                    guard error == nil else {
+                        seal.reject(NetworkError.undentified)
+                        return
+                    }
+                    
+                    guard let data = data else {
+                        seal.reject(NetworkError.invalidData)
+                        return
+                    }
+                    
+                    do {
+                        let result = try JSONDecoder().decode(T.self, from: data)
+                        seal.fulfill(result)
+                    } catch {
+                        seal.reject(NetworkError.jsonSerilizationError)
+                    }
                 }
-                
-                guard error == nil else {
-                    completion(.failure(.undentified))
-                    return
-                }
-                
-                guard let data = data else {
-                    completion(.failure(.invalidData))
-                    return
-                }
-                
-                do {
-                    let result = try JSONDecoder().decode(T.self, from: data)
-                    completion(.success(result))
-                } catch {
-                    completion(.failure(.jsonSerilizationError))
-                }
-            }
-        }.resume()
+            }.resume()
+        }
     }
 }

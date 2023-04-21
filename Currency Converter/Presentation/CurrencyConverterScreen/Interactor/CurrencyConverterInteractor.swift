@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import PromiseKit
 
 class CurrencyConverterInteractor: BaseInteractor {
     
@@ -19,16 +20,15 @@ class CurrencyConverterInteractor: BaseInteractor {
     }
     
     func fetchExchangeRate(amount: Double, fromCurrency: String, toCurrency: String) {
-        guard let request = networkService.createRequest(urlForRequest: EndPoint.exchange(fromAmount: amount, fromCurrency: fromCurrency, toCurrency: toCurrency).url, method: .get, parameters: nil) else { return }
-        
-        networkService.getRequest(request: request, completion: { [weak self] (result: Result<CurrencyExchangeModel, NetworkError>) in
-            switch result {
-            case .success(let resultExchange):
-                self?.presenter.setExchangeRate(amount: resultExchange.amount)
-            case .failure(let failure):
-                print(failure.localizedDescription)
-            }
-        })
+        firstly {
+            networkService.createRequest(urlForRequest: EndPoint.exchange(fromAmount: amount, fromCurrency: fromCurrency, toCurrency: toCurrency).url, method: .get, parameters: nil)
+        }.then { request in
+            self.networkService.getRequest(request: request)
+        }.done { [weak self] (result: CurrencyExchangeModel) in
+            self?.presenter.setExchangeRate(amount: result.amount)
+        }.catch { error in
+            print(error.localizedDescription)
+        }
     }
     
     func makeTransaction(_ transaction: Transaction, isTransactionFree: Bool) {
