@@ -20,6 +20,11 @@ final class ConverterService {
         self.feeLimitDataService = feeLimitDataService
     }
     
+    func initialSetUp() {
+        balanceDataService.setInitialBalance()
+        feeLimitDataService.setInitialFeeLimit()
+    }
+    
     func calculateCommissionAmount(_ transaction: Transaction, isTransactionFree: Bool) -> Double {
         return transactionService.calculateCommissionAmount(transaction, isTransactionFree: isTransactionFree)
     }

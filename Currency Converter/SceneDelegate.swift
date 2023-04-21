@@ -7,6 +7,7 @@
 
 import UIKit
 import Swinject
+import SwinjectAutoregistration
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,6 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        let dataBase = assembler.resolver ~> ConverterService.self
+        dataBase.initialSetUp()
         
         window = UIWindow(windowScene: windowScene)
         let vc = assembler.resolver.resolve(CurrencyConverterViewController.self)

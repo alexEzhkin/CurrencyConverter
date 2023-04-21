@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 protocol BalanceDataStoreProtocol {
+    func setInitialBalance()
     func getAllBalances() -> CurrencyRealmObject
     func updateBalance(_ transaction: Transaction)
 }
@@ -19,6 +20,20 @@ class BalanceDataStore: BalanceDataStoreProtocol {
     
     init() {
         realm = try! Realm()
+    }
+    
+    func setInitialBalance() {
+        if realm.objects(CurrencyRealmObject.self).count == 0 {
+            // If the database does not exist, create a new Currency object with default values and write it to the database
+            let currency = CurrencyRealmObject()
+            currency.eur = 1000.00
+            currency.usd = 0.00
+            currency.jpy = 0.00
+            
+            try! realm.write {
+                realm.add(currency)
+            }
+        }
     }
     
     func getAllBalances() -> CurrencyRealmObject {

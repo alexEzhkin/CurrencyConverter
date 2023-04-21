@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 protocol FeeLimitDataStoreProtocol {
+    func setInitialFeeLimit()
     func incrementTransactionCount()
     func getTransactionCount() -> Int
 }
@@ -19,6 +20,18 @@ class FeeLimitDataStore: FeeLimitDataStoreProtocol {
     
     init() {
         realm = try! Realm()
+    }
+    
+    func setInitialFeeLimit() {
+        if realm.objects(FeeLimitObject.self).count == 0 {
+            // If the database does not exist, create a new FeeLimit object with default values and write it to the database
+            let fee = FeeLimitObject()
+            fee.freeTransactionLimit = 1
+            
+            try! realm.write {
+                realm.add(fee)
+            }
+        }
     }
     
     func incrementTransactionCount() {
