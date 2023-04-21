@@ -25,6 +25,7 @@
 		CACB659029F022B0007F71CD /* ConverterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658F29F022B0007F71CD /* ConverterService.swift */; };
 		CACB65AA29F16021007F71CD /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CACB65A929F16021007F71CD /* RxSwift */; };
 		CACB65AE29F162E1007F71CD /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB65AD29F162E1007F71CD /* EventManager.swift */; };
+		CACB65B129F297E0007F71CD /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = CACB65B029F297E0007F71CD /* PromiseKit */; };
 		CAE772E829DC74E80007500E /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE772E729DC74E80007500E /* ColorAssets.xcassets */; };
 		CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772E929DC75670007500E /* UIColor + Extension.swift */; };
 		CAE772EF29DD74AB0007500E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772EE29DD74AB0007500E /* EndPoint.swift */; };
@@ -106,6 +107,7 @@
 				CAF7A84129CCA1AC002FBBAD /* Realm in Frameworks */,
 				CACB657929E7F30A007F71CD /* SwinjectAutoregistration in Frameworks */,
 				CAF7A83B29CC9D4D002FBBAD /* Stevia in Frameworks */,
+				CACB65B129F297E0007F71CD /* PromiseKit in Frameworks */,
 				CAF7A83E29CC9F38002FBBAD /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,6 +360,7 @@
 				CAF7A84229CCA1AC002FBBAD /* RealmSwift */,
 				CACB657829E7F30A007F71CD /* SwinjectAutoregistration */,
 				CACB65A929F16021007F71CD /* RxSwift */,
+				CACB65B029F297E0007F71CD /* PromiseKit */,
 			);
 			productName = "Currency Converter";
 			productReference = CAF7A82229CC8772002FBBAD /* Currency Converter.app */;
@@ -393,6 +396,7 @@
 				CAF7A83F29CCA1AC002FBBAD /* XCRemoteSwiftPackageReference "realm-swift" */,
 				CACB657729E7F30A007F71CD /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */,
 				CACB65A829F16021007F71CD /* XCRemoteSwiftPackageReference "RxSwift" */,
+				CACB65AF29F297E0007F71CD /* XCRemoteSwiftPackageReference "PromiseKit" */,
 			);
 			productRefGroup = CAF7A82329CC8772002FBBAD /* Products */;
 			projectDirPath = "";
@@ -681,6 +685,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		CACB65AF29F297E0007F71CD /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		CAF7A83929CC9D4D002FBBAD /* XCRemoteSwiftPackageReference "Stevia" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/freshOS/Stevia";
@@ -717,6 +729,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CACB65A829F16021007F71CD /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		CACB65B029F297E0007F71CD /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CACB65AF29F297E0007F71CD /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
 		};
 		CAF7A83A29CC9D4D002FBBAD /* Stevia */ = {
 			isa = XCSwiftPackageProductDependency;
