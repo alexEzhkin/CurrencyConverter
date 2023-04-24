@@ -50,38 +50,21 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
         self.accessoryImage = UIImageView(frame: .zero)
         self.separatLine = UIView(frame: .zero)
         super.init(frame: .zero)
-        setup()
+        setUpView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup() {
-        sellLabel.text = "Sell"
-        sellImageIcon.image = UIImage(systemName: "arrow.up.circle.fill")
-        sellImageIcon.tintColor = .red
-        accessoryImage.image = UIImage(systemName: "chevron.down")
-        accessoryImage.tintColor = .black
-        
-        sellCurrencyTextField.placeholder = "0"
-        sellCurrencyTextField.textAlignment = .right
-        sellCurrencyTextField.keyboardType = .decimalPad
-        sellCurrencyTextField.delegate = self
-        
-        sellCurrencyButton.setTitle(currency.segmentTitle, for: .normal)
-        sellCurrencyButton.setTitleColor(.black, for: .normal)
-        sellCurrencyButton.addTarget(self, action: #selector(popUpPicker), for: .touchUpInside)
-        
-        separatLine.backgroundColor = .opaqueSeparator
-        
+    func setUpView() {
         subviews {
-            sellImageIcon
-            sellLabel
-            sellCurrencyTextField
-            sellCurrencyButton
-            accessoryImage
-            separatLine
+            sellImageIcon.style(sellImageIconStyle)
+            sellLabel.style(sellLabelStyle)
+            sellCurrencyTextField.style(sellCurrencyTextFieldStyle)
+            sellCurrencyButton.style(sellCurrencyButtonStyle)
+            accessoryImage.style(accessoryImageStyle)
+            separatLine.style(separatLineStyle)
         }
         
         align(horizontally: [self, sellImageIcon, sellLabel, sellCurrencyTextField, sellCurrencyButton, accessoryImage])
@@ -187,5 +170,38 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
     {
         return 50
+    }
+}
+
+private extension CurrencyExchangeSellView {
+    func sellImageIconStyle(_ image: UIImageView) {
+        sellImageIcon.image = UIImage(systemName: "arrow.up.circle.fill")
+        sellImageIcon.tintColor = .red
+    }
+    
+    func sellLabelStyle(_ label: UILabel) {
+        sellLabel.text = "Sell"
+    }
+    
+    func sellCurrencyTextFieldStyle(_ textField: UITextField) {
+        sellCurrencyTextField.placeholder = "0"
+        sellCurrencyTextField.textAlignment = .right
+        sellCurrencyTextField.keyboardType = .decimalPad
+        sellCurrencyTextField.delegate = self
+    }
+    
+    func sellCurrencyButtonStyle(_ button: UIButton) {
+        sellCurrencyButton.setTitle(currency.segmentTitle, for: .normal)
+        sellCurrencyButton.setTitleColor(.black, for: .normal)
+        sellCurrencyButton.addTarget(self, action: #selector(popUpPicker), for: .touchUpInside)
+    }
+    
+    func accessoryImageStyle(_ image: UIImageView) {
+        accessoryImage.image = UIImage(systemName: "chevron.down")
+        accessoryImage.tintColor = .black
+    }
+    
+    func separatLineStyle(_ view: UIView) {
+        separatLine.backgroundColor = .opaqueSeparator
     }
 }

@@ -26,11 +26,8 @@ class BalanceCell: UICollectionViewCell {
     
     func setUpView() {
         contentView.subviews {
-            label
+            label.style(labelStyle)
         }
-        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        label.textColor = .black
-        label.numberOfLines = 1
         
         label.Top == contentView.Top
         label.Bottom == contentView.Bottom
@@ -40,5 +37,13 @@ class BalanceCell: UICollectionViewCell {
     
     func configure(with key: String, value: Double) {
         label.text = "\(value) \(key)"
+    }
+}
+
+private extension BalanceCell {
+    func labelStyle(_ label: UILabel) {
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.textColor = .black
+        label.numberOfLines = 1
     }
 }

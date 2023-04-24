@@ -51,36 +51,21 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
         self.accessoryImage = UIImageView(frame: .zero)
         self.separatLine = UIView(frame: .zero)
         super.init(frame: .zero)
-        setup()
+        setUpView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup() {
-        receiveLabel.text = "Receive"
-        receiveImageIcon.image = UIImage(systemName: "arrow.down.circle.fill")
-        receiveImageIcon.tintColor = .systemGreen
-        accessoryImage.image = UIImage(systemName: "chevron.down")
-        accessoryImage.tintColor = .black
-        
-        receiveCurrencyButton.setTitle(currency.segmentTitle, for: .normal)
-        receiveCurrencyButton.setTitleColor(.black, for: .normal)
-        receiveCurrencyButton.addTarget(self, action: #selector(popUpPicker), for: .touchUpInside)
-        
-        receiveCurrencyLabel.textAlignment = .right
-        receiveCurrencyLabel.textColor = .systemGreen
-        
-        separatLine.backgroundColor = .opaqueSeparator
-        
+    func setUpView() {
         subviews {
-            receiveImageIcon
-            receiveLabel
-            receiveCurrencyLabel
-            receiveCurrencyButton
-            accessoryImage
-            separatLine
+            receiveImageIcon.style(receiveImageIconStyle)
+            receiveLabel.style(receiveLabelStyle)
+            receiveCurrencyLabel.style(receiveCurrencyLabelStyle)
+            receiveCurrencyButton.style(receiveCurrencyButtonStyle)
+            accessoryImage.style(accessoryImageStyle)
+            separatLine.style(separatLineStyle)
         }
         
         align(horizontally: [self, receiveImageIcon, receiveLabel, receiveCurrencyLabel, receiveCurrencyButton, accessoryImage])
@@ -151,5 +136,36 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
     {
         return 50
+    }
+}
+
+private extension CurrencyExchangeReceiveView {
+    func receiveImageIconStyle(_ image: UIImageView) {
+        receiveImageIcon.image = UIImage(systemName: "arrow.down.circle.fill")
+        receiveImageIcon.tintColor = .systemGreen
+    }
+    
+    func receiveLabelStyle(_ label: UILabel) {
+        receiveLabel.text = "Receive"
+    }
+    
+    func receiveCurrencyLabelStyle(_ label: UILabel) {
+        receiveCurrencyLabel.textAlignment = .right
+        receiveCurrencyLabel.textColor = .systemGreen
+    }
+    
+    func receiveCurrencyButtonStyle(_ button: UIButton) {
+        receiveCurrencyButton.setTitle(currency.segmentTitle, for: .normal)
+        receiveCurrencyButton.setTitleColor(.black, for: .normal)
+        receiveCurrencyButton.addTarget(self, action: #selector(popUpPicker), for: .touchUpInside)
+    }
+    
+    func accessoryImageStyle(_ image: UIImageView) {
+        accessoryImage.image = UIImage(systemName: "chevron.down")
+        accessoryImage.tintColor = .black
+    }
+    
+    func separatLineStyle(_ view: UIView) {
+        separatLine.backgroundColor = .opaqueSeparator
     }
 }

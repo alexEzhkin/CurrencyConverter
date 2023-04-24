@@ -157,16 +157,24 @@
 			path = FeeLimitDataStore;
 			sourceTree = "<group>";
 		};
+		CACB65B229F6AF2C007F71CD /* TransactionServices */ = {
+			isa = PBXGroup;
+			children = (
+				CACB658029E97BCB007F71CD /* TransactionService.swift */,
+				CACB658229EEA3F9007F71CD /* FeeService.swift */,
+				CACB658F29F022B0007F71CD /* ConverterService.swift */,
+			);
+			path = TransactionServices;
+			sourceTree = "<group>";
+		};
 		CAE772EB29DD741C0007500E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				CACB65B229F6AF2C007F71CD /* TransactionServices */,
 				CACB658629EEDC02007F71CD /* BalanceDataStore */,
 				CACB658C29EFFF6D007F71CD /* FeeLimitDataStore */,
 				CAE772EC29DD74840007500E /* Helpers */,
 				CAE772F029DD77D00007500E /* NetworkService.swift */,
-				CACB658029E97BCB007F71CD /* TransactionService.swift */,
-				CACB658229EEA3F9007F71CD /* FeeService.swift */,
-				CACB658F29F022B0007F71CD /* ConverterService.swift */,
 				CACB65AD29F162E1007F71CD /* EventManager.swift */,
 			);
 			path = Services;

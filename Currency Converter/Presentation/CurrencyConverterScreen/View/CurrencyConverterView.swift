@@ -40,21 +40,15 @@ class CurrencyConverterView: BaseView {
         
         backgroundColor = .systemBackground
         
-        myBalanceLabel.text = "MY BALANCES"
-        currencyExchangeLabel.text = "CURRENCY EXCHANGE"
-        submitButton.setTitle("SUBMIT", for: .normal)
-        submitButton.layer.cornerRadius = 25
-        submitButton.backgroundColor = .customBlueColor
-        submitButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        
         subviews {
-            myBalanceLabel
+            myBalanceLabel.style(myBalanceLabelStyle)
             balanceScrollView
-            currencyExchangeLabel
+            currencyExchangeLabel.style(currencyExchangeLabelStyle)
             currencySellView
             currencyReceiveView
-            submitButton
+            submitButton.style(submitButtonStyle)
         }
+        
         layout {
             |-20-myBalanceLabel.height(15)-|
             25
@@ -104,5 +98,22 @@ class CurrencyConverterView: BaseView {
             }
             self.view?.updateBalance()
         }
+    }
+}
+
+private extension CurrencyConverterView {
+    func myBalanceLabelStyle(_ label: UILabel) {
+        myBalanceLabel.text = "MY BALANCES"
+    }
+    
+    func currencyExchangeLabelStyle(_ label: UILabel) {
+        currencyExchangeLabel.text = "CURRENCY EXCHANGE"
+    }
+    
+    func submitButtonStyle(_ button: UIButton) {
+        submitButton.setTitle("SUBMIT", for: .normal)
+        submitButton.layer.cornerRadius = 25
+        submitButton.backgroundColor = .customBlueColor
+        submitButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
 }
