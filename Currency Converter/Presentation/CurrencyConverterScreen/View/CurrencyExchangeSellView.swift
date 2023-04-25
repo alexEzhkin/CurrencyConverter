@@ -53,30 +53,6 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpView() {
-        subviews {
-            containerView.subviews {
-                sellImageIcon.style(sellImageIconStyle)
-                sellLabel.style(sellLabelStyle)
-                sellCurrencyTextField.style(sellCurrencyTextFieldStyle)
-                sellCurrencyButton.style(sellCurrencyButtonStyle)
-                accessoryImage.style(accessoryImageStyle)
-                separatLine.style(separatLineStyle)
-            }
-        }
-        
-        containerView
-            .fillHorizontally()
-        
-        containerView.layout(
-            0,
-            |-0-sellImageIcon.size(50)-10-sellLabel-10-sellCurrencyTextField-20-sellCurrencyButton.width(40)-0-accessoryImage.width(20)-|,
-            0,
-            |-60-separatLine.height(0.5)-|,
-            0
-        )
-    }
-    
     override func becomeFirstResponder() -> Bool {
         sellCurrencyTextField.becomeFirstResponder()
     }
@@ -195,5 +171,31 @@ private extension CurrencyExchangeSellView {
     
     func separatLineStyle(_ view: UIView) {
         separatLine.backgroundColor = .opaqueSeparator
+    }
+}
+
+private extension CurrencyExchangeSellView {
+    func setUpView() {
+        subviews {
+            containerView.subviews {
+                sellImageIcon.style(sellImageIconStyle)
+                sellLabel.style(sellLabelStyle)
+                sellCurrencyTextField.style(sellCurrencyTextFieldStyle)
+                sellCurrencyButton.style(sellCurrencyButtonStyle)
+                accessoryImage.style(accessoryImageStyle)
+                separatLine.style(separatLineStyle)
+            }
+        }
+        
+        containerView
+            .fillHorizontally()
+        
+        containerView.layout(
+            0,
+            |-0-sellImageIcon.size(50)-10-sellLabel-10-sellCurrencyTextField-20-sellCurrencyButton.width(40)-0-accessoryImage.width(20)-|,
+            0,
+            |-60-separatLine.height(0.5)-|,
+            0
+        )
     }
 }

@@ -35,37 +35,6 @@ class CurrencyConverterView: BaseView {
         super.viewDidLoad()
     }
     
-    func setUpView() {
-        currencySellView.delegate = currencyReceiveView
-        
-        backgroundColor = .systemBackground
-        
-        subviews {
-            myBalanceLabel.style(myBalanceLabelStyle)
-            balanceScrollView
-            currencyExchangeLabel.style(currencyExchangeLabelStyle)
-            currencySellView
-            currencyReceiveView
-            submitButton.style(submitButtonStyle)
-        }
-        
-        layout (
-            |-20-myBalanceLabel.height(15)-|,
-            25,
-            |-20-balanceScrollView.height(40)-|,
-            25,
-            |-20-currencyExchangeLabel.height(15)-|,
-            25,
-            |-20-currencySellView.height(60)-|,
-            10,
-            |-20-currencyReceiveView.height(60)-|,
-            >=0,
-            |-(30)-submitButton.centerHorizontally().height(50)-30-|,
-            >=50
-        )
-        myBalanceLabel.Top == safeAreaLayoutGuide.Top + 30
-    }
-    
     @objc func keyboardWillShow(notification: Notification) {
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
         
@@ -98,6 +67,39 @@ class CurrencyConverterView: BaseView {
             }
             self.view?.updateBalance()
         }
+    }
+}
+
+private extension CurrencyConverterView {
+    func setUpView() {
+        currencySellView.delegate = currencyReceiveView
+        
+        backgroundColor = .systemBackground
+        
+        subviews {
+            myBalanceLabel.style(myBalanceLabelStyle)
+            balanceScrollView
+            currencyExchangeLabel.style(currencyExchangeLabelStyle)
+            currencySellView
+            currencyReceiveView
+            submitButton.style(submitButtonStyle)
+        }
+        
+        layout (
+              |-20-myBalanceLabel.height(15)-|,
+              25,
+              |-20-balanceScrollView.height(40)-|,
+              25,
+              |-20-currencyExchangeLabel.height(15)-|,
+              25,
+              |-20-currencySellView.height(60)-|,
+              10,
+              |-20-currencyReceiveView.height(60)-|,
+              >=0,
+              |-(30)-submitButton.centerHorizontally().height(50)-30-|,
+              >=50
+        )
+        myBalanceLabel.Top == safeAreaLayoutGuide.Top + 30
     }
 }
 

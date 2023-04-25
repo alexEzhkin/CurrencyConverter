@@ -37,20 +37,6 @@ class BalancesScrollView: BaseView {
         collectionView.subviews.first?.isHidden = false
     }
     
-    func setUpView() {
-        subviews {
-            collectionView
-        }
-        
-        collectionView
-            .top(0)
-            .bottom(0)
-            .left(0)
-            .right(0)
-        
-        setBalances()
-    }
-    
     func setBalances() {
         let currencyFromRealm = try! Realm().objects(CurrencyRealmObject.self).first!
         balances = currencyFromRealm.toDictionary().sorted(by: { $0.value > $1.value })
@@ -65,6 +51,19 @@ class BalancesScrollView: BaseView {
         
         setNeedsLayout()
         layoutIfNeeded()
+    }
+}
+
+private extension BalancesScrollView {
+    func setUpView() {
+        subviews {
+            collectionView
+        }
+        
+        collectionView
+            .fillContainer()
+        
+        setBalances()
     }
 }
 

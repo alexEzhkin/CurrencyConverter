@@ -24,18 +24,6 @@ class BalanceCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpView() {
-        contentView.subviews {
-            label.style(labelStyle)
-        }
-        
-        label
-            .top(0)
-            .bottom(0)
-            .right(0)
-            .left(0)
-    }
-    
     func configure(with key: String, value: Double) {
         label.text = "\(value) \(key)"
     }
@@ -46,5 +34,16 @@ private extension BalanceCell {
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.textColor = .black
         label.numberOfLines = 1
+    }
+}
+
+private extension BalanceCell {
+    func setUpView() {
+        contentView.subviews {
+            label.style(labelStyle)
+        }
+        
+        label
+            .fillContainer()
     }
 }

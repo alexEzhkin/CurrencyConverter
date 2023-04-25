@@ -53,30 +53,6 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setUpView() {
-        subviews {
-            containerView.subviews {
-                receiveImageIcon.style(receiveImageIconStyle)
-                receiveLabel.style(receiveLabelStyle)
-                receiveCurrencyLabel.style(receiveCurrencyLabelStyle)
-                receiveCurrencyButton.style(receiveCurrencyButtonStyle)
-                accessoryImage.style(accessoryImageStyle)
-                separatLine.style(separatLineStyle)
-            }
-        }
-        
-        containerView
-            .fillHorizontally()
-        
-        containerView.layout (
-            0,
-            |-0-receiveImageIcon.size(50)-10-receiveLabel-10-receiveCurrencyLabel-20-receiveCurrencyButton.width(40)-0-accessoryImage.width(20)-|,
-            0,
-            |-60-separatLine.height(0.5)-|,
-            0
-        )
-    }
-    
     @IBAction func popUpPicker(_ sender: Any) {
         let vc = UIViewController()
         vc.preferredContentSize = CGSize(width: screenWidth, height: screenHeight)
@@ -158,5 +134,31 @@ private extension CurrencyExchangeReceiveView {
     
     func separatLineStyle(_ view: UIView) {
         separatLine.backgroundColor = .opaqueSeparator
+    }
+}
+
+private extension CurrencyExchangeReceiveView {
+    func setUpView() {
+        subviews {
+            containerView.subviews {
+                receiveImageIcon.style(receiveImageIconStyle)
+                receiveLabel.style(receiveLabelStyle)
+                receiveCurrencyLabel.style(receiveCurrencyLabelStyle)
+                receiveCurrencyButton.style(receiveCurrencyButtonStyle)
+                accessoryImage.style(accessoryImageStyle)
+                separatLine.style(separatLineStyle)
+            }
+        }
+        
+        containerView
+            .fillHorizontally()
+        
+        containerView.layout (
+            0,
+            |-0-receiveImageIcon.size(50)-10-receiveLabel-10-receiveCurrencyLabel-20-receiveCurrencyButton.width(40)-0-accessoryImage.width(20)-|,
+            0,
+            |-60-separatLine.height(0.5)-|,
+            0
+        )
     }
 }
