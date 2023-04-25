@@ -33,7 +33,8 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
     private let screenWidth = UIScreen.main.bounds.width - 10
     private let screenHeight = UIScreen.main.bounds.height / 2
     private let roundedPlace = 2
-        
+    
+    private let containerView = UIView()
     private let sellImageIcon = UIImageView()
     private let sellLabel = UILabel()
     private let sellCurrencyTextField = UITextField()
@@ -54,30 +55,26 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
     
     func setUpView() {
         subviews {
-            sellImageIcon.style(sellImageIconStyle)
-            sellLabel.style(sellLabelStyle)
-            sellCurrencyTextField.style(sellCurrencyTextFieldStyle)
-            sellCurrencyButton.style(sellCurrencyButtonStyle)
-            accessoryImage.style(accessoryImageStyle)
-            separatLine.style(separatLineStyle)
+            containerView.subviews {
+                sellImageIcon.style(sellImageIconStyle)
+                sellLabel.style(sellLabelStyle)
+                sellCurrencyTextField.style(sellCurrencyTextFieldStyle)
+                sellCurrencyButton.style(sellCurrencyButtonStyle)
+                accessoryImage.style(accessoryImageStyle)
+                separatLine.style(separatLineStyle)
+            }
         }
         
-        align(horizontally: [self, sellImageIcon, sellLabel, sellCurrencyTextField, sellCurrencyButton, accessoryImage])
-        sellImageIcon.Left == Left
-        sellImageIcon.height(50).width(50)
-        sellLabel.Left == sellImageIcon.Right + 10
-        sellLabel.height(50)
-        sellCurrencyTextField.height(50)
-        sellCurrencyTextField.Left == sellLabel.Right + 10
-        sellCurrencyButton.Left == sellCurrencyTextField.Right + 20
-        sellCurrencyButton.height(50).width(40)
-        sellCurrencyButton.Right == accessoryImage.Left
-        accessoryImage.height(20).width(20)
-        accessoryImage.Right == Right
-        separatLine.height(0.5)
-        separatLine.Left == sellLabel.Left
-        separatLine.Right == Right
-        separatLine.Bottom == Bottom
+        containerView
+            .fillHorizontally()
+        
+        containerView.layout(
+            0,
+            |-0-sellImageIcon.size(50)-10-sellLabel-10-sellCurrencyTextField-20-sellCurrencyButton.width(40)-0-accessoryImage.width(20)-|,
+            0,
+            |-60-separatLine.height(0.5)-|,
+            0
+        )
     }
     
     override func becomeFirstResponder() -> Bool {

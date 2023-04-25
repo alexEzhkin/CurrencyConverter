@@ -29,10 +29,11 @@ class BalanceCell: UICollectionViewCell {
             label.style(labelStyle)
         }
         
-        label.Top == contentView.Top
-        label.Bottom == contentView.Bottom
-        label.Left == contentView.Left
-        label.Right == contentView.Right
+        label
+            .top(0)
+            .bottom(0)
+            .right(0)
+            .left(0)
     }
     
     func configure(with key: String, value: Double) {

@@ -49,20 +49,20 @@ class CurrencyConverterView: BaseView {
             submitButton.style(submitButtonStyle)
         }
         
-        layout {
-            |-20-myBalanceLabel.height(15)-|
-            25
-            |-20-balanceScrollView.height(40)-|
-            25
-            |-20-currencyExchangeLabel.height(15)-|
-            25
-            |-20-currencySellView.height(60)-|
-            10
-            |-20-currencyReceiveView.height(60)-|
-            >=0
-            |-(30)-submitButton.height(50)-30-|
-        }
-        submitButton.bottom(50).centerHorizontally().height(50)
+        layout (
+            |-20-myBalanceLabel.height(15)-|,
+            25,
+            |-20-balanceScrollView.height(40)-|,
+            25,
+            |-20-currencyExchangeLabel.height(15)-|,
+            25,
+            |-20-currencySellView.height(60)-|,
+            10,
+            |-20-currencyReceiveView.height(60)-|,
+            >=0,
+            |-(30)-submitButton.centerHorizontally().height(50)-30-|,
+            >=50
+        )
         myBalanceLabel.Top == safeAreaLayoutGuide.Top + 30
     }
     

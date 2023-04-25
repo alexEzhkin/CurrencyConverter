@@ -34,7 +34,8 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
     private let currencies = Currencies.allCases
     private let screenWidth = UIScreen.main.bounds.width - 10
     private let screenHeight = UIScreen.main.bounds.height / 2
-        
+    
+    private let containerView = UIView()
     private let receiveImageIcon = UIImageView()
     private let receiveLabel = UILabel()
     private let receiveCurrencyLabel = UILabel()
@@ -54,30 +55,26 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
     
     func setUpView() {
         subviews {
-            receiveImageIcon.style(receiveImageIconStyle)
-            receiveLabel.style(receiveLabelStyle)
-            receiveCurrencyLabel.style(receiveCurrencyLabelStyle)
-            receiveCurrencyButton.style(receiveCurrencyButtonStyle)
-            accessoryImage.style(accessoryImageStyle)
-            separatLine.style(separatLineStyle)
+            containerView.subviews {
+                receiveImageIcon.style(receiveImageIconStyle)
+                receiveLabel.style(receiveLabelStyle)
+                receiveCurrencyLabel.style(receiveCurrencyLabelStyle)
+                receiveCurrencyButton.style(receiveCurrencyButtonStyle)
+                accessoryImage.style(accessoryImageStyle)
+                separatLine.style(separatLineStyle)
+            }
         }
         
-        align(horizontally: [self, receiveImageIcon, receiveLabel, receiveCurrencyLabel, receiveCurrencyButton, accessoryImage])
-        receiveImageIcon.Left == Left
-        receiveImageIcon.height(50).width(50)
-        receiveLabel.Left == receiveImageIcon.Right + 10
-        receiveLabel.height(50)
-        receiveCurrencyLabel.height(50)
-        receiveCurrencyLabel.Left == receiveLabel.Right + 10
-        receiveCurrencyLabel.Right == receiveCurrencyButton.Left - 20
-        receiveCurrencyButton.height(50).width(40)
-        receiveCurrencyButton.Right == accessoryImage.Left
-        accessoryImage.height(20).width(20)
-        accessoryImage.Right == Right
-        separatLine.height(0.5)
-        separatLine.Left == receiveLabel.Left
-        separatLine.Right == Right
-        separatLine.Bottom == Bottom
+        containerView
+            .fillHorizontally()
+        
+        containerView.layout (
+            0,
+            |-0-receiveImageIcon.size(50)-10-receiveLabel-10-receiveCurrencyLabel-20-receiveCurrencyButton.width(40)-0-accessoryImage.width(20)-|,
+            0,
+            |-60-separatLine.height(0.5)-|,
+            0
+        )
     }
     
     @IBAction func popUpPicker(_ sender: Any) {
