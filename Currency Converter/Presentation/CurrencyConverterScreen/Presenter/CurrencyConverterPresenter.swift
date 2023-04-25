@@ -11,15 +11,6 @@ class CurrencyConverterPresenter: BasePresenter {
     
     weak var viewController: CurrencyConverterViewController?
     
-    override func viewDidLoad() {
-    }
-    
-    override func viewWillAppear() {
-    }
-    
-    override func viewWillDisappear() {
-    }
-    
     func setExchangeRate(amount: String) {
         viewController?.updateReceiveLabel(with: amount)
     }

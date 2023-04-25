@@ -70,6 +70,8 @@ class CurrencyConverterView: BaseView {
     }
 }
 
+// MARK: - Setups
+
 private extension CurrencyConverterView {
     func setUpView() {
         currencySellView.delegate = currencyReceiveView
@@ -102,6 +104,8 @@ private extension CurrencyConverterView {
         myBalanceLabel.Top == safeAreaLayoutGuide.Top + 30
     }
 }
+
+// MARK: - Styles
 
 private extension CurrencyConverterView {
     func myBalanceLabelStyle(_ label: UILabel) {

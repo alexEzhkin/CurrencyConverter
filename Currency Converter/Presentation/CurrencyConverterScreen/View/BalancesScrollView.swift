@@ -54,6 +54,8 @@ class BalancesScrollView: BaseView {
     }
 }
 
+// MARK: - Setups
+
 private extension BalancesScrollView {
     func setUpView() {
         subviews {
@@ -66,6 +68,8 @@ private extension BalancesScrollView {
         setBalances()
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension BalancesScrollView: UICollectionViewDataSource {
     
@@ -80,6 +84,8 @@ extension BalancesScrollView: UICollectionViewDataSource {
         return cell
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension BalancesScrollView: UICollectionViewDelegateFlowLayout {
     

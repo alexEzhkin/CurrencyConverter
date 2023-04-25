@@ -29,13 +29,7 @@ class BalanceCell: UICollectionViewCell {
     }
 }
 
-private extension BalanceCell {
-    func labelStyle(_ label: UILabel) {
-        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        label.textColor = .black
-        label.numberOfLines = 1
-    }
-}
+// MARK: - Setups
 
 private extension BalanceCell {
     func setUpView() {
@@ -45,5 +39,15 @@ private extension BalanceCell {
         
         label
             .fillContainer()
+    }
+}
+
+// MARK: - Styles
+
+private extension BalanceCell {
+    func labelStyle(_ label: UILabel) {
+        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.textColor = .black
+        label.numberOfLines = 1
     }
 }

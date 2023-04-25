@@ -17,7 +17,7 @@ protocol CurrencyViewInterface: AnyObject {
     func updateBalance()
 }
 
-class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class CurrencyExchangeSellView: BaseView {
     weak var delegate: ExchangeAmountProtocol?
     weak var view: CurrencyViewInterface?
     
@@ -61,33 +61,6 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
         sellCurrencyTextField.resignFirstResponder()
     }
     
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        textField.text = textField.text?.replacingOccurrences(of: ",", with: ".")
-        
-        if let text = textField.text, let value = Double(text) {
-            self.sellAmount = value
-            view?.updateRates()
-        }
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string == "" {
-            return true
-        }
-        if (textField.text?.contains("."))! && string == "." {
-            return false
-        }
-        if (textField.text?.contains("."))! {
-            let decimalPlace = textField.text?.components(separatedBy: ".").last
-            if (decimalPlace?.count)! < roundedPlace {
-                return true
-            } else {
-                return false
-            }
-        }
-        return true
-    }
-    
     @IBAction func popUpPicker(_ sender: Any) {
         let vc = UIViewController()
         vc.preferredContentSize = CGSize(width: screenWidth, height: screenHeight)
@@ -120,26 +93,37 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
         viewController.present(alert, animated: true, completion: nil)
         
     }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        currencies[row].segmentTitle
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int
-    {
-        1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
-    {
-        currencies.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
-    {
-        return 50
+}
+
+// MARK: - Setups
+
+private extension CurrencyExchangeSellView {
+    func setUpView() {
+        subviews {
+            containerView.subviews {
+                sellImageIcon.style(sellImageIconStyle)
+                sellLabel.style(sellLabelStyle)
+                sellCurrencyTextField.style(sellCurrencyTextFieldStyle)
+                sellCurrencyButton.style(sellCurrencyButtonStyle)
+                accessoryImage.style(accessoryImageStyle)
+                separatLine.style(separatLineStyle)
+            }
+        }
+        
+        containerView
+            .fillHorizontally()
+        
+        containerView.layout(
+            0,
+            |-0-sellImageIcon.size(50)-10-sellLabel-10-sellCurrencyTextField-20-sellCurrencyButton.width(40)-0-accessoryImage.width(20)-|,
+            0,
+            |-60-separatLine.height(0.5)-|,
+            0
+        )
     }
 }
+
+// MARK: - Styles
 
 private extension CurrencyExchangeSellView {
     func sellImageIconStyle(_ image: UIImageView) {
@@ -174,28 +158,56 @@ private extension CurrencyExchangeSellView {
     }
 }
 
-private extension CurrencyExchangeSellView {
-    func setUpView() {
-        subviews {
-            containerView.subviews {
-                sellImageIcon.style(sellImageIconStyle)
-                sellLabel.style(sellLabelStyle)
-                sellCurrencyTextField.style(sellCurrencyTextFieldStyle)
-                sellCurrencyButton.style(sellCurrencyButtonStyle)
-                accessoryImage.style(accessoryImageStyle)
-                separatLine.style(separatLineStyle)
+// MARK: - UIPickerViewDelegate, UIPickerViewDataSource
+
+extension CurrencyExchangeSellView: UIPickerViewDelegate, UIPickerViewDataSource {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        currencies[row].segmentTitle
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        currencies.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
+    {
+        return 50
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension CurrencyExchangeSellView: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "" {
+            return true
+        }
+        if (textField.text?.contains("."))! && string == "." {
+            return false
+        }
+        if (textField.text?.contains("."))! {
+            let decimalPlace = textField.text?.components(separatedBy: ".").last
+            if (decimalPlace?.count)! < roundedPlace {
+                return true
+            } else {
+                return false
             }
         }
+        return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        textField.text = textField.text?.replacingOccurrences(of: ",", with: ".")
         
-        containerView
-            .fillHorizontally()
-        
-        containerView.layout(
-            0,
-            |-0-sellImageIcon.size(50)-10-sellLabel-10-sellCurrencyTextField-20-sellCurrencyButton.width(40)-0-accessoryImage.width(20)-|,
-            0,
-            |-60-separatLine.height(0.5)-|,
-            0
-        )
+        if let text = textField.text, let value = Double(text) {
+            self.sellAmount = value
+            view?.updateRates()
+        }
     }
 }

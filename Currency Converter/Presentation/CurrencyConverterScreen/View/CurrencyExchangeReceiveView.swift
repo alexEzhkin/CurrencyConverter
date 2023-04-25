@@ -8,7 +8,7 @@
 import UIKit
 import Stevia
 
-class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewDataSource, ExchangeAmountProtocol {
+class CurrencyExchangeReceiveView: BaseView, ExchangeAmountProtocol {
     weak var view: CurrencyViewInterface?
     
     var exchangeValue: String? {
@@ -85,26 +85,37 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
         viewController.present(alert, animated: true, completion: nil)
         
     }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        currencies[row].segmentTitle
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int
-    {
-        1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
-    {
-        currencies.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
-    {
-        return 50
+}
+
+// MARK: - Setups
+
+private extension CurrencyExchangeReceiveView {
+    func setUpView() {
+        subviews {
+            containerView.subviews {
+                receiveImageIcon.style(receiveImageIconStyle)
+                receiveLabel.style(receiveLabelStyle)
+                receiveCurrencyLabel.style(receiveCurrencyLabelStyle)
+                receiveCurrencyButton.style(receiveCurrencyButtonStyle)
+                accessoryImage.style(accessoryImageStyle)
+                separatLine.style(separatLineStyle)
+            }
+        }
+        
+        containerView
+            .fillHorizontally()
+        
+        containerView.layout (
+            0,
+            |-0-receiveImageIcon.size(50)-10-receiveLabel-10-receiveCurrencyLabel-20-receiveCurrencyButton.width(40)-0-accessoryImage.width(20)-|,
+            0,
+            |-60-separatLine.height(0.5)-|,
+            0
+        )
     }
 }
+
+// MARK: - Styles
 
 private extension CurrencyExchangeReceiveView {
     func receiveImageIconStyle(_ image: UIImageView) {
@@ -137,28 +148,25 @@ private extension CurrencyExchangeReceiveView {
     }
 }
 
-private extension CurrencyExchangeReceiveView {
-    func setUpView() {
-        subviews {
-            containerView.subviews {
-                receiveImageIcon.style(receiveImageIconStyle)
-                receiveLabel.style(receiveLabelStyle)
-                receiveCurrencyLabel.style(receiveCurrencyLabelStyle)
-                receiveCurrencyButton.style(receiveCurrencyButtonStyle)
-                accessoryImage.style(accessoryImageStyle)
-                separatLine.style(separatLineStyle)
-            }
-        }
-        
-        containerView
-            .fillHorizontally()
-        
-        containerView.layout (
-            0,
-            |-0-receiveImageIcon.size(50)-10-receiveLabel-10-receiveCurrencyLabel-20-receiveCurrencyButton.width(40)-0-accessoryImage.width(20)-|,
-            0,
-            |-60-separatLine.height(0.5)-|,
-            0
-        )
+// MARK: - UIPickerViewDelegate, UIPickerViewDataSource
+
+extension CurrencyExchangeReceiveView: UIPickerViewDelegate, UIPickerViewDataSource {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        currencies[row].segmentTitle
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
+    {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    {
+        currencies.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
+    {
+        return 50
     }
 }
