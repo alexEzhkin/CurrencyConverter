@@ -34,21 +34,16 @@ class CurrencyExchangeSellView: BaseView, UIPickerViewDelegate, UIPickerViewData
     private let screenHeight = UIScreen.main.bounds.height / 2
     private let roundedPlace = 2
         
-    private let sellImageIcon: UIImageView
-    private let sellLabel: UILabel
-    private let sellCurrencyTextField: UITextField
-    private let sellCurrencyButton: UIButton
-    private let accessoryImage: UIImageView
-    private let separatLine: UIView
+    private let sellImageIcon = UIImageView()
+    private let sellLabel = UILabel()
+    private let sellCurrencyTextField = UITextField()
+    private let sellCurrencyButton = UIButton()
+    private let accessoryImage = UIImageView()
+    private let separatLine = UIView()
     
-    init() {
+    
+    override init(frame: CGRect) {
         self.currency = currencies.first ?? .EUR
-        self.sellImageIcon = UIImageView(frame: .zero)
-        self.sellLabel = UILabel(frame: .zero)
-        self.sellCurrencyTextField = UITextField(frame: .zero)
-        self.sellCurrencyButton = UIButton(frame: .zero)
-        self.accessoryImage = UIImageView(frame: .zero)
-        self.separatLine = UIView(frame: .zero)
         super.init(frame: .zero)
         setUpView()
     }

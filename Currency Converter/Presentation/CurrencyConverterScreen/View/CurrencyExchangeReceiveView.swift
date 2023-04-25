@@ -35,21 +35,15 @@ class CurrencyExchangeReceiveView: BaseView, UIPickerViewDelegate, UIPickerViewD
     private let screenWidth = UIScreen.main.bounds.width - 10
     private let screenHeight = UIScreen.main.bounds.height / 2
         
-    private let receiveImageIcon: UIImageView
-    private let receiveLabel: UILabel
-    private let receiveCurrencyLabel: UILabel
-    private let receiveCurrencyButton: UIButton
-    private let accessoryImage: UIImageView
-    private let separatLine: UIView
+    private let receiveImageIcon = UIImageView()
+    private let receiveLabel = UILabel()
+    private let receiveCurrencyLabel = UILabel()
+    private let receiveCurrencyButton = UIButton()
+    private let accessoryImage = UIImageView()
+    private let separatLine = UIView()
     
-    init() {
+    override init(frame: CGRect) {
         self.currency = currencies.first ?? .EUR
-        self.receiveImageIcon = UIImageView(frame: .zero)
-        self.receiveLabel = UILabel(frame: .zero)
-        self.receiveCurrencyLabel = UILabel(frame: .zero)
-        self.receiveCurrencyButton = UIButton(frame: .zero)
-        self.accessoryImage = UIImageView(frame: .zero)
-        self.separatLine = UIView(frame: .zero)
         super.init(frame: .zero)
         setUpView()
     }
