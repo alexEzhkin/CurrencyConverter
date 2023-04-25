@@ -26,6 +26,7 @@
 		CACB65AA29F16021007F71CD /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CACB65A929F16021007F71CD /* RxSwift */; };
 		CACB65AE29F162E1007F71CD /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB65AD29F162E1007F71CD /* EventManager.swift */; };
 		CACB65B129F297E0007F71CD /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = CACB65B029F297E0007F71CD /* PromiseKit */; };
+		CACB65B429F7B54B007F71CD /* ConversionAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB65B329F7B54B007F71CD /* ConversionAlertFactory.swift */; };
 		CAE772E829DC74E80007500E /* ColorAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAE772E729DC74E80007500E /* ColorAssets.xcassets */; };
 		CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772E929DC75670007500E /* UIColor + Extension.swift */; };
 		CAE772EF29DD74AB0007500E /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE772EE29DD74AB0007500E /* EndPoint.swift */; };
@@ -71,6 +72,7 @@
 		CACB658D29EFFFB4007F71CD /* FeeLimitDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeeLimitDataStore.swift; sourceTree = "<group>"; };
 		CACB658F29F022B0007F71CD /* ConverterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterService.swift; sourceTree = "<group>"; };
 		CACB65AD29F162E1007F71CD /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		CACB65B329F7B54B007F71CD /* ConversionAlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionAlertFactory.swift; sourceTree = "<group>"; };
 		CAE772E729DC74E80007500E /* ColorAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAssets.xcassets; sourceTree = "<group>"; };
 		CAE772E929DC75670007500E /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		CAE772EE29DD74AB0007500E /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				CAE772EC29DD74840007500E /* Helpers */,
 				CAE772F029DD77D00007500E /* NetworkService.swift */,
 				CACB65AD29F162E1007F71CD /* EventManager.swift */,
+				CACB65B329F7B54B007F71CD /* ConversionAlertFactory.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				CAF7A84D29CDB883002FBBAD /* BaseViewController.swift in Sources */,
 				CAE772F329DD78700007500E /* HTTPMethod.swift in Sources */,
 				CAF7A86529D0BC8F002FBBAD /* CurrencyConverterView.swift in Sources */,
+				CACB65B429F7B54B007F71CD /* ConversionAlertFactory.swift in Sources */,
 				CAF7A86C29D0C21E002FBBAD /* CurrencyConverterPresenter.swift in Sources */,
 				CACB656C29E6D851007F71CD /* CurrencyConverterAssembly.swift in Sources */,
 				CAF7A85229CDBB73002FBBAD /* BasePresenter.swift in Sources */,

@@ -90,19 +90,12 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
     }
     
     func showConversionErrorAlert(_ transaction: Transaction) {
-        let messageAlert = UIAlertController(title: "Conversion Error",
-                                             message: "Sorry, but you don't have enough funs to convert from \(transaction.inputCurrency) to \(transaction.outputCurrency)",
-                                             preferredStyle: .alert)
-        let action = UIAlertAction(title: "Done", style: .default)
-        messageAlert.addAction(action)
-        present(messageAlert, animated: true)
+        let conversionErrorAlert = ConversionAlertFactory.showAlert(title: "Conversion Error", description: "Sorry, but you don't have enough funs to convert from \(transaction.inputCurrency) to \(transaction.outputCurrency)")
+        present(conversionErrorAlert, animated: true)
     }
     
     func showCommissionFeeAlert(_ transaction: Transaction) {
-        let messageAlert = UIAlertController(title: "Currency Converted",
-                                             message: "You have converted \(transaction.inputAmount) \(transaction.inputCurrency) to \(transaction.outputAmount) \(transaction.outputCurrency). Commission Fee - \(transaction.commission.roundTo(places: 2)) \(transaction.inputCurrency)", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Done", style: .default)
-        messageAlert.addAction(action)
-        present(messageAlert, animated: true)
+        let commissionAlert = ConversionAlertFactory.showAlert(title: "Currency Converted", description: "You have converted \(transaction.inputAmount) \(transaction.inputCurrency) to \(transaction.outputAmount) \(transaction.outputCurrency). Commission Fee - \(transaction.commission.roundTo(places: 2)) \(transaction.inputCurrency)")
+        present(commissionAlert, animated: true)
     }
 }
