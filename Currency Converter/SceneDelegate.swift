@@ -13,7 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     let assembler = Assembler([
-        CurrencyConverterAssembly()
+        CurrencyConverterAssembly(),
+        ConversionHistoryAssembly()
     ])
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -25,7 +26,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         let vc = assembler.resolver.resolve(CurrencyConverterViewController.self)
-        window?.rootViewController = vc
+        let navigationController = UINavigationController(rootViewController: vc!)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

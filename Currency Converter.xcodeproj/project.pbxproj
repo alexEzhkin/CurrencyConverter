@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA500A7529F9476000690625 /* ConversionHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A7429F9476000690625 /* ConversionHistoryInteractor.swift */; };
+		CA500A7729F9477100690625 /* ConversionHistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A7629F9477100690625 /* ConversionHistoryPresenter.swift */; };
+		CA500A7A29F9479E00690625 /* ConversionHistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A7929F9479E00690625 /* ConversionHistoryRouter.swift */; };
+		CA500A7C29F947C400690625 /* ConversionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A7B29F947C400690625 /* ConversionHistoryView.swift */; };
+		CA500A7E29F947F400690625 /* ConversionHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A7D29F947F400690625 /* ConversionHistoryViewController.swift */; };
+		CA500A8029F94A2800690625 /* ConversionHistoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A7F29F94A2800690625 /* ConversionHistoryAssembly.swift */; };
+		CA500A8229F95F3700690625 /* ConversionHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A8129F95F3700690625 /* ConversionHistoryCell.swift */; };
 		CAAAFD2629D6FBF800A5DE21 /* BalancesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2529D6FBF800A5DE21 /* BalancesScrollView.swift */; };
 		CAAAFD2829D7293800A5DE21 /* CurrencyExchangeSellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2729D7293800A5DE21 /* CurrencyExchangeSellView.swift */; };
 		CAAAFD2A29D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2929D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift */; };
@@ -56,6 +63,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA500A7429F9476000690625 /* ConversionHistoryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionHistoryInteractor.swift; sourceTree = "<group>"; };
+		CA500A7629F9477100690625 /* ConversionHistoryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionHistoryPresenter.swift; sourceTree = "<group>"; };
+		CA500A7929F9479E00690625 /* ConversionHistoryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionHistoryRouter.swift; sourceTree = "<group>"; };
+		CA500A7B29F947C400690625 /* ConversionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionHistoryView.swift; sourceTree = "<group>"; };
+		CA500A7D29F947F400690625 /* ConversionHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionHistoryViewController.swift; sourceTree = "<group>"; };
+		CA500A7F29F94A2800690625 /* ConversionHistoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionHistoryAssembly.swift; sourceTree = "<group>"; };
+		CA500A8129F95F3700690625 /* ConversionHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionHistoryCell.swift; sourceTree = "<group>"; };
 		CAAAFD2529D6FBF800A5DE21 /* BalancesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancesScrollView.swift; sourceTree = "<group>"; };
 		CAAAFD2729D7293800A5DE21 /* CurrencyExchangeSellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeSellView.swift; sourceTree = "<group>"; };
 		CAAAFD2929D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeReceiveView.swift; sourceTree = "<group>"; };
@@ -117,6 +131,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA500A6F29F9471400690625 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CA500A7429F9476000690625 /* ConversionHistoryInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CA500A7029F9471B00690625 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CA500A7D29F947F400690625 /* ConversionHistoryViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CA500A7129F9472700690625 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CA500A8129F95F3700690625 /* ConversionHistoryCell.swift */,
+				CA500A7B29F947C400690625 /* ConversionHistoryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CA500A7229F9472C00690625 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CA500A7929F9479E00690625 /* ConversionHistoryRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CA500A7329F9473200690625 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CA500A7629F9477100690625 /* ConversionHistoryPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		CAAAFD2D29DB130E00A5DE21 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				CACB656B29E6D851007F71CD /* CurrencyConverterAssembly.swift */,
+				CA500A7F29F94A2800690625 /* ConversionHistoryAssembly.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -167,6 +223,18 @@
 				CACB658F29F022B0007F71CD /* ConverterService.swift */,
 			);
 			path = TransactionServices;
+			sourceTree = "<group>";
+		};
+		CACB65BD29F946D1007F71CD /* ConversionHistoryScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CA500A6F29F9471400690625 /* Interactor */,
+				CA500A7329F9473200690625 /* Presenter */,
+				CA500A7229F9472C00690625 /* Router */,
+				CA500A7129F9472700690625 /* View */,
+				CA500A7029F9471B00690625 /* ViewController */,
+			);
+			path = ConversionHistoryScreen;
 			sourceTree = "<group>";
 		};
 		CAE772EB29DD741C0007500E /* Services */ = {
@@ -319,6 +387,7 @@
 		CAF7A85829CDBBB5002FBBAD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				CACB65BD29F946D1007F71CD /* ConversionHistoryScreen */,
 				CAF7A85929CDBBC1002FBBAD /* CurrencyConverterScreen */,
 			);
 			path = Presentation;
@@ -443,22 +512,28 @@
 				CAF7A86529D0BC8F002FBBAD /* CurrencyConverterView.swift in Sources */,
 				CACB65B429F7B54B007F71CD /* ConversionAlertFactory.swift in Sources */,
 				CAF7A86C29D0C21E002FBBAD /* CurrencyConverterPresenter.swift in Sources */,
+				CA500A8229F95F3700690625 /* ConversionHistoryCell.swift in Sources */,
 				CACB656C29E6D851007F71CD /* CurrencyConverterAssembly.swift in Sources */,
 				CAF7A85229CDBB73002FBBAD /* BasePresenter.swift in Sources */,
 				CAF7A85729CDBB98002FBBAD /* BaseRouter.swift in Sources */,
+				CA500A8029F94A2800690625 /* ConversionHistoryAssembly.swift in Sources */,
 				CACB657B29E84F1C007F71CD /* BalanceCell.swift in Sources */,
 				CAAAFD2829D7293800A5DE21 /* CurrencyExchangeSellView.swift in Sources */,
 				CAF7A86A29D0C20F002FBBAD /* CurrencyConverterInteractor.swift in Sources */,
+				CA500A7529F9476000690625 /* ConversionHistoryInteractor.swift in Sources */,
 				CAE772F529DD7A610007500E /* NetworkError.swift in Sources */,
 				CACB658E29EFFFB4007F71CD /* FeeLimitDataStore.swift in Sources */,
 				CACB657F29E97A48007F71CD /* FeeLimitObject.swift in Sources */,
+				CA500A7C29F947C400690625 /* ConversionHistoryView.swift in Sources */,
 				CAAAFD3229DB182500A5DE21 /* UIView + Extension.swift in Sources */,
+				CA500A7E29F947F400690625 /* ConversionHistoryViewController.swift in Sources */,
 				CACB658329EEA3F9007F71CD /* FeeService.swift in Sources */,
 				CACB659029F022B0007F71CD /* ConverterService.swift in Sources */,
 				CAE772EA29DC75670007500E /* UIColor + Extension.swift in Sources */,
 				CAE772F129DD77D00007500E /* NetworkService.swift in Sources */,
 				CAE772F729DED3300007500E /* CurrencyExchangeModel.swift in Sources */,
 				CAF7A82A29CC8772002FBBAD /* CurrencyConverterViewController.swift in Sources */,
+				CA500A7729F9477100690625 /* ConversionHistoryPresenter.swift in Sources */,
 				CAE772EF29DD74AB0007500E /* EndPoint.swift in Sources */,
 				CACB658129E97BCB007F71CD /* TransactionService.swift in Sources */,
 				CACB658529EEA45E007F71CD /* Transaction.swift in Sources */,
@@ -467,6 +542,7 @@
 				CAAAFD2629D6FBF800A5DE21 /* BalancesScrollView.swift in Sources */,
 				CAF7A82829CC8772002FBBAD /* SceneDelegate.swift in Sources */,
 				CACB657D29E94F24007F71CD /* Double + Extension.swift in Sources */,
+				CA500A7A29F9479E00690625 /* ConversionHistoryRouter.swift in Sources */,
 				CAF7A85529CDBB8D002FBBAD /* BaseInteractor.swift in Sources */,
 				CAAAFD2F29DB132700A5DE21 /* Currencies.swift in Sources */,
 				CAAAFD2A29D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift in Sources */,
