@@ -38,6 +38,7 @@ class BalanceDataStore: BalanceDataStoreProtocol {
     
     func getAllBalances() -> CurrencyRealmObject {
         let currencyObject = realm.objects(CurrencyRealmObject.self).first!
+        
         return currencyObject
     }
     

@@ -20,6 +20,7 @@ class BalancesScrollView: BaseView {
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(BalanceCell.self, forCellWithReuseIdentifier: BalanceCell.reuseIdentifier)
+        
         return collectionView
     }()
     
@@ -81,6 +82,7 @@ extension BalancesScrollView: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BalanceCell.reuseIdentifier, for: indexPath) as! BalanceCell
         let balance = Array(balances)[indexPath.item]
         cell.configure(with: balance.key, value: balance.value)
+        
         return cell
     }
 }
@@ -95,6 +97,7 @@ extension BalancesScrollView: UICollectionViewDelegateFlowLayout {
         cell.configure(with: balance.key, value: balance.value)
         cell.layoutIfNeeded()
         let size = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        
         return CGSize(width: size.width + 20, height: 30)
     }
     

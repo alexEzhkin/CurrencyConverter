@@ -80,7 +80,13 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
         let sellAmount = customView.currencySellView.sellAmount
         let receiveCurrency = customView.currencyReceiveView.currency.segmentTitle
         let receiveAmount = Double(customView.currencyReceiveView.exchangeValue!)!
-        var transaction = Transaction(inputAmount: sellAmount, inputCurrency: sellCurrency, outputAmount: receiveAmount, outputCurrency: receiveCurrency, commission: 0.0)
+        var transaction = Transaction(
+            inputAmount: sellAmount,
+            inputCurrency: sellCurrency,
+            outputAmount: receiveAmount,
+            outputCurrency: receiveCurrency,
+            commission: 0.0
+        )
         
         interactor.performTransaction(&transaction)
     }

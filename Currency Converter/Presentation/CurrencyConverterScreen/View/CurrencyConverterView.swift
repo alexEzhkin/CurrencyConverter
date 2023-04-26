@@ -23,8 +23,18 @@ class CurrencyConverterView: BaseView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setUpView()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,7 +51,10 @@ class CurrencyConverterView: BaseView {
         let distanceToMove = 15 - keyboardFrame.height
         
         if submitButtonBottomConstraint == nil {
-            submitButtonBottomConstraint = submitButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: distanceToMove)
+            submitButtonBottomConstraint = submitButton.bottomAnchor.constraint(
+                equalTo: safeAreaLayoutGuide.bottomAnchor,
+                constant: distanceToMove
+            )
             submitButtonBottomConstraint?.isActive = true
         } else {
             submitButtonBottomConstraint?.constant = distanceToMove

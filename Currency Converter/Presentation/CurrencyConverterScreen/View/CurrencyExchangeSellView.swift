@@ -199,6 +199,7 @@ extension CurrencyExchangeSellView: UITextFieldDelegate {
                 return false
             }
         }
+        
         return true
     }
     

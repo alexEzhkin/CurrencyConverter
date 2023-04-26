@@ -19,6 +19,7 @@ class FeeService: FeeServiceProtocol {
         if currenctConversionsNumber <= freeTransactionLimit {
             return true
         }
+        
         return false
     }
 }

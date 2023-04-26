@@ -43,6 +43,7 @@ class FeeLimitDataStore: FeeLimitDataStoreProtocol {
     
     func getTransactionCount() -> Int {
         let feeLimitObject = realm.objects(FeeLimitObject.self).first!
+        
         return feeLimitObject.freeTransactionLimit
     }
 }

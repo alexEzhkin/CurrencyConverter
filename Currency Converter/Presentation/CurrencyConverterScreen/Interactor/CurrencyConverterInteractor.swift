@@ -19,9 +19,20 @@ class CurrencyConverterInteractor: BaseInteractor {
         self.converterService = converterService
     }
     
-    func fetchExchangeRate(amount: Double, fromCurrency: String, toCurrency: String) {
+    func fetchExchangeRate(
+        amount: Double,
+        fromCurrency: String,
+        toCurrency: String
+    ) {
         firstly {
-            networkService.createRequest(urlForRequest: EndPoint.exchange(fromAmount: amount, fromCurrency: fromCurrency, toCurrency: toCurrency).url, method: .get, parameters: nil)
+            networkService.createRequest(
+                urlForRequest: EndPoint.exchange(
+                    fromAmount: amount,
+                    fromCurrency: fromCurrency,
+                    toCurrency: toCurrency).url,
+                method: .get,
+                parameters: nil
+            )
         }.then { request in
             self.networkService.getRequest(request: request)
         }.done { [weak self] (result: CurrencyExchangeModel) in
@@ -58,6 +69,7 @@ class CurrencyConverterInteractor: BaseInteractor {
             let commissionFee = converterService.calculateCommissionAmount(transaction, isTransactionFree: isTransactionFree)
             transaction.commission = commissionFee
         }
+        
         makeTransaction(transaction, isTransactionFree: isTransactionFree)
     }
 }
