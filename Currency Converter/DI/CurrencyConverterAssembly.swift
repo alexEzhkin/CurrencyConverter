@@ -32,16 +32,15 @@ class CurrencyConverterAssembly: Assembly {
             return FeeLimitDataStore()
         }
         
-        container.autoregister(ConverterService.self, initializer: ConverterService.init
-        ).inObjectScope(.transient)
-        
-        container.register(CurrencyConverterPresenter.self) { r in
-            return CurrencyConverterPresenter()
-        }.inObjectScope(.container)
-        
         container.register(CurrencyConverterRouter.self) { r in
             return CurrencyConverterRouter()
         }.inObjectScope(.container)
+        
+        container.autoregister(ConverterService.self, initializer: ConverterService.init
+        ).inObjectScope(.transient)
+        
+        container.autoregister(CurrencyConverterPresenter.self, initializer: CurrencyConverterPresenter.init
+        ).inObjectScope(.transient)
         
         container.autoregister(CurrencyConverterInteractor.self, initializer: CurrencyConverterInteractor.init
         ).inObjectScope(.transient)

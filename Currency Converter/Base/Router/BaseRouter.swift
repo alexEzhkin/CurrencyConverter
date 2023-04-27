@@ -8,12 +8,15 @@
 import UIKit
 
 protocol BaseRouterProtocol {
-    func createModule()
+    func createModule() -> UIViewController
 }
 
 class BaseRouter: BaseRouterProtocol {
     
-    func createModule() {}
+    func createModule() -> UIViewController {
+        return UIViewController()
+    }
+    
     func presentModule(_ module: UIViewController, animated: Bool) {}
     func pushModule(_ module: UIViewController, animated: Bool) {}
 }

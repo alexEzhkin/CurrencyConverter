@@ -17,6 +17,7 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
         self.interactor = interactor
         super.init()
         presenter.viewController = self
+        presenter.router.viewController = self
         interactor.presenter = presenter
     }
     
@@ -72,6 +73,16 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
         navigationItem.compactAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactScrollEdgeAppearance = appearance
+        
+        let historyButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(historyButtonTapped))
+        historyButton.tintColor = .white
+        navigationItem.rightBarButtonItem = historyButton
+    }
+    
+    @objc func historyButtonTapped() {
+        let module = interactor.presenter.router.createModule()
+        
+        interactor.presenter.router.pushModule(module, animated: true)
     }
     
     func updateBalance() {
