@@ -2,18 +2,27 @@
 //  DI.swift
 //  Currency Converter
 //
-//  Created by AndUser on 12/04/2023.
+//  Created by AndUser on 26/04/2023.
 //
 
 import Foundation
 import Swinject
 
 class DI {
-    private static let assemblies: [Assembly] = [
-        CurrencyConverterAssembly()
-    ]
+    private var assembler: Assembler?
     
-    class func registerAppAssemblies() -> Assembler {
-        return Assembler(assemblies)
+    static let shared = DI()
+    
+    private init() {}
+    
+    func registerAssemblies() {
+        self.assembler = Assembler([
+            CurrencyConverterAssembly(),
+            ConversionHistoryAssembly()
+        ])
+    }
+    
+    func resolve<T>(_ serviceType: T.Type) -> T? {
+        return assembler?.resolver.resolve(serviceType)
     }
 }

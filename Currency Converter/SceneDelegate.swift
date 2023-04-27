@@ -12,21 +12,19 @@ import SwinjectAutoregistration
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let assembler = Assembler([
-        CurrencyConverterAssembly(),
-        ConversionHistoryAssembly()
-    ])
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        DI.shared.registerAssemblies()
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let dataBase = assembler.resolver ~> ConverterService.self
-        dataBase.initialSetUp()
+        let dataBase = DI.shared.resolve(ConverterService.self)
+        dataBase?.initialSetUp()
         
         window = UIWindow(windowScene: windowScene)
-        let vc = assembler.resolver.resolve(CurrencyConverterViewController.self)
-        let navigationController = UINavigationController(rootViewController: vc!)
+        guard let vc = DI.shared.resolve(CurrencyConverterViewController.self) else { return }
+        let navigationController = UINavigationController(rootViewController: vc)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
