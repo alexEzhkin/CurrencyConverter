@@ -22,4 +22,19 @@ class BaseViewController<View: BaseView>: UIViewController {
     override func loadView() {
         view = customView
     }
+    
+    func configureNavigationBar() {
+        let appearance = UINavigationBarAppearance()
+        let textAttributes = [
+            NSAttributedString.Key.foregroundColor: UIColor.white
+        ]
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundColor = .customBlueColor
+        appearance.titleTextAttributes = textAttributes
+        navigationItem.standardAppearance = appearance
+        navigationItem.compactAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.compactScrollEdgeAppearance = appearance
+        navigationController?.navigationBar.tintColor = UIColor.white
+    }
 }

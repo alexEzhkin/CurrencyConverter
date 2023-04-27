@@ -60,22 +60,12 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
         customView.currencyReceiveView.exchangeValue = amount
     }
     
-    func configureNavigationBar() {
+    override func configureNavigationBar() {
+        super.configureNavigationBar()
+        
         title = "Currency converter"
-        let appearance = UINavigationBarAppearance()
-        let textAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white
-        ]
-        appearance.configureWithDefaultBackground()
-        appearance.backgroundColor = .customBlueColor
-        appearance.titleTextAttributes = textAttributes
-        navigationItem.standardAppearance = appearance
-        navigationItem.compactAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
-        navigationItem.compactScrollEdgeAppearance = appearance
         
         let historyButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(historyButtonTapped))
-        historyButton.tintColor = .white
         navigationItem.rightBarButtonItem = historyButton
     }
     

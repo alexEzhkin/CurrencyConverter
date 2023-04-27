@@ -29,18 +29,9 @@ class ConversionHistoryViewController: BaseViewController<ConversionHistoryView>
         configureNavigationBar()
     }
     
-    func configureNavigationBar() {
+    override func configureNavigationBar() {
+        super.configureNavigationBar()
+        
         title = "History"
-        let appearance = UINavigationBarAppearance()
-        let textAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white
-        ]
-        appearance.configureWithDefaultBackground()
-        appearance.backgroundColor = .customBlueColor
-        appearance.titleTextAttributes = textAttributes
-        navigationItem.standardAppearance = appearance
-        navigationItem.compactAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
-        navigationItem.compactScrollEdgeAppearance = appearance
     }
 }
