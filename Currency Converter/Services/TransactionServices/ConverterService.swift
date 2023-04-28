@@ -12,17 +12,26 @@ final class ConverterService {
     private let feeService: FeeServiceProtocol
     private let balanceDataService: BalanceDataStoreProtocol
     private let feeLimitDataService: FeeLimitDataStoreProtocol
+    private let historyDataService: HistoryDataStoreProtocol
     
-    init(transactionService: TransactionServiceProtocol, feeService: FeeServiceProtocol, balanceDataService: BalanceDataStoreProtocol, feeLimitDataService: FeeLimitDataStoreProtocol) {
+    init(
+        transactionService: TransactionServiceProtocol,
+        feeService: FeeServiceProtocol,
+        balanceDataService: BalanceDataStoreProtocol,
+        feeLimitDataService: FeeLimitDataStoreProtocol,
+        historyDataService: HistoryDataStoreProtocol
+    ) {
         self.transactionService = transactionService
         self.feeService = feeService
         self.balanceDataService = balanceDataService
         self.feeLimitDataService = feeLimitDataService
+        self.historyDataService = historyDataService
     }
     
     func initialSetUp() {
         balanceDataService.setInitialBalance()
         feeLimitDataService.setInitialFeeLimit()
+        historyDataService.setInitialHistory()
     }
     
     func calculateCommissionAmount(_ transaction: Transaction, isTransactionFree: Bool) -> Double {
@@ -47,5 +56,9 @@ final class ConverterService {
     
     func getTransactionCount() -> Int {
         return feeLimitDataService.getTransactionCount()
+    }
+    
+    func updateHistory(_ transaction: Transaction, transactionStatus: Bool) {
+        historyDataService.updateTransactionHistory(transaction, transactionStatus: transactionStatus)
     }
 }

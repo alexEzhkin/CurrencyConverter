@@ -15,6 +15,8 @@
 		CA500A8029F94A2800690625 /* ConversionHistoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A7F29F94A2800690625 /* ConversionHistoryAssembly.swift */; };
 		CA500A8229F95F3700690625 /* ConversionHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A8129F95F3700690625 /* ConversionHistoryCell.swift */; };
 		CA500A8429F970BF00690625 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A8329F970BF00690625 /* DI.swift */; };
+		CA500A8729FAAEBC00690625 /* HistoryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A8629FAAEBC00690625 /* HistoryDataStore.swift */; };
+		CA500A8929FAAF0500690625 /* TransactionRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A8829FAAF0500690625 /* TransactionRealmObject.swift */; };
 		CAAAFD2629D6FBF800A5DE21 /* BalancesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2529D6FBF800A5DE21 /* BalancesScrollView.swift */; };
 		CAAAFD2829D7293800A5DE21 /* CurrencyExchangeSellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2729D7293800A5DE21 /* CurrencyExchangeSellView.swift */; };
 		CAAAFD2A29D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2929D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift */; };
@@ -72,6 +74,8 @@
 		CA500A7F29F94A2800690625 /* ConversionHistoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionHistoryAssembly.swift; sourceTree = "<group>"; };
 		CA500A8129F95F3700690625 /* ConversionHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionHistoryCell.swift; sourceTree = "<group>"; };
 		CA500A8329F970BF00690625 /* DI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DI.swift; sourceTree = "<group>"; };
+		CA500A8629FAAEBC00690625 /* HistoryDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDataStore.swift; sourceTree = "<group>"; };
+		CA500A8829FAAF0500690625 /* TransactionRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRealmObject.swift; sourceTree = "<group>"; };
 		CAAAFD2529D6FBF800A5DE21 /* BalancesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalancesScrollView.swift; sourceTree = "<group>"; };
 		CAAAFD2729D7293800A5DE21 /* CurrencyExchangeSellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeSellView.swift; sourceTree = "<group>"; };
 		CAAAFD2929D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeReceiveView.swift; sourceTree = "<group>"; };
@@ -174,6 +178,14 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		CA500A8529FAADFE00690625 /* HistoryDataStore */ = {
+			isa = PBXGroup;
+			children = (
+				CA500A8629FAAEBC00690625 /* HistoryDataStore.swift */,
+			);
+			path = HistoryDataStore;
+			sourceTree = "<group>";
+		};
 		CAAAFD2D29DB130E00A5DE21 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,9 +255,10 @@
 		CAE772EB29DD741C0007500E /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CACB65B229F6AF2C007F71CD /* TransactionServices */,
 				CACB658629EEDC02007F71CD /* BalanceDataStore */,
+				CA500A8529FAADFE00690625 /* HistoryDataStore */,
 				CACB658C29EFFF6D007F71CD /* FeeLimitDataStore */,
+				CACB65B229F6AF2C007F71CD /* TransactionServices */,
 				CAE772EC29DD74840007500E /* Helpers */,
 				CAE772F029DD77D00007500E /* NetworkService.swift */,
 				CACB65AD29F162E1007F71CD /* EventManager.swift */,
@@ -342,6 +355,7 @@
 				CACB658429EEA45E007F71CD /* Transaction.swift */,
 				CAE772F829E1A8A20007500E /* CurrencyRealmObject.swift */,
 				CACB657E29E97A48007F71CD /* FeeLimitObject.swift */,
+				CA500A8829FAAF0500690625 /* TransactionRealmObject.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -529,6 +543,7 @@
 				CACB658E29EFFFB4007F71CD /* FeeLimitDataStore.swift in Sources */,
 				CACB657F29E97A48007F71CD /* FeeLimitObject.swift in Sources */,
 				CA500A7C29F947C400690625 /* ConversionHistoryView.swift in Sources */,
+				CA500A8929FAAF0500690625 /* TransactionRealmObject.swift in Sources */,
 				CAAAFD3229DB182500A5DE21 /* UIView + Extension.swift in Sources */,
 				CA500A7E29F947F400690625 /* ConversionHistoryViewController.swift in Sources */,
 				CACB658329EEA3F9007F71CD /* FeeService.swift in Sources */,
@@ -541,6 +556,7 @@
 				CAE772EF29DD74AB0007500E /* EndPoint.swift in Sources */,
 				CACB658129E97BCB007F71CD /* TransactionService.swift in Sources */,
 				CACB658529EEA45E007F71CD /* Transaction.swift in Sources */,
+				CA500A8729FAAEBC00690625 /* HistoryDataStore.swift in Sources */,
 				CAF7A82629CC8772002FBBAD /* AppDelegate.swift in Sources */,
 				CAF7A85F29CDE1BF002FBBAD /* BaseView.swift in Sources */,
 				CAAAFD2629D6FBF800A5DE21 /* BalancesScrollView.swift in Sources */,

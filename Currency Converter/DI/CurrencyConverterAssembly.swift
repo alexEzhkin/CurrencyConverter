@@ -32,6 +32,10 @@ class CurrencyConverterAssembly: Assembly {
             return FeeLimitDataStore()
         }
         
+        container.register(HistoryDataStoreProtocol.self) { r in
+            return HistoryDataStore()
+        }
+        
         container.register(CurrencyConverterRouter.self) { r in
             return CurrencyConverterRouter()
         }.inObjectScope(.container)

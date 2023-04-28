@@ -48,10 +48,13 @@ class CurrencyConverterInteractor: BaseInteractor {
         let sellAmountWithCommission = transaction.inputAmount + transaction.commission
         
         guard currentSellBalance >= sellAmountWithCommission else {
+            converterService.updateHistory(transaction, transactionStatus: false)
+            
             return EventManager.shared.notifyFailure(transaction: transaction)
         }
         
         converterService.updateBalance(transaction)
+        converterService.updateHistory(transaction, transactionStatus: true)
         
         if isTransactionFree == false {
             EventManager.shared.notifySuccess(transaction: transaction)
