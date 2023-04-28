@@ -8,6 +8,21 @@
 import Foundation
 
 class ConversionHistoryInteractor: BaseInteractor {
-    var presenter: ConversionHistoryPresenter!
     
+    var presenter: ConversionHistoryPresenter!
+    private let converterService: ConverterService
+    
+    init(converterService: ConverterService) {
+        self.converterService = converterService
+    }
+    
+    func fetchHistoryData() {
+        let transactionHistory = converterService.getTransactionHistory()
+        
+        transferHistoryData(transactionHistory)
+    }
+    
+    func transferHistoryData(_ transactionHistory: [TransactionRealmObject]) {
+        presenter.updateHistoryData(transactionHistory)
+    }
 }

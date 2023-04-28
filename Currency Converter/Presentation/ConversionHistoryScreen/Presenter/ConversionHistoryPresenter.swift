@@ -10,4 +10,7 @@ import Foundation
 class ConversionHistoryPresenter: BasePresenter {
     weak var viewController: ConversionHistoryViewController?
     
+    func updateHistoryData(_ transactionHistory: [TransactionRealmObject]) {
+        viewController?.showHistoryData(transactionHistory)
+    }
 }

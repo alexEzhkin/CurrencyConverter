@@ -10,7 +10,7 @@ import RealmSwift
 
 protocol HistoryDataStoreProtocol {
     func setInitialHistory()
-    func getTransactionHistory() -> Results<TransactionRealmObject>
+    func getTransactionHistory() -> [TransactionRealmObject]
     func updateTransactionHistory(_ transaction: Transaction, transactionStatus: Bool)
 }
 
@@ -38,10 +38,11 @@ class HistoryDataStore: HistoryDataStoreProtocol {
         }
     }
     
-    func getTransactionHistory() -> Results<TransactionRealmObject> {
+    func getTransactionHistory() -> [TransactionRealmObject] {
         let transactionObject = realm.objects(TransactionRealmObject.self)
+        let transactionHistory = Array(transactionObject)
         
-        return transactionObject
+        return transactionHistory
     }
     
     func updateTransactionHistory(_ transaction: Transaction, transactionStatus: Bool) {

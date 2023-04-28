@@ -20,9 +20,14 @@ class ConversionHistoryAssembly: Assembly {
             return ConversionHistoryRouter()
         }.inObjectScope(.container)
         
-        container.register(ConversionHistoryInteractor.self) { r in
-            return ConversionHistoryInteractor()
-        }.inObjectScope(.container)
+        container.autoregister(ConverterService.self, initializer: ConverterService.init
+        ).inObjectScope(.transient)
+        
+        container.autoregister(ConversionHistoryInteractor.self, initializer: ConversionHistoryInteractor.init
+        ).inObjectScope(.transient)
+        
+        container.autoregister(CurrencyConverterInteractor.self, initializer: CurrencyConverterInteractor.init
+        ).inObjectScope(.transient)
         
         container.autoregister(
             ConversionHistoryViewController.self, initializer: ConversionHistoryViewController.init

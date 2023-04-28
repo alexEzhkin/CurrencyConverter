@@ -23,8 +23,8 @@ class ConversionHistoryCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with title: String) {
-        label.text = title
+    func configure(with transaction: TransactionRealmObject) {
+        label.text = "\(transaction.inputAmount) \(transaction.inputCurrency) = \(transaction.outputAmount) \(transaction.outputCurrency) with \(transaction.commission) \(transaction.inputCurrency): \(transaction.transactionStatus)"
     }
 }
 

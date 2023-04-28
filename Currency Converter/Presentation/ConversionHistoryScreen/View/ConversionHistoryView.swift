@@ -7,11 +7,18 @@
 
 import Stevia
 import UIKit
+import RealmSwift
+
+protocol ConversionHistoryViewProtocol: AnyObject {
+    func getHistoryData()
+}
 
 class ConversionHistoryView: BaseView {
     
+    weak var delegate: ConversionHistoryViewProtocol?
+    
     let historyTableView = UITableView()
-    var historyData: [String] = []
+    var historyData: [TransactionRealmObject] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,6 +27,10 @@ class ConversionHistoryView: BaseView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setHistoryData(_ transactionHistory: [TransactionRealmObject]) {
+        historyData = transactionHistory
     }
 }
 
@@ -42,6 +53,7 @@ private extension ConversionHistoryView {
 
 extension ConversionHistoryView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        delegate?.getHistoryData()
         return historyData.count
     }
     

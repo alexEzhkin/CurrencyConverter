@@ -61,4 +61,8 @@ final class ConverterService {
     func updateHistory(_ transaction: Transaction, transactionStatus: Bool) {
         historyDataService.updateTransactionHistory(transaction, transactionStatus: transactionStatus)
     }
+    
+    func getTransactionHistory() -> [TransactionRealmObject] {
+        return historyDataService.getTransactionHistory()
+    }
 }
