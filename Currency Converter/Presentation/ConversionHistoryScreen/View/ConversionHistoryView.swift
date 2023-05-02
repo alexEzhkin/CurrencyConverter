@@ -54,6 +54,7 @@ private extension ConversionHistoryView {
 extension ConversionHistoryView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         delegate?.getHistoryData()
+        
         return historyData.count
     }
     
@@ -61,6 +62,14 @@ extension ConversionHistoryView: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "conversionHistoryCell", for: indexPath) as! ConversionHistoryCell
         let data = historyData[indexPath.row]
         cell.configure(with: data)
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "conversionHistoryCell") as! ConversionHistoryCell
+        let cellHeight = CGFloat(cell.defaultCellHeight)
+        
+        return cellHeight
     }
 }
