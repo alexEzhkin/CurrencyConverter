@@ -22,7 +22,10 @@ class HistoryDataStore: HistoryDataStoreProtocol {
     }
     
     func getTransactionHistory() -> [TransactionRealmObject] {
-        let transactionObject = realm.objects(TransactionRealmObject.self)
+        let transactionObject = realm.objects(TransactionRealmObject.self).sorted(
+            byKeyPath: "transactionDate",
+            ascending: false
+        )
         let transactionHistory = Array(transactionObject)
         
         return transactionHistory
@@ -38,6 +41,7 @@ class HistoryDataStore: HistoryDataStoreProtocol {
             newTransaction.outputCurrency = transaction.outputCurrency
             newTransaction.commission = transaction.commission
             newTransaction.transactionStatus = transactionStatus
+            newTransaction.transactionDate = Date()
             
             realm.add(newTransaction)
         }

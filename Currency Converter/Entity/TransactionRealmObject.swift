@@ -15,5 +15,6 @@ class TransactionRealmObject: Object {
     @Persisted var outputCurrency: String
     @Persisted var commission: Double
     @Persisted var transactionStatus: Bool
+    @Persisted var transactionDate: Date
     
 }
