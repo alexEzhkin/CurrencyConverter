@@ -31,7 +31,6 @@ final class ConverterService {
     func initialSetUp() {
         balanceDataService.setInitialBalance()
         feeLimitDataService.setInitialFeeLimit()
-        historyDataService.setInitialHistory()
     }
     
     func calculateCommissionAmount(_ transaction: Transaction, isTransactionFree: Bool) -> Double {
