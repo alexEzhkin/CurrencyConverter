@@ -8,17 +8,14 @@
 import Stevia
 import UIKit
 import RealmSwift
-
-protocol ConversionHistoryViewProtocol: AnyObject {
-    func getHistoryData()
-}
+import RxSwift
+import RxCocoa
 
 class ConversionHistoryView: BaseView {
     
-    weak var delegate: ConversionHistoryViewProtocol?
-    
     let historyTableView = UITableView()
-    var historyData: [TransactionRealmObject] = []
+    let historyData = BehaviorRelay<[TransactionRealmObject]>(value: [])
+    var disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -30,7 +27,7 @@ class ConversionHistoryView: BaseView {
     }
     
     func setHistoryData(_ transactionHistory: [TransactionRealmObject]) {
-        historyData = transactionHistory
+        historyData.accept(transactionHistory)
     }
 }
 
@@ -43,29 +40,25 @@ private extension ConversionHistoryView {
         }
         
         historyTableView.fillContainer()
-        historyTableView.dataSource = self
-        historyTableView.delegate = self
         historyTableView.register(ConversionHistoryCell.self, forCellReuseIdentifier: "conversionHistoryCell")
+        
+        historyTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        historyData
+            .bind(to: historyTableView.rx.items(cellIdentifier: "conversionHistoryCell", cellType: ConversionHistoryCell.self)) { [weak self] _, data, cell in
+                cell.configure(with: data)
+                
+                self?.historyTableView.beginUpdates()
+                self?.historyTableView.endUpdates()
+            }
+            .disposed(by: disposeBag)
     }
 }
 
-// MARK: - UITableViewDataSource, UITableViewDelegate
+// MARK: - UITableViewDelegate
 
-extension ConversionHistoryView: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        delegate?.getHistoryData()
-        
-        return historyData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "conversionHistoryCell", for: indexPath) as! ConversionHistoryCell
-        let data = historyData[indexPath.row]
-        cell.configure(with: data)
-        
-        return cell
-    }
-    
+extension ConversionHistoryView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cell = tableView.dequeueReusableCell(withIdentifier: "conversionHistoryCell") as! ConversionHistoryCell
         let cellHeight = CGFloat(cell.defaultCellHeight)

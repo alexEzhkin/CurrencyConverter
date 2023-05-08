@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ConversionHistoryViewController: BaseViewController<ConversionHistoryView>, ConversionHistoryViewProtocol {
+class ConversionHistoryViewController: BaseViewController<ConversionHistoryView> {
     
     private let interactor: ConversionHistoryInteractor
     
@@ -25,8 +25,9 @@ class ConversionHistoryViewController: BaseViewController<ConversionHistoryView>
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        customView.delegate = self
         configureNavigationBar()
+        
+        getHistoryData()
     }
     
     override func configureNavigationBar() {
@@ -42,5 +43,4 @@ class ConversionHistoryViewController: BaseViewController<ConversionHistoryView>
     func showHistoryData(_ transactionHistory: [TransactionRealmObject]) {
         customView.setHistoryData(transactionHistory)
     }
-    
 }

@@ -17,6 +17,8 @@
 		CA500A8429F970BF00690625 /* DI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A8329F970BF00690625 /* DI.swift */; };
 		CA500A8729FAAEBC00690625 /* HistoryDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A8629FAAEBC00690625 /* HistoryDataStore.swift */; };
 		CA500A8929FAAF0500690625 /* TransactionRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA500A8829FAAF0500690625 /* TransactionRealmObject.swift */; };
+		CA6875F32A09016C00091717 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CA6875F22A09016C00091717 /* RxCocoa */; };
+		CA6875F52A09016C00091717 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CA6875F42A09016C00091717 /* RxSwift */; };
 		CAAAFD2629D6FBF800A5DE21 /* BalancesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2529D6FBF800A5DE21 /* BalancesScrollView.swift */; };
 		CAAAFD2829D7293800A5DE21 /* CurrencyExchangeSellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2729D7293800A5DE21 /* CurrencyExchangeSellView.swift */; };
 		CAAAFD2A29D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAAFD2929D84CE400A5DE21 /* CurrencyExchangeReceiveView.swift */; };
@@ -33,7 +35,6 @@
 		CACB658829EEDC16007F71CD /* BalanceDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658729EEDC16007F71CD /* BalanceDataStore.swift */; };
 		CACB658E29EFFFB4007F71CD /* FeeLimitDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658D29EFFFB4007F71CD /* FeeLimitDataStore.swift */; };
 		CACB659029F022B0007F71CD /* ConverterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB658F29F022B0007F71CD /* ConverterService.swift */; };
-		CACB65AA29F16021007F71CD /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CACB65A929F16021007F71CD /* RxSwift */; };
 		CACB65AE29F162E1007F71CD /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB65AD29F162E1007F71CD /* EventManager.swift */; };
 		CACB65B129F297E0007F71CD /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = CACB65B029F297E0007F71CD /* PromiseKit */; };
 		CACB65B429F7B54B007F71CD /* ConversionAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB65B329F7B54B007F71CD /* ConversionAlertFactory.swift */; };
@@ -124,12 +125,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CACB65AA29F16021007F71CD /* RxSwift in Frameworks */,
 				CAF7A84329CCA1AC002FBBAD /* RealmSwift in Frameworks */,
 				CAF7A84129CCA1AC002FBBAD /* Realm in Frameworks */,
 				CACB657929E7F30A007F71CD /* SwinjectAutoregistration in Frameworks */,
+				CA6875F32A09016C00091717 /* RxCocoa in Frameworks */,
 				CAF7A83B29CC9D4D002FBBAD /* Stevia in Frameworks */,
 				CACB65B129F297E0007F71CD /* PromiseKit in Frameworks */,
+				CA6875F52A09016C00091717 /* RxSwift in Frameworks */,
 				CAF7A83E29CC9F38002FBBAD /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,8 +458,9 @@
 				CAF7A84029CCA1AC002FBBAD /* Realm */,
 				CAF7A84229CCA1AC002FBBAD /* RealmSwift */,
 				CACB657829E7F30A007F71CD /* SwinjectAutoregistration */,
-				CACB65A929F16021007F71CD /* RxSwift */,
 				CACB65B029F297E0007F71CD /* PromiseKit */,
+				CA6875F22A09016C00091717 /* RxCocoa */,
+				CA6875F42A09016C00091717 /* RxSwift */,
 			);
 			productName = "Currency Converter";
 			productReference = CAF7A82229CC8772002FBBAD /* Currency Converter.app */;
@@ -492,8 +495,8 @@
 				CAF7A83C29CC9F38002FBBAD /* XCRemoteSwiftPackageReference "Swinject" */,
 				CAF7A83F29CCA1AC002FBBAD /* XCRemoteSwiftPackageReference "realm-swift" */,
 				CACB657729E7F30A007F71CD /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */,
-				CACB65A829F16021007F71CD /* XCRemoteSwiftPackageReference "RxSwift" */,
 				CACB65AF29F297E0007F71CD /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				CA6875F12A09016C00091717 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = CAF7A82329CC8772002FBBAD /* Products */;
 			projectDirPath = "";
@@ -777,20 +780,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CA6875F12A09016C00091717 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		CACB657729E7F30A007F71CD /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/SwinjectAutoregistration";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
-			};
-		};
-		CACB65A829F16021007F71CD /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
 			};
 		};
 		CACB65AF29F297E0007F71CD /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
@@ -828,15 +831,20 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CA6875F22A09016C00091717 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA6875F12A09016C00091717 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		CA6875F42A09016C00091717 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA6875F12A09016C00091717 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		CACB657829E7F30A007F71CD /* SwinjectAutoregistration */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CACB657729E7F30A007F71CD /* XCRemoteSwiftPackageReference "SwinjectAutoregistration" */;
 			productName = SwinjectAutoregistration;
-		};
-		CACB65A929F16021007F71CD /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = CACB65A829F16021007F71CD /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
 		};
 		CACB65B029F297E0007F71CD /* PromiseKit */ = {
 			isa = XCSwiftPackageProductDependency;
