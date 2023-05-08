@@ -10,7 +10,7 @@ import Stevia
 
 class CurrencyConverterView: BaseView {
     
-    weak var view: CurrencyViewInterface?
+    weak var delegate: CurrencyViewInterface?
     
     let myBalanceLabel = UILabel()
     let balanceScrollView = BalancesScrollView()
@@ -78,7 +78,7 @@ class CurrencyConverterView: BaseView {
             if self.currencySellView.currency == self.currencyReceiveView.currency {
                 return
             }
-            self.view?.updateBalance()
+            self.delegate?.updateBalance()
         }
     }
 }
@@ -87,7 +87,7 @@ class CurrencyConverterView: BaseView {
 
 private extension CurrencyConverterView {
     func setUpView() {
-        currencySellView.delegate = currencyReceiveView
+        currencySellView.exchangeDelegate = currencyReceiveView
         
         backgroundColor = .systemBackground
         

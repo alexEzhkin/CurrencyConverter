@@ -7,7 +7,6 @@
 
 import Stevia
 import UIKit
-import RealmSwift
 import RxSwift
 import RxCocoa
 
@@ -46,7 +45,10 @@ private extension ConversionHistoryView {
             .disposed(by: disposeBag)
         
         historyData
-            .bind(to: historyTableView.rx.items(cellIdentifier: "conversionHistoryCell", cellType: ConversionHistoryCell.self)) { [weak self] _, data, cell in
+            .bind(to: historyTableView.rx.items(
+                cellIdentifier: "conversionHistoryCell",
+                cellType: ConversionHistoryCell.self)
+            ) { [weak self] _, data, cell in
                 cell.configure(with: data)
                 
                 self?.historyTableView.beginUpdates()

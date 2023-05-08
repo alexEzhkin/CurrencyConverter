@@ -18,8 +18,8 @@ protocol CurrencyViewInterface: AnyObject {
 }
 
 class CurrencyExchangeSellView: BaseView {
-    weak var delegate: ExchangeAmountProtocol?
-    weak var view: CurrencyViewInterface?
+    weak var exchangeDelegate: ExchangeAmountProtocol?
+    weak var delegate: CurrencyViewInterface?
     
     var sellAmount: Double = 0.0
     
@@ -84,7 +84,7 @@ class CurrencyExchangeSellView: BaseView {
         
         alert.addAction(UIAlertAction(title: "Select", style: .default, handler: { (UIAlertAction) in
             self.currency = self.currencies[pickerView.selectedRow(inComponent: 0)]
-            self.view?.updateRates()
+            self.delegate?.updateRates()
         }))
         
         guard let viewController = self.parentViewController else {
@@ -208,7 +208,7 @@ extension CurrencyExchangeSellView: UITextFieldDelegate {
         
         if let text = textField.text, let value = Double(text) {
             self.sellAmount = value
-            view?.updateRates()
+            delegate?.updateRates()
         }
     }
 }

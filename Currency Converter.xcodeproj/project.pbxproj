@@ -188,6 +188,25 @@
 			path = HistoryDataStore;
 			sourceTree = "<group>";
 		};
+		CA6875F72A092E2F00091717 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CACB658429EEA45E007F71CD /* Transaction.swift */,
+				CAE772F629DED3300007500E /* CurrencyExchangeModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CA6875F82A092E3800091717 /* RealmObjects */ = {
+			isa = PBXGroup;
+			children = (
+				CAE772F829E1A8A20007500E /* CurrencyRealmObject.swift */,
+				CACB657E29E97A48007F71CD /* FeeLimitObject.swift */,
+				CA500A8829FAAF0500690625 /* TransactionRealmObject.swift */,
+			);
+			path = RealmObjects;
+			sourceTree = "<group>";
+		};
 		CAAAFD2D29DB130E00A5DE21 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,11 +372,8 @@
 		CAF7A84829CDB61C002FBBAD /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				CAE772F629DED3300007500E /* CurrencyExchangeModel.swift */,
-				CACB658429EEA45E007F71CD /* Transaction.swift */,
-				CAE772F829E1A8A20007500E /* CurrencyRealmObject.swift */,
-				CACB657E29E97A48007F71CD /* FeeLimitObject.swift */,
-				CA500A8829FAAF0500690625 /* TransactionRealmObject.swift */,
+				CA6875F72A092E2F00091717 /* Models */,
+				CA6875F82A092E3800091717 /* RealmObjects */,
 			);
 			path = Entity;
 			sourceTree = "<group>";

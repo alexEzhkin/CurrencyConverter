@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>, CurrencyViewInterface {
+class CurrencyConverterViewController: BaseViewController<CurrencyConverterView> {
     
     private let interactor: CurrencyConverterInteractor
     private let disposeBag = DisposeBag()
@@ -27,9 +27,9 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        customView.view = self
-        customView.currencySellView.view = self
-        customView.currencyReceiveView.view = self
+        customView.delegate = self
+        customView.currencySellView.delegate = self
+        customView.currencyReceiveView.delegate = self
         
         doBindings()
         configureNavigationBar()
@@ -49,17 +49,6 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
             .disposed(by: disposeBag)
     }
     
-    func updateRates() {
-        let amount = customView.currencySellView.sellAmount
-        let inputCurrency = customView.currencySellView.currency.segmentTitle
-        let outputCurrency = customView.currencyReceiveView.currency.segmentTitle
-        interactor.fetchExchangeRate(amount: amount, fromCurrency: inputCurrency, toCurrency: outputCurrency)
-    }
-    
-    func updateReceiveLabel(with amount: String) {
-        customView.currencyReceiveView.exchangeValue = amount
-    }
-    
     override func configureNavigationBar() {
         super.configureNavigationBar()
         
@@ -73,6 +62,39 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
         let module = interactor.presenter.router.createModule()
         
         interactor.presenter.router.pushModule(module, animated: true)
+    }
+    
+    func updateBalanceView() {
+        customView.balanceScrollView.setBalances()
+    }
+    
+    func updateReceiveLabel(with amount: String) {
+        customView.currencyReceiveView.exchangeValue = amount
+    }
+    
+    func showConversionErrorAlert(_ transaction: Transaction) {
+        let conversionErrorAlert = ConversionAlertFactory.showAlert(title: "Conversion Error", description: "Sorry, but you don't have enough funs to convert from \(transaction.inputCurrency) to \(transaction.outputCurrency)")
+        present(conversionErrorAlert, animated: true)
+    }
+    
+    func showCommissionFeeAlert(_ transaction: Transaction) {
+        let commissionAlert = ConversionAlertFactory.showAlert(title: "Currency Converted", description: "You have converted \(transaction.inputAmount) \(transaction.inputCurrency) to \(transaction.outputAmount) \(transaction.outputCurrency). Commission Fee - \(transaction.commission.roundTo(places: 2)) \(transaction.inputCurrency)")
+        present(commissionAlert, animated: true)
+    }
+}
+
+// MARK: - CurrencyViewInterface
+
+extension CurrencyConverterViewController: CurrencyViewInterface {
+    func updateRates() {
+        let amount = customView.currencySellView.sellAmount
+        let inputCurrency = customView.currencySellView.currency.segmentTitle
+        let outputCurrency = customView.currencyReceiveView.currency.segmentTitle
+        interactor.fetchExchangeRate(
+            amount: amount,
+            fromCurrency: inputCurrency,
+            toCurrency: outputCurrency
+        )
     }
     
     func updateBalance() {
@@ -89,19 +111,5 @@ class CurrencyConverterViewController: BaseViewController<CurrencyConverterView>
         )
         
         interactor.performTransaction(&transaction)
-    }
-    
-    func updateBalanceView() {
-        customView.balanceScrollView.setBalances()
-    }
-    
-    func showConversionErrorAlert(_ transaction: Transaction) {
-        let conversionErrorAlert = ConversionAlertFactory.showAlert(title: "Conversion Error", description: "Sorry, but you don't have enough funs to convert from \(transaction.inputCurrency) to \(transaction.outputCurrency)")
-        present(conversionErrorAlert, animated: true)
-    }
-    
-    func showCommissionFeeAlert(_ transaction: Transaction) {
-        let commissionAlert = ConversionAlertFactory.showAlert(title: "Currency Converted", description: "You have converted \(transaction.inputAmount) \(transaction.inputCurrency) to \(transaction.outputAmount) \(transaction.outputCurrency). Commission Fee - \(transaction.commission.roundTo(places: 2)) \(transaction.inputCurrency)")
-        present(commissionAlert, animated: true)
     }
 }
