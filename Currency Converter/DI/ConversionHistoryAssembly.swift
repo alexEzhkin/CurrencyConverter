@@ -20,8 +20,9 @@ class ConversionHistoryAssembly: Assembly {
             return ConversionHistoryRouter()
         }.inObjectScope(.container)
         
-        container.autoregister(ConverterService.self, initializer: ConverterService.init
-        ).inObjectScope(.transient)
+        container.register(HistoryDataStoreProtocol.self) { r in
+            return HistoryDataStore()
+        }
         
         container.autoregister(ConversionHistoryInteractor.self, initializer: ConversionHistoryInteractor.init
         ).inObjectScope(.transient)

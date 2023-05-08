@@ -10,14 +10,14 @@ import Foundation
 class ConversionHistoryInteractor: BaseInteractor {
     
     var presenter: ConversionHistoryPresenter!
-    private let converterService: ConverterService
+    private let historyDataService: HistoryDataStoreProtocol
     
-    init(converterService: ConverterService) {
-        self.converterService = converterService
+    init(historyDataService: HistoryDataStoreProtocol) {
+        self.historyDataService = historyDataService
     }
     
     func fetchHistoryData() {
-        let transactionHistory = converterService.getTransactionHistory()
+        let transactionHistory = historyDataService.getTransactionHistory()
         
         transferHistoryData(transactionHistory)
     }
