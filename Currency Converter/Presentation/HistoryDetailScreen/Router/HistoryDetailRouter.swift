@@ -1,23 +1,15 @@
 //
-//  ConversionHistoryRouter.swift
+//  HistoryDetailRouter.swift
 //  Currency Converter
 //
-//  Created by AndUser on 26/04/2023.
+//  Created by AndUser on 12/05/2023.
 //
 
 import Foundation
 import UIKit
 
-class ConversionHistoryRouter: BaseRouter {
+class HistoryDetailRouter: BaseRouter {
     weak var viewController: UIViewController?
-    
-    override func createModule() -> UIViewController{
-        guard let module = DI.shared.resolve(HistoryDetailViewController.self) else {
-            return UIViewController()
-        }
-        
-        return module
-    }
     
     override func presentModule(_ module: UIViewController, animated: Bool) {
         viewController?.present(module, animated: animated, completion: nil)

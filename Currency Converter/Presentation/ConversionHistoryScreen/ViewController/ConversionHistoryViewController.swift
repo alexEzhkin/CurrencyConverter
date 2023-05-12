@@ -16,6 +16,7 @@ class ConversionHistoryViewController: BaseViewController<ConversionHistoryView>
         self.interactor = interactor
         super.init()
         presenter.viewController = self
+        presenter.router.viewController = self
         interactor.presenter = presenter
     }
     
@@ -25,8 +26,9 @@ class ConversionHistoryViewController: BaseViewController<ConversionHistoryView>
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar()
+        customView.delegate = self
         
+        configureNavigationBar()
         getHistoryData()
     }
     
@@ -42,5 +44,13 @@ class ConversionHistoryViewController: BaseViewController<ConversionHistoryView>
     
     func showHistoryData(_ transactionHistory: [TransactionRealmObject]) {
         customView.setHistoryData(transactionHistory)
+    }
+}
+
+extension ConversionHistoryViewController: ConversionHistoryViewProtocol {
+    func showTransactionDetails() {
+        let module = interactor.presenter.router.createModule()
+        
+        interactor.presenter.router.pushModule(module, animated: true)
     }
 }

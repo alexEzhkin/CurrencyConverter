@@ -10,7 +10,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+protocol ConversionHistoryViewProtocol: AnyObject {
+    func showTransactionDetails()
+}
+
 class ConversionHistoryView: BaseView {
+    
+    weak var delegate: ConversionHistoryViewProtocol?
     
     let historyTableView = UITableView()
     let historyData = BehaviorRelay<[TransactionRealmObject]>(value: [])
@@ -66,5 +72,9 @@ extension ConversionHistoryView: UITableViewDelegate {
         let cellHeight = CGFloat(cell.defaultCellHeight)
         
         return cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
+        delegate?.showTransactionDetails()
     }
 }

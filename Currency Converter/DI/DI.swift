@@ -18,7 +18,8 @@ class DI {
     func registerAssemblies() {
         self.assembler = Assembler([
             CurrencyConverterAssembly(),
-            ConversionHistoryAssembly()
+            ConversionHistoryAssembly(),
+            HistoryDetailAssembly()
         ])
     }
     

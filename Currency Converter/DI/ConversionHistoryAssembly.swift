@@ -12,22 +12,18 @@ import SwinjectAutoregistration
 class ConversionHistoryAssembly: Assembly {
     func assemble(container: Swinject.Container) {
         
-        container.register(ConversionHistoryPresenter.self) { r in
-            return ConversionHistoryPresenter()
-        }.inObjectScope(.container)
+        container.register(HistoryDataStoreProtocol.self) { r in
+            return HistoryDataStore()
+        }
         
         container.register(ConversionHistoryRouter.self) { r in
             return ConversionHistoryRouter()
         }.inObjectScope(.container)
         
-        container.register(HistoryDataStoreProtocol.self) { r in
-            return HistoryDataStore()
-        }
-        
-        container.autoregister(ConversionHistoryInteractor.self, initializer: ConversionHistoryInteractor.init
+        container.autoregister(ConversionHistoryPresenter.self, initializer: ConversionHistoryPresenter.init
         ).inObjectScope(.transient)
         
-        container.autoregister(CurrencyConverterInteractor.self, initializer: CurrencyConverterInteractor.init
+        container.autoregister(ConversionHistoryInteractor.self, initializer: ConversionHistoryInteractor.init
         ).inObjectScope(.transient)
         
         container.autoregister(
