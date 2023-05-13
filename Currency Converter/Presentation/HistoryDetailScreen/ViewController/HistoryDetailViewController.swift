@@ -10,6 +10,7 @@ import Foundation
 class HistoryDetailViewController: BaseViewController<HistoryDetailView> {
     
     private let interactor: HistoryDetailInteractor
+    var transaction: TransactionRealmObject?
     
     init(interactor: HistoryDetailInteractor, presenter: HistoryDetailPresenter) {
         self.interactor = interactor
@@ -26,6 +27,10 @@ class HistoryDetailViewController: BaseViewController<HistoryDetailView> {
         super.viewDidLoad()
         
         configureNavigationBar()
+        
+        if let transaction = transaction {
+            customView.setTransaction(transaction)
+        }
     }
     
     override func configureNavigationBar() {

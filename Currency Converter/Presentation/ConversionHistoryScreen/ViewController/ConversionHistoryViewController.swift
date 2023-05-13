@@ -7,10 +7,12 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 class ConversionHistoryViewController: BaseViewController<ConversionHistoryView> {
     
     private let interactor: ConversionHistoryInteractor
+    private let disposeBag = DisposeBag()
     
     init(interactor: ConversionHistoryInteractor, presenter: ConversionHistoryPresenter) {
         self.interactor = interactor
@@ -26,7 +28,12 @@ class ConversionHistoryViewController: BaseViewController<ConversionHistoryView>
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        customView.delegate = self
+        
+        customView.cellSelected
+            .subscribe(onNext: { [weak self] transaction in
+                self?.showTransactionDetails(transaction)
+            })
+            .disposed(by: disposeBag)
         
         configureNavigationBar()
         getHistoryData()
@@ -45,11 +52,9 @@ class ConversionHistoryViewController: BaseViewController<ConversionHistoryView>
     func showHistoryData(_ transactionHistory: [TransactionRealmObject]) {
         customView.setHistoryData(transactionHistory)
     }
-}
-
-extension ConversionHistoryViewController: ConversionHistoryViewProtocol {
-    func showTransactionDetails() {
-        let module = interactor.presenter.router.createModule()
+    
+    func showTransactionDetails(_ transaction: TransactionRealmObject) {
+        let module = interactor.presenter.router.createModule(with: transaction)
         
         interactor.presenter.router.pushModule(module, animated: true)
     }

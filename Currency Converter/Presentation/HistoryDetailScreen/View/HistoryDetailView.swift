@@ -17,6 +17,10 @@ class HistoryDetailView: BaseView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setTransaction(_ transaction: TransactionRealmObject) {
+        
+    }
 }
 
 private extension HistoryDetailView {

@@ -10,17 +10,13 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol ConversionHistoryViewProtocol: AnyObject {
-    func showTransactionDetails()
-}
-
 class ConversionHistoryView: BaseView {
     
-    weak var delegate: ConversionHistoryViewProtocol?
+    private let disposeBag = DisposeBag()
     
     let historyTableView = UITableView()
     let historyData = BehaviorRelay<[TransactionRealmObject]>(value: [])
-    var disposeBag = DisposeBag()
+    let cellSelected = PublishSubject<TransactionRealmObject>()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,6 +46,15 @@ private extension ConversionHistoryView {
         historyTableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
+        historyTableView.rx.itemSelected
+            .map { [weak self] indexPath in
+                return self?.historyData.value[indexPath.row]
+            }
+            .filter { $0 != nil }
+            .map { $0! }
+            .bind(to: cellSelected)
+            .disposed(by: disposeBag)
+        
         historyData
             .bind(to: historyTableView.rx.items(
                 cellIdentifier: "conversionHistoryCell",
@@ -72,9 +77,5 @@ extension ConversionHistoryView: UITableViewDelegate {
         let cellHeight = CGFloat(cell.defaultCellHeight)
         
         return cellHeight
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {        
-        delegate?.showTransactionDetails()
     }
 }
